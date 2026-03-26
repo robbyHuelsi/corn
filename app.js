@@ -172,9 +172,39 @@
     calculate();
   });
 
+  // --- Load wealthy list from YAML ---
+  function formatWealth(value) {
+    if (value >= 1e9) return fmt1.format(value / 1e9) + ' Mrd. €';
+    if (value >= 1e6) return fmt1.format(value / 1e6) + ' Mio. €';
+    return fmt.format(value) + ' €';
+  }
+
+  function populateDropdown(entries) {
+    compareSelect.innerHTML = '';
+    entries.forEach(entry => {
+      const wealthEur = entry.wealth * 1e9;
+      const opt = document.createElement('option');
+      opt.value = wealthEur;
+      opt.textContent = entry.name + ' — ' + formatWealth(wealthEur);
+      compareSelect.appendChild(opt);
+    });
+    const customOpt = document.createElement('option');
+    customOpt.value = 'custom';
+    customOpt.textContent = 'Eigenen Wert eingeben…';
+    compareSelect.appendChild(customOpt);
+    calculate();
+  }
+
+  fetch('./wealthy.yaml')
+    .then(res => res.text())
+    .then(text => populateDropdown(jsyaml.load(text)))
+    .catch(() => {
+      compareSelect.innerHTML = '<option value="custom" selected>Eigenen Wert eingeben…</option>';
+      customGroup.classList.remove('d-none');
+    });
+
   // --- Initial ---
   syncSliderToInput();
-  calculate();
 
   // --- Service Worker ---
   if ('serviceWorker' in navigator) {
