@@ -1,0 +1,143 @@
+:root {
+  --corn-50: #e8f5e9;
+  --corn-100: #c8e6c9;
+  --corn-200: #a5d6a7;
+  --corn-300: #81c784;
+  --corn-400: #66bb6a;
+  --corn-500: #4caf50;
+  --corn-600: #43a047;
+  --corn-700: #388e3c;
+  --corn-800: #2e7d32;
+  --corn-900: #1b5e20;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, var(--corn-50) 0%, #f1f8e9 100%);
+  min-height: 100vh;
+  color: #263238;
+}
+
+/* Header */
+.hero {
+  background: linear-gradient(135deg, var(--corn-800) 0%, var(--corn-600) 100%);
+  color: #fff;
+  padding: 2.5rem 1rem 2rem;
+  text-align: center;
+}
+.hero h1 {
+  font-weight: 800;
+  font-size: 2.2rem;
+  letter-spacing: -0.5px;
+}
+.hero .privacy-note {
+  font-size: 0.82rem;
+  opacity: 0.85;
+  margin-top: 0.5rem;
+}
+.hero .corn-icon {
+  font-size: 2.6rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+.card-header {
+  background: var(--corn-700);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 1rem 1rem 0 0 !important;
+}
+
+/* Slider */
+.form-range::-webkit-slider-thumb {
+  background: var(--corn-600);
+}
+.form-range::-moz-range-thumb {
+  background: var(--corn-600);
+}
+.form-range::-webkit-slider-runnable-track {
+  background: var(--corn-200);
+}
+.form-range::-moz-range-track {
+  background: var(--corn-200);
+}
+
+/* Result cards */
+.result-card {
+  background: #fff;
+  border-left: 5px solid var(--corn-500);
+  border-radius: 0.75rem;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease;
+}
+.result-card:hover {
+  transform: translateY(-2px);
+}
+.result-card .result-value {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--corn-800);
+  word-break: break-word;
+}
+.result-card .result-label {
+  font-size: 0.85rem;
+  color: #607d8b;
+  margin-bottom: 0.25rem;
+}
+.result-card .result-icon {
+  font-size: 1.6rem;
+  color: var(--corn-400);
+}
+
+/* Parameter toggle button */
+.btn-params {
+  background: var(--corn-100);
+  color: var(--corn-900);
+  border: 1px solid var(--corn-300);
+  font-size: 0.85rem;
+}
+.btn-params:hover {
+  background: var(--corn-200);
+  color: var(--corn-900);
+}
+
+/* Custom input */
+#customWealthGroup {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* Input highlight */
+.form-control:focus, .form-select:focus {
+  border-color: var(--corn-500);
+  box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+/* Footer */
+footer {
+  background: var(--corn-900);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.8rem;
+}
+footer a {
+  color: var(--corn-200);
+  word-break: break-all;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+  .result-card .result-value {
+    font-size: 1.3rem;
+  }
+}
