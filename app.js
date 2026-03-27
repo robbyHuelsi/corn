@@ -24,6 +24,7 @@
   const outMass = document.getElementById('outMass');
   const outEdge = document.getElementById('outEdge');
   const outBathtubs = document.getElementById('outBathtubs');
+  const stepsContainer = document.getElementById('stepsContainer');
 
   // --- Helpers ---
 
@@ -95,6 +96,7 @@
       outMass.textContent = '–';
       outEdge.textContent = '–';
       outBathtubs.textContent = '–';
+      stepsContainer.innerHTML = '<em class="text-muted">Bitte Werte eingeben.</em>';
       return;
     }
 
@@ -108,6 +110,39 @@
     outMass.textContent = formatMass(massKg);
     outEdge.textContent = formatLength(edgeM);
     outBathtubs.textContent = formatBathtubs(bathtubs);
+    renderSteps(myWealth, compareW, count, massKg, volumeM3, edgeM, bathtubs);
+  }
+
+  // --- Rechenweg ---
+
+  function renderSteps(myW, compW, count, massKg, volM3, edgeM, baths) {
+    const fmtEur = v => fmt.format(v) + ' €';
+    const volL = volM3 * 1000;
+    stepsContainer.innerHTML = `
+      <p class="mb-2 text-muted"><strong>Konstanten:</strong>
+        Tausendkornmasse (TKM) = ${TKM_GRAM} g · Schüttdichte = ${BULK_DENSITY} kg/m³ · Badewanne = ${BATHTUB_LITERS} L</p>
+      <ol class="mb-0">
+        <li class="mb-2">
+          <strong>Anzahl Körner</strong><br>
+          <code>${fmtEur(compW)} ÷ ${fmtEur(myW)} = ${fmt2.format(count)} Körner</code>
+        </li>
+        <li class="mb-2">
+          <strong>Masse</strong><br>
+          <code>${fmt2.format(count)} × (${TKM_GRAM} g ÷ 1.000) = ${fmt2.format(count * TKM_GRAM / 1000)} g = ${formatMass(massKg)}</code>
+        </li>
+        <li class="mb-2">
+          <strong>Schüttvolumen</strong><br>
+          <code>${formatMass(massKg)} ÷ ${BULK_DENSITY} kg/m³ = ${fmt3.format(volM3)} m³ (${fmt1.format(volL)} Liter)</code>
+        </li>
+        <li class="mb-2">
+          <strong>Quader-Kantenlänge</strong> (Würfel)<br>
+          <code>∛${fmt3.format(volM3)} m³ = ${formatLength(edgeM)}</code>
+        </li>
+        <li>
+          <strong>Badewannen</strong><br>
+          <code>${fmt1.format(volL)} L ÷ ${BATHTUB_LITERS} L = ${fmt2.format(baths)} Badewannen</code>
+        </li>
+      </ol>`;
   }
 
   // --- Sync slider ↔ input ---
@@ -208,6 +243,13 @@
 
   // --- Service Worker ---
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').catch(() => {});
+    navigator.serviceWorker.register('./sw.js').then(reg => {
+      reg.addEventListener('updatefound', () => {
+        const newSW = reg.installing;
+        newSW.addEventListener('statechange', () => {
+          if (newSW.state === 'activated') location.reload();
+        });
+      });
+    }).catch(() => {});
   }
 })();
