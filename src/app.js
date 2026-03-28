@@ -74,6 +74,10 @@
   document.getElementById('restart').addEventListener('click', () => {
     selectedAgeGroup = null;
     document.querySelectorAll('.age-group-card').forEach(c => c.classList.remove('selected'));
+    ageGroupHint.textContent = '';
+    compareSelect.selectedIndex = 0;
+    customGroup.classList.add('d-none');
+    customWealth.value = '';
     showView('view-age');
   });
 
@@ -176,19 +180,20 @@
   // --- Result summary ---
 
   function renderSummary(myW, compW, count) {
-    const compareName = compareSelect.options[compareSelect.selectedIndex]
-      ? compareSelect.options[compareSelect.selectedIndex].text.split(' — ')[0]
+    const selectedOption = compareSelect.options[compareSelect.selectedIndex];
+    const compareName = selectedOption
+      ? (selectedOption.dataset.name || selectedOption.text)
       : 'Die Vergleichsperson';
-    resultSummary.innerHTML = `
-      <div class="summary-line">
-        Mit einem Vermögen von <strong>${formatWealth(myW)}</strong> entspricht
-        <strong>1 Maiskorn</strong> genau <strong>1 €</strong> deines Vermögens.
-      </div>
-      <div class="summary-line mt-1">
-        Das Vermögen von <strong>${compareName}</strong>
-        (<strong>${formatWealth(compW)}</strong>) entspricht
-        <strong>${formatCount(count)} Maiskörnern</strong>.
-      </div>`;
+    resultSummary.innerHTML = '';
+    const line1 = document.createElement('div');
+    line1.className = 'summary-line';
+    line1.innerHTML = `Mit einem Vermögen von <strong>${formatWealth(myW)}</strong> entspricht <strong>1 Maiskorn</strong> genau <strong>1 €</strong> deines Vermögens.`;
+    const line2 = document.createElement('div');
+    line2.className = 'summary-line mt-1';
+    line2.innerHTML = `Das Vermögen von <strong></strong> (<strong>${formatWealth(compW)}</strong>) entspricht <strong>${formatCount(count)} Maiskörnern</strong>.`;
+    line2.querySelector('strong').textContent = compareName;
+    resultSummary.appendChild(line1);
+    resultSummary.appendChild(line2);
   }
 
   // --- Rechenweg ---
@@ -288,8 +293,19 @@
     wealthInput.value = formatInput(val);
     wealthDisplay.textContent = formatInput(val) + ' €';
 
-    // Update hint text
-    ageGroupHint.innerHTML = `<i class="bi bi-info-circle me-1"></i>Altersgruppe: <strong>${group.label}</strong> · Median: <strong>${formatWealth(group.medianWealth)}</strong>`;
+    // Update hint text using safe DOM methods
+    ageGroupHint.innerHTML = '';
+    const icon = document.createElement('i');
+    icon.className = 'bi bi-info-circle me-1';
+    const labelStrong = document.createElement('strong');
+    labelStrong.textContent = group.label;
+    const medianStrong = document.createElement('strong');
+    medianStrong.textContent = formatWealth(group.medianWealth);
+    ageGroupHint.appendChild(icon);
+    ageGroupHint.append('Altersgruppe: ');
+    ageGroupHint.appendChild(labelStrong);
+    ageGroupHint.append(' · Median: ');
+    ageGroupHint.appendChild(medianStrong);
 
     showView('view-wealth');
   }
@@ -300,9 +316,20 @@
       const card = document.createElement('button');
       card.type = 'button';
       card.className = 'age-group-card';
-      card.innerHTML = `
-        <div class="age-group-label">${group.label}</div>
-        <div class="age-group-median">Median: <strong>${formatWealth(group.medianWealth)}</strong></div>`;
+
+      const labelDiv = document.createElement('div');
+      labelDiv.className = 'age-group-label';
+      labelDiv.textContent = group.label;
+
+      const medianDiv = document.createElement('div');
+      medianDiv.className = 'age-group-median';
+      medianDiv.append('Median: ');
+      const strong = document.createElement('strong');
+      strong.textContent = formatWealth(group.medianWealth);
+      medianDiv.appendChild(strong);
+
+      card.appendChild(labelDiv);
+      card.appendChild(medianDiv);
       card.addEventListener('click', () => selectAgeGroup(group, card));
       ageGroupGrid.appendChild(card);
     });
@@ -316,29 +343,34 @@
       const wealthEur = entry.wealth * 1e9;
       const opt = document.createElement('option');
       opt.value = wealthEur;
-      opt.textContent = entry.name + ' — ' + formatWealth(wealthEur);
+      opt.dataset.name = entry.name;
+      opt.textContent = entry.name + ' \u2014 ' + formatWealth(wealthEur);
       compareSelect.appendChild(opt);
     });
     const customOpt = document.createElement('option');
     customOpt.value = 'custom';
-    customOpt.textContent = 'Eigenen Wert eingeben…';
+    customOpt.textContent = 'Eigenen Wert eingeben\u2026';
     compareSelect.appendChild(customOpt);
   }
 
   // --- Data loading ---
 
-  Promise.all([
-    fetch('./age-groups.yaml').then(r => r.text()).then(t => jsyaml.load(t)),
-    fetch('./wealthy.yaml').then(r => r.text()).then(t => jsyaml.load(t))
-  ]).then(([ageGroups, wealthy]) => {
-    renderAgeGroups(ageGroups);
-    populateDropdown(wealthy);
-  }).catch(() => {
-    // Fallback if YAML files can't be loaded
-    ageGroupGrid.innerHTML = '<p class="text-danger">Fehler beim Laden der Daten.</p>';
-    compareSelect.innerHTML = '<option value="custom" selected>Eigenen Wert eingeben…</option>';
-    customGroup.classList.remove('d-none');
-  });
+  fetch('./age-groups.yaml')
+    .then(r => r.text())
+    .then(t => jsyaml.load(t))
+    .then(data => renderAgeGroups(data))
+    .catch(() => {
+      ageGroupGrid.innerHTML = '<p class="text-danger">Fehler beim Laden der Altersgruppen.</p>';
+    });
+
+  fetch('./wealthy.yaml')
+    .then(r => r.text())
+    .then(t => jsyaml.load(t))
+    .then(data => populateDropdown(data))
+    .catch(() => {
+      compareSelect.innerHTML = '<option value="custom" selected>Eigenen Wert eingeben\u2026</option>';
+      customGroup.classList.remove('d-none');
+    });
 
   // --- Initial ---
   syncSliderToInput();
