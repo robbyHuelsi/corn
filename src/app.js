@@ -5,7 +5,7 @@
   const TKM_GRAM = 325;                    // Tausendkornmasse in Gramm
   const GRAIN_MASS_KG = TKM_GRAM / 1e6;    // Masse eines Korns in kg (0.000325)
   const BULK_DENSITY = 750;                 // Schüttdichte in kg/m³
-  const BATHTUB_LITERS = 150;              // Badewannenvolumen in Litern
+  const BATHTUB_LITERS = 180;              // Badewannenvolumen in Litern
 
   const fmt = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
   const fmt1 = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 });
@@ -373,6 +373,7 @@
     });
 
   // --- Initial ---
+  document.getElementById('bathtubLiters').textContent = BATHTUB_LITERS;
   syncSliderToInput();
   showView('view-age');
 
