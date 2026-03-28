@@ -57,10 +57,10 @@
     <!-- View 1: Altersgruppe -->
     <div class="view active" id="view-age">
       <h2 class="view-title">
-        <i class="bi bi-person-fill me-2"></i>In welcher Altersgruppe bist du?
+        <i class="bi bi-person-fill me-2"></i>Wie alt bist du?
       </h2>
       <p class="text-muted mb-3">
-        Wähle deine Altersgruppe, um mit dem Median-Nettovermögen für deine Gruppe zu starten.<sup><a href="#fn1">[1]</a></sup>
+        Anhand deines Alters schlagen wir dir einen Startwert vor, den du im nächsten Schritt anpassen kannst.
       </p>
       <div class="age-group-grid" id="ageGroupGrid">
         <!-- Age group cards rendered by JS -->
@@ -77,8 +77,9 @@
         <i class="bi bi-wallet2 me-2"></i>Wie groß ist dein Vermögen?
       </h2>
       <p class="text-muted mb-1">
-        Dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.<sup><a href="#fn1">[1]</a></sup>
-        Der Vorschlag entspricht dem Median deiner Altersgruppe — du kannst ihn anpassen.
+        In Haushalten, in denen die älteste Person in deiner Altersgruppe ist, beträgt das
+        mittlere Nettovermögen den unten angezeigten Wert.<sup><a href="#fn1">[1]</a></sup>
+        Passe ihn an deine persönliche Situation an — dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.
       </p>
       <div class="age-group-hint mb-3" id="ageGroupHint"></div>
       <div class="card mb-4">
@@ -222,9 +223,9 @@
   <!-- Footer mit Fußnoten -->
   <footer class="py-4 px-3 mt-3">
     <div class="container" style="max-width: 720px;">
-      <p class="mb-1" id="fn1"><strong>[1]</strong> Median-Nettovermögen nach Altersgruppe in Deutschland 2020/2021.
-        Quelle: <a href="https://www.bundesbank.de/de/aufgaben/forschung/panel-on-household-finances" target="_blank" rel="noopener">
-          Deutsche Bundesbank — Panel on Household Finances (PHF)</a>
+      <p class="mb-1" id="fn1"><strong>[1]</strong> Haushaltsnettovermögen in Deutschland — Vermögensperzentile nach Alter der ältesten Person im Haushalt im Jahr 2023 in Euro.
+        Quelle: <a href="https://www.iwd.de/datei/haushaltsnettovermoegen-in-deutschland-658115/" target="_blank" rel="noopener">
+          Der Informationsdienst des Instituts der deutschen Wirtschaft</a>
       </p>
       <p class="mb-0" id="fn2"><strong>[2]</strong> Vermögenswerte der reichsten Deutschen.
         Quelle: <a href="https://de.wikipedia.org/wiki/Liste_der_reichsten_Deutschen_(Manager_Magazin)" target="_blank" rel="noopener">

@@ -187,7 +187,7 @@
     resultSummary.innerHTML = '';
     const line1 = document.createElement('div');
     line1.className = 'summary-line';
-    line1.innerHTML = `Mit einem Vermögen von <strong>${formatWealth(myW)}</strong> entspricht <strong>1 Maiskorn</strong> genau <strong>1 €</strong> deines Vermögens.`;
+    line1.innerHTML = `Ein Maiskorn entspricht einem Vermögen von <strong>${formatWealth(myW)}</strong>.`;
     const line2 = document.createElement('div');
     line2.className = 'summary-line mt-1';
     line2.innerHTML = `Das Vermögen von <strong></strong> (<strong>${formatWealth(compW)}</strong>) entspricht <strong>${formatCount(count)} Maiskörnern</strong>.`;
@@ -304,7 +304,7 @@
     ageGroupHint.appendChild(icon);
     ageGroupHint.append('Altersgruppe: ');
     ageGroupHint.appendChild(labelStrong);
-    ageGroupHint.append(' · Median: ');
+    ageGroupHint.append(' \u00b7 Haushaltsnettoverm\u00f6gen (Median): ');
     ageGroupHint.appendChild(medianStrong);
 
     showView('view-wealth');
@@ -323,7 +323,7 @@
 
       const medianDiv = document.createElement('div');
       medianDiv.className = 'age-group-median';
-      medianDiv.append('Median: ');
+      medianDiv.append('Haushalt-Median: ');
       const strong = document.createElement('strong');
       strong.textContent = formatWealth(group.medianWealth);
       medianDiv.appendChild(strong);
