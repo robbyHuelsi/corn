@@ -1,0 +1,34 @@
+# Haushaltsnettovermögen in Deutschland nach Altersgruppe (Median)
+# Vermögensperzentile nach Alter der ältesten Person im Haushalt im Jahr 2023 in Euro
+# Quelle: https://www.iwd.de/datei/haushaltsnettovermoegen-in-deutschland-658115/
+# Vermögen in Euro
+
+- label: "Unter 35 Jahre"
+  ageMin: 0
+  ageMax: 34
+  medianWealth: 17_300
+
+- label: "35 bis 44 Jahre"
+  ageMin: 35
+  ageMax: 44
+  medianWealth: 75_500
+
+- label: "45 bis 54 Jahre"
+  ageMin: 45
+  ageMax: 54
+  medianWealth: 146_200
+
+- label: "55 bis 64 Jahre"
+  ageMin: 55
+  ageMax: 64
+  medianWealth: 241_100
+
+- label: "65 bis 74 Jahre"
+  ageMin: 65
+  ageMax: 74
+  medianWealth: 193_300
+
+- label: "75 Jahre und älter"
+  ageMin: 75
+  ageMax: null
+  medianWealth: 172_500

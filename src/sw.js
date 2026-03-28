@@ -1,10 +1,11 @@
-const CACHE_NAME = 'corn-v2';
+const CACHE_NAME = 'corn-v3';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './app.js',
   './wealthy.yaml',
+  './age-groups.yaml',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
