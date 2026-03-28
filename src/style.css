@@ -43,6 +43,80 @@ body {
   margin-bottom: 0.3rem;
 }
 
+/* Progress bar */
+.progress-bar-wrapper {
+  background: var(--corn-900);
+  padding: 0.75rem 1rem;
+}
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+.step-dot {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: background 0.3s, color 0.3s;
+}
+.step-label {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+.progress-step.active .step-dot {
+  background: var(--corn-400);
+  color: #fff;
+}
+.progress-step.active .step-label {
+  color: #fff;
+  font-weight: 600;
+}
+.progress-step.done .step-dot {
+  background: var(--corn-600);
+  color: #fff;
+}
+.progress-step.done .step-label {
+  color: var(--corn-300);
+}
+.progress-connector {
+  flex: 1;
+  height: 2px;
+  background: rgba(255,255,255,0.2);
+  margin: 0 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+/* Views */
+.view {
+  display: none;
+}
+.view.active {
+  display: block;
+}
+
+.view-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--corn-800);
+  margin-bottom: 0.75rem;
+}
+
 /* Cards */
 .card {
   border: none;
@@ -54,6 +128,75 @@ body {
   color: #fff;
   font-weight: 600;
   border-radius: 1rem 1rem 0 0 !important;
+}
+
+/* Age group grid */
+.age-group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.age-group-card {
+  background: #fff;
+  border: 2px solid var(--corn-200);
+  border-radius: 0.75rem;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.age-group-card:hover {
+  border-color: var(--corn-500);
+  background: var(--corn-50);
+  transform: translateY(-2px);
+}
+.age-group-card.selected {
+  border-color: var(--corn-700);
+  background: var(--corn-100);
+}
+.age-group-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--corn-900);
+  margin-bottom: 0.4rem;
+}
+.age-group-median {
+  font-size: 0.8rem;
+  color: #607d8b;
+}
+
+/* Age group hint on wealth view */
+.age-group-hint {
+  font-size: 0.82rem;
+  color: var(--corn-800);
+  background: var(--corn-50);
+  border: 1px solid var(--corn-200);
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  display: inline-block;
+}
+
+/* Buttons */
+.btn-corn {
+  background: var(--corn-700);
+  color: #fff;
+  border: none;
+}
+.btn-corn:hover {
+  background: var(--corn-800);
+  color: #fff;
+}
+.btn-outline-corn {
+  background: transparent;
+  color: var(--corn-700);
+  border: 1.5px solid var(--corn-600);
+}
+.btn-outline-corn:hover {
+  background: var(--corn-50);
+  color: var(--corn-800);
+  border-color: var(--corn-700);
 }
 
 /* Slider */
@@ -68,6 +211,18 @@ body {
 }
 .form-range::-moz-range-track {
   background: var(--corn-200);
+}
+
+/* Result summary banner */
+.result-summary {
+  background: var(--corn-50);
+  border-left: 4px solid var(--corn-500);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+}
+.summary-line {
+  line-height: 1.5;
 }
 
 /* Result cards */
@@ -139,5 +294,11 @@ footer a {
   }
   .result-card .result-value {
     font-size: 1.3rem;
+  }
+  .age-group-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .step-label {
+    font-size: 0.55rem;
   }
 }

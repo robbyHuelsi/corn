@@ -1,0 +1,28 @@
+# Median-Nettovermögen nach Altersgruppe in Deutschland
+# Quelle: Deutsche Bundesbank, PHF-Studie (Panel on Household Finances) 2020/2021
+# Vermögen in Euro
+
+- label: "Unter 35 Jahre"
+  ageMin: 0
+  ageMax: 34
+  medianWealth: 12600
+
+- label: "35 bis 44 Jahre"
+  ageMin: 35
+  ageMax: 44
+  medianWealth: 50200
+
+- label: "45 bis 54 Jahre"
+  ageMin: 45
+  ageMax: 54
+  medianWealth: 105100
+
+- label: "55 bis 64 Jahre"
+  ageMin: 55
+  ageMax: 64
+  medianWealth: 128700
+
+- label: "65 Jahre und älter"
+  ageMin: 65
+  ageMax: null
+  medianWealth: 121100

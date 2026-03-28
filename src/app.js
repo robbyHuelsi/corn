@@ -12,6 +12,9 @@
   const fmt2 = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 2 });
   const fmt3 = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 3 });
 
+  // --- State ---
+  let selectedAgeGroup = null;
+
   // --- DOM refs ---
   const slider = document.getElementById('wealthSlider');
   const wealthInput = document.getElementById('wealthInput');
@@ -19,12 +22,60 @@
   const compareSelect = document.getElementById('compareSelect');
   const customGroup = document.getElementById('customWealthGroup');
   const customWealth = document.getElementById('customWealth');
+  const ageGroupGrid = document.getElementById('ageGroupGrid');
+  const ageGroupHint = document.getElementById('ageGroupHint');
+  const resultSummary = document.getElementById('resultSummary');
 
   const outCount = document.getElementById('outCount');
   const outMass = document.getElementById('outMass');
   const outEdge = document.getElementById('outEdge');
   const outBathtubs = document.getElementById('outBathtubs');
   const stepsContainer = document.getElementById('stepsContainer');
+
+  // --- Views ---
+  const views = ['view-age', 'view-wealth', 'view-compare', 'view-result'];
+  const steps = ['step1', 'step2', 'step3', 'step4'];
+
+  function showView(viewId) {
+    const viewIndex = views.indexOf(viewId);
+    views.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (id === viewId) {
+        el.classList.add('active');
+      } else {
+        el.classList.remove('active');
+      }
+    });
+    steps.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (i < viewIndex) {
+        el.classList.remove('active');
+        el.classList.add('done');
+      } else if (i === viewIndex) {
+        el.classList.add('active');
+        el.classList.remove('done');
+      } else {
+        el.classList.remove('active');
+        el.classList.remove('done');
+      }
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // --- Navigation buttons ---
+  document.getElementById('backToAge').addEventListener('click', () => showView('view-age'));
+  document.getElementById('goToCompare').addEventListener('click', () => showView('view-compare'));
+  document.getElementById('backToWealth').addEventListener('click', () => showView('view-wealth'));
+  document.getElementById('goToResult').addEventListener('click', () => {
+    calculate();
+    showView('view-result');
+  });
+  document.getElementById('backToCompare').addEventListener('click', () => showView('view-compare'));
+  document.getElementById('restart').addEventListener('click', () => {
+    selectedAgeGroup = null;
+    document.querySelectorAll('.age-group-card').forEach(c => c.classList.remove('selected'));
+    showView('view-age');
+  });
 
   // --- Helpers ---
 
@@ -72,7 +123,14 @@
     return fmt1.format(n / 1e12) + ' Bio.';
   }
 
-  // --- State ---
+  /** Format wealth value for display */
+  function formatWealth(value) {
+    if (value >= 1e9) return fmt1.format(value / 1e9) + ' Mrd. €';
+    if (value >= 1e6) return fmt1.format(value / 1e6) + ' Mio. €';
+    return fmt.format(value) + ' €';
+  }
+
+  // --- State accessors ---
 
   function getMyWealth() {
     return parseFloat(slider.value) || 1;
@@ -97,6 +155,7 @@
       outEdge.textContent = '–';
       outBathtubs.textContent = '–';
       stepsContainer.innerHTML = '<em class="text-muted">Bitte Werte eingeben.</em>';
+      resultSummary.innerHTML = '';
       return;
     }
 
@@ -111,6 +170,25 @@
     outEdge.textContent = formatLength(edgeM);
     outBathtubs.textContent = formatBathtubs(bathtubs);
     renderSteps(myWealth, compareW, count, massKg, volumeM3, edgeM, bathtubs);
+    renderSummary(myWealth, compareW, count);
+  }
+
+  // --- Result summary ---
+
+  function renderSummary(myW, compW, count) {
+    const compareName = compareSelect.options[compareSelect.selectedIndex]
+      ? compareSelect.options[compareSelect.selectedIndex].text.split(' — ')[0]
+      : 'Die Vergleichsperson';
+    resultSummary.innerHTML = `
+      <div class="summary-line">
+        Mit einem Vermögen von <strong>${formatWealth(myW)}</strong> entspricht
+        <strong>1 Maiskorn</strong> genau <strong>1 €</strong> deines Vermögens.
+      </div>
+      <div class="summary-line mt-1">
+        Das Vermögen von <strong>${compareName}</strong>
+        (<strong>${formatWealth(compW)}</strong>) entspricht
+        <strong>${formatCount(count)} Maiskörnern</strong>.
+      </div>`;
   }
 
   // --- Rechenweg ---
@@ -166,22 +244,18 @@
 
   slider.addEventListener('input', () => {
     syncSliderToInput();
-    calculate();
   });
 
   wealthInput.addEventListener('input', () => {
     syncInputToSlider();
-    calculate();
   });
 
-  // Allow values beyond slider range via text input
   wealthInput.addEventListener('change', () => {
     const val = parseDe(wealthInput.value);
     if (!isNaN(val) && val >= 1) {
       slider.value = Math.min(Math.max(Math.round(val), 1), 10000000);
       wealthInput.value = formatInput(val);
       wealthDisplay.textContent = formatInput(val) + ' €';
-      calculate();
     }
   });
 
@@ -192,11 +266,6 @@
     } else {
       customGroup.classList.add('d-none');
     }
-    calculate();
-  });
-
-  customWealth.addEventListener('input', () => {
-    calculate();
   });
 
   customWealth.addEventListener('change', () => {
@@ -204,15 +273,42 @@
     if (!isNaN(val) && val >= 0) {
       customWealth.value = formatInput(val);
     }
-    calculate();
   });
 
-  // --- Load wealthy list from YAML ---
-  function formatWealth(value) {
-    if (value >= 1e9) return fmt1.format(value / 1e9) + ' Mrd. €';
-    if (value >= 1e6) return fmt1.format(value / 1e6) + ' Mio. €';
-    return fmt.format(value) + ' €';
+  // --- Age group selection ---
+
+  function selectAgeGroup(group, cardEl) {
+    selectedAgeGroup = group;
+    document.querySelectorAll('.age-group-card').forEach(c => c.classList.remove('selected'));
+    cardEl.classList.add('selected');
+
+    // Pre-fill slider with median wealth
+    const val = Math.min(Math.max(Math.round(group.medianWealth), 1), 10000000);
+    slider.value = val;
+    wealthInput.value = formatInput(val);
+    wealthDisplay.textContent = formatInput(val) + ' €';
+
+    // Update hint text
+    ageGroupHint.innerHTML = `<i class="bi bi-info-circle me-1"></i>Altersgruppe: <strong>${group.label}</strong> · Median: <strong>${formatWealth(group.medianWealth)}</strong>`;
+
+    showView('view-wealth');
   }
+
+  function renderAgeGroups(groups) {
+    ageGroupGrid.innerHTML = '';
+    groups.forEach(group => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'age-group-card';
+      card.innerHTML = `
+        <div class="age-group-label">${group.label}</div>
+        <div class="age-group-median">Median: <strong>${formatWealth(group.medianWealth)}</strong></div>`;
+      card.addEventListener('click', () => selectAgeGroup(group, card));
+      ageGroupGrid.appendChild(card);
+    });
+  }
+
+  // --- Load wealthy list from YAML ---
 
   function populateDropdown(entries) {
     compareSelect.innerHTML = '';
@@ -227,19 +323,26 @@
     customOpt.value = 'custom';
     customOpt.textContent = 'Eigenen Wert eingeben…';
     compareSelect.appendChild(customOpt);
-    calculate();
   }
 
-  fetch('./wealthy.yaml')
-    .then(res => res.text())
-    .then(text => populateDropdown(jsyaml.load(text)))
-    .catch(() => {
-      compareSelect.innerHTML = '<option value="custom" selected>Eigenen Wert eingeben…</option>';
-      customGroup.classList.remove('d-none');
-    });
+  // --- Data loading ---
+
+  Promise.all([
+    fetch('./age-groups.yaml').then(r => r.text()).then(t => jsyaml.load(t)),
+    fetch('./wealthy.yaml').then(r => r.text()).then(t => jsyaml.load(t))
+  ]).then(([ageGroups, wealthy]) => {
+    renderAgeGroups(ageGroups);
+    populateDropdown(wealthy);
+  }).catch(() => {
+    // Fallback if YAML files can't be loaded
+    ageGroupGrid.innerHTML = '<p class="text-danger">Fehler beim Laden der Daten.</p>';
+    compareSelect.innerHTML = '<option value="custom" selected>Eigenen Wert eingeben…</option>';
+    customGroup.classList.remove('d-none');
+  });
 
   // --- Initial ---
   syncSliderToInput();
+  showView('view-age');
 
   // --- Service Worker ---
   if ('serviceWorker' in navigator) {

@@ -25,115 +25,195 @@
     </p>
   </header>
 
+  <!-- Progress indicator -->
+  <div class="progress-bar-wrapper">
+    <div class="container" style="max-width: 720px;">
+      <div class="progress-steps">
+        <div class="progress-step active" id="step1">
+          <div class="step-dot"><i class="bi bi-person-fill"></i></div>
+          <div class="step-label">Altersgruppe</div>
+        </div>
+        <div class="progress-connector"></div>
+        <div class="progress-step" id="step2">
+          <div class="step-dot"><i class="bi bi-wallet2"></i></div>
+          <div class="step-label">Mein Vermögen</div>
+        </div>
+        <div class="progress-connector"></div>
+        <div class="progress-step" id="step3">
+          <div class="step-dot"><i class="bi bi-people-fill"></i></div>
+          <div class="step-label">Vergleich</div>
+        </div>
+        <div class="progress-connector"></div>
+        <div class="progress-step" id="step4">
+          <div class="step-dot"><i class="bi bi-bar-chart-fill"></i></div>
+          <div class="step-label">Ergebnis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <main class="container py-4" style="max-width: 720px;">
 
-    <!-- Eingabe 1: Eigenes Vermögen -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <i class="bi bi-person-fill me-1"></i> Wie groß ist dein Vermögen?
-      </div>
-      <div class="card-body">
-        <p class="text-muted small mb-2">
-          Dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.<sup><a href="#fn1">[1]</a></sup>
-        </p>
-        <div class="d-flex align-items-center gap-3 mb-2">
-          <input type="range" class="form-range flex-grow-1" id="wealthSlider"
-                 min="1" max="10000000" step="1" value="65374">
-          <div class="input-group" style="width: 180px; flex-shrink: 0;">
-            <input type="text" class="form-control text-end" id="wealthInput" value="65.374" inputmode="numeric">
-            <span class="input-group-text">€</span>
-          </div>
-        </div>
-        <div class="d-flex justify-content-between text-muted small">
-          <span>1 €</span>
-          <span class="fw-semibold" id="wealthDisplay">65.374 €</span>
-          <span>10.000.000 €</span>
+    <!-- View 1: Altersgruppe -->
+    <div class="view active" id="view-age">
+      <h2 class="view-title">
+        <i class="bi bi-person-fill me-2"></i>In welcher Altersgruppe bist du?
+      </h2>
+      <p class="text-muted mb-3">
+        Wähle deine Altersgruppe, um mit dem Median-Nettovermögen für deine Gruppe zu starten.<sup><a href="#fn1">[1]</a></sup>
+      </p>
+      <div class="age-group-grid" id="ageGroupGrid">
+        <!-- Age group cards rendered by JS -->
+        <div class="text-center text-muted py-4">
+          <div class="spinner-border spinner-border-sm" role="status"></div>
+          Wird geladen…
         </div>
       </div>
     </div>
 
-    <!-- Eingabe 2: Vergleichsvermögen -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <i class="bi bi-people-fill me-1"></i> Vergleiche dich mit…
-      </div>
-      <div class="card-body">
-        <p class="text-muted small mb-2">
-          Wähle ein Vergleichsvermögen, das in Maiskörner umgerechnet wird.<sup><a href="#fn2">[2]</a></sup>
-        </p>
-        <select class="form-select mb-3" id="compareSelect">
-          <option value="" disabled selected>Wird geladen…</option>
-        </select>
-        <div id="customWealthGroup" class="d-none">
-          <div class="input-group">
-            <input type="text" class="form-control" id="customWealth" placeholder="z. B. 1.000.000.000" inputmode="numeric">
-            <span class="input-group-text">€</span>
+    <!-- View 2: Eigenes Vermögen -->
+    <div class="view" id="view-wealth">
+      <h2 class="view-title">
+        <i class="bi bi-wallet2 me-2"></i>Wie groß ist dein Vermögen?
+      </h2>
+      <p class="text-muted mb-1">
+        Dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.<sup><a href="#fn1">[1]</a></sup>
+        Der Vorschlag entspricht dem Median deiner Altersgruppe — du kannst ihn anpassen.
+      </p>
+      <div class="age-group-hint mb-3" id="ageGroupHint"></div>
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <input type="range" class="form-range flex-grow-1" id="wealthSlider"
+                   min="1" max="10000000" step="1" value="65374">
+            <div class="input-group" style="width: 180px; flex-shrink: 0;">
+              <input type="text" class="form-control text-end" id="wealthInput" value="65.374" inputmode="numeric">
+              <span class="input-group-text">€</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between text-muted small">
+            <span>1 €</span>
+            <span class="fw-semibold" id="wealthDisplay">65.374 €</span>
+            <span>10.000.000 €</span>
           </div>
         </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-secondary" id="backToAge">
+          <i class="bi bi-arrow-left me-1"></i>Zurück
+        </button>
+        <button class="btn btn-corn" id="goToCompare">
+          Weiter<i class="bi bi-arrow-right ms-1"></i>
+        </button>
       </div>
     </div>
 
-    <!-- Rechenweg -->
-    <div class="text-center mb-4">
-      <button class="btn btn-params btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#paramsCollapse">
-        <i class="bi bi-calculator me-1"></i>Rechenweg anzeigen
-      </button>
-      <div class="collapse mt-2" id="paramsCollapse">
-        <div class="card card-body small text-start" style="margin: 0 auto;">
-          <div id="stepsContainer"></div>
+    <!-- View 3: Vergleich -->
+    <div class="view" id="view-compare">
+      <h2 class="view-title">
+        <i class="bi bi-people-fill me-2"></i>Vergleiche dich mit…
+      </h2>
+      <p class="text-muted mb-3">
+        Wähle ein Vergleichsvermögen, das in Maiskörner umgerechnet wird.<sup><a href="#fn2">[2]</a></sup>
+      </p>
+      <div class="card mb-4">
+        <div class="card-body">
+          <select class="form-select mb-3" id="compareSelect">
+            <option value="" disabled selected>Wird geladen…</option>
+          </select>
+          <div id="customWealthGroup" class="d-none">
+            <div class="input-group">
+              <input type="text" class="form-control" id="customWealth" placeholder="z. B. 1.000.000.000" inputmode="numeric">
+              <span class="input-group-text">€</span>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-secondary" id="backToWealth">
+          <i class="bi bi-arrow-left me-1"></i>Zurück
+        </button>
+        <button class="btn btn-corn" id="goToResult">
+          Berechnen<i class="bi bi-calculator ms-1"></i>
+        </button>
       </div>
     </div>
 
-    <!-- Ergebnisse -->
-    <h2 class="h5 mb-3 text-center" style="color: var(--corn-800);">
-      <i class="bi bi-bar-chart-fill me-1"></i>Ergebnis
-    </h2>
+    <!-- View 4: Ergebnis -->
+    <div class="view" id="view-result">
+      <h2 class="view-title">
+        <i class="bi bi-bar-chart-fill me-2"></i>Ergebnis
+      </h2>
 
-    <div class="row g-3 mb-4">
-      <div class="col-sm-6">
-        <div class="result-card">
-          <div class="d-flex justify-content-between align-items-start">
-            <div>
-              <div class="result-label">Anzahl Maiskörner</div>
-              <div class="result-value" id="outCount">–</div>
+      <!-- Summary banner -->
+      <div class="result-summary mb-4" id="resultSummary"></div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6">
+          <div class="result-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <div class="result-label">Anzahl Maiskörner</div>
+                <div class="result-value" id="outCount">–</div>
+              </div>
+              <div class="result-icon">🌽</div>
             </div>
-            <div class="result-icon">🌽</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="result-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <div class="result-label">Masse Maiskörner</div>
+                <div class="result-value" id="outMass">–</div>
+              </div>
+              <div class="result-icon"><i class="bi bi-box-seam"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="result-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <div class="result-label">Schüttvolumen — Quader-Kantenlänge</div>
+                <div class="result-value" id="outEdge">–</div>
+              </div>
+              <div class="result-icon"><i class="bi bi-bounding-box"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="result-card">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <div class="result-label">Badewannen (à 150 L)</div>
+                <div class="result-value" id="outBathtubs">–</div>
+              </div>
+              <div class="result-icon">🛁</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
-        <div class="result-card">
-          <div class="d-flex justify-content-between align-items-start">
-            <div>
-              <div class="result-label">Masse Maiskörner</div>
-              <div class="result-value" id="outMass">–</div>
-            </div>
-            <div class="result-icon"><i class="bi bi-box-seam"></i></div>
+
+      <!-- Rechenweg -->
+      <div class="text-center mb-4">
+        <button class="btn btn-params btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#paramsCollapse">
+          <i class="bi bi-calculator me-1"></i>Rechenweg anzeigen
+        </button>
+        <div class="collapse mt-2" id="paramsCollapse">
+          <div class="card card-body small text-start" style="margin: 0 auto;">
+            <div id="stepsContainer"></div>
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
-        <div class="result-card">
-          <div class="d-flex justify-content-between align-items-start">
-            <div>
-              <div class="result-label">Schüttvolumen — Quader-Kantenlänge</div>
-              <div class="result-value" id="outEdge">–</div>
-            </div>
-            <div class="result-icon"><i class="bi bi-bounding-box"></i></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="result-card">
-          <div class="d-flex justify-content-between align-items-start">
-            <div>
-              <div class="result-label">Badewannen (à 150 L)</div>
-              <div class="result-value" id="outBathtubs">–</div>
-            </div>
-            <div class="result-icon">🛁</div>
-          </div>
-        </div>
+
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-secondary" id="backToCompare">
+          <i class="bi bi-arrow-left me-1"></i>Zurück
+        </button>
+        <button class="btn btn-outline-corn" id="restart">
+          <i class="bi bi-arrow-counterclockwise me-1"></i>Neu starten
+        </button>
       </div>
     </div>
 
@@ -142,9 +222,9 @@
   <!-- Footer mit Fußnoten -->
   <footer class="py-4 px-3 mt-3">
     <div class="container" style="max-width: 720px;">
-      <p class="mb-1" id="fn1"><strong>[1]</strong> Median-Nettovermögen in Deutschland 2020/2021: 65.374 €.
-        Quelle: <a href="https://de.wikipedia.org/wiki/Mittleres_Verm%C3%B6gen#Mittleres_Verm%C3%B6gen_(Median-Nettoverm%C3%B6gen)_im_Jahr_2020/2021_nach_Berechnungen_der_Deutschen_Bundesbank" target="_blank" rel="noopener">
-          Wikipedia — Mittleres Vermögen</a>
+      <p class="mb-1" id="fn1"><strong>[1]</strong> Median-Nettovermögen nach Altersgruppe in Deutschland 2020/2021.
+        Quelle: <a href="https://www.bundesbank.de/de/aufgaben/forschung/panel-on-household-finances" target="_blank" rel="noopener">
+          Deutsche Bundesbank — Panel on Household Finances (PHF)</a>
       </p>
       <p class="mb-0" id="fn2"><strong>[2]</strong> Vermögenswerte der reichsten Deutschen.
         Quelle: <a href="https://de.wikipedia.org/wiki/Liste_der_reichsten_Deutschen_(Manager_Magazin)" target="_blank" rel="noopener">
