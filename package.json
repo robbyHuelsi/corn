@@ -1,0 +1,52 @@
+{
+    "name": "corn",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "description": "Vermögensungleichheit dargestellt in Maiskörnern",
+    "scripts": {
+        "lint": "eslint src/**/*.js && stylelint src/**/*.css && htmlhint src/**/*.html && yaml-lint src/**/*.yaml && uv run ruff check server.py",
+        "lint:fix": "eslint --fix src/**/*.js && stylelint --fix src/**/*.css && uv run ruff check --fix server.py",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "prepare": "husky"
+    },
+    "lint-staged": {
+        "src/**/*.js": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "src/**/*.css": [
+            "stylelint --fix",
+            "prettier --write"
+        ],
+        "src/**/*.html": [
+            "htmlhint",
+            "prettier --write"
+        ],
+        "src/**/*.yaml": [
+            "yaml-lint",
+            "prettier --write"
+        ],
+        "*.py": [
+            "uv run ruff check --fix",
+            "uv run ruff format"
+        ],
+        "*.{json,md}": [
+            "prettier --write"
+        ]
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "eslint": "^10.2.0",
+        "eslint-config-prettier": "^10.1.8",
+        "globals": "^17.4.0",
+        "htmlhint": "^1.9.2",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.4.0",
+        "prettier": "^3.8.2",
+        "stylelint": "^17.6.0",
+        "stylelint-config-standard": "^40.0.0",
+        "yaml-lint": "^1.7.0"
+    }
+}

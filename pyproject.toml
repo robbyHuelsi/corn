@@ -1,0 +1,9 @@
+[project]
+name = "corn"
+version = "1.0.0"
+description = "Vermögensungleichheit dargestellt in Maiskörnern"
+requires-python = ">=3.9"
+dependencies = []
+
+[dependency-groups]
+dev = ["ruff"]

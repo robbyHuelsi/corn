@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" = "main" ]; then
+  echo "🚫 Direct push to 'main' is not allowed."
+  echo "   Please use a feature branch and create a Pull Request."
+  exit 1
+fi
