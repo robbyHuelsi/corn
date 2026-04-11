@@ -71,6 +71,15 @@
         showView("view-result");
     });
     document.getElementById("backToCompare").addEventListener("click", () => showView("view-compare"));
+    document.getElementById("resetToMedian").addEventListener("click", () => {
+        if (_selectedAgeGroup) {
+            const val = Math.min(Math.max(Math.round(_selectedAgeGroup.medianWealth), 1), 10000000);
+            slider.value = val;
+            wealthInput.value = formatInput(val);
+            wealthDisplay.textContent = formatInput(val) + " €";
+        }
+    });
+
     document.getElementById("restart").addEventListener("click", () => {
         _selectedAgeGroup = null;
         document.querySelectorAll(".age-group-card").forEach((c) => c.classList.remove("selected"));
