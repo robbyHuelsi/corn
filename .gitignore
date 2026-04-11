@@ -34,6 +34,12 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+### Node ###
+node_modules/
+
+### Python ###
+.venv/
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json

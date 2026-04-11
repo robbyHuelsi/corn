@@ -1,0 +1,15 @@
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" = "main" ]; then
+    echo "🚫 Direct commit to 'main' is not allowed."
+    echo "   Please use a feature branch and create a Pull Request."
+    exit 1
+fi
+
+if ! echo "$branch" | grep -Eq '^(feature|fix|chore|hotfix|release)/[a-z0-9._-]+$'; then
+    echo "🚫 Branch name '$branch' does not match the required pattern."
+    echo "   Use one of: feature/<name>, fix/<name>, chore/<name>, hotfix/<name>, release/<name>"
+    exit 1
+fi
+
+npx lint-staged
