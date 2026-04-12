@@ -14,6 +14,8 @@
 
     // --- State ---
     let _selectedAgeGroup = null;
+    let _overallMedian = null;
+    let _skippedAgeGroup = false;
 
     // --- DOM refs ---
     const slider = document.getElementById("wealthSlider");
@@ -24,6 +26,8 @@
     const customWealth = document.getElementById("customWealth");
     const ageGroupGrid = document.getElementById("ageGroupGrid");
     const ageGroupHint = document.getElementById("ageGroupHint");
+    const wealthDescription = document.getElementById("wealthDescription");
+    const skipAgeGroupContainer = document.getElementById("skipAgeGroupContainer");
     const resultSummary = document.getElementById("resultSummary");
 
     const outCount = document.getElementById("outCount");
@@ -72,18 +76,19 @@
     });
     document.getElementById("backToCompare").addEventListener("click", () => showView("view-compare"));
     document.getElementById("resetToMedian").addEventListener("click", () => {
-        if (_selectedAgeGroup) {
-            const val = Math.min(Math.max(Math.round(_selectedAgeGroup.medianWealth), 1), 10000000);
-            slider.value = val;
-            wealthInput.value = formatInput(val);
-            wealthDisplay.textContent = formatInput(val) + " €";
-        }
+        const median = _selectedAgeGroup ? _selectedAgeGroup.medianWealth : _overallMedian;
+        const val = Math.min(Math.max(Math.round(median), 1), 10000000);
+        slider.value = val;
+        wealthInput.value = formatInput(val);
+        wealthDisplay.textContent = formatInput(val) + "\u00A0€";
     });
 
     document.getElementById("restart").addEventListener("click", () => {
         _selectedAgeGroup = null;
+        _skippedAgeGroup = false;
         document.querySelectorAll(".age-group-card").forEach((c) => c.classList.remove("selected"));
         ageGroupHint.textContent = "";
+        setWealthDescription(false);
         compareSelect.selectedIndex = 0;
         customGroup.classList.add("d-none");
         customWealth.value = "";
@@ -91,6 +96,15 @@
     });
 
     // --- Helpers ---
+
+    const DEFAULT_DESCRIPTION =
+        'In Haushalten, in denen die älteste Person in deiner Altersgruppe ist, beträgt das mittlere Nettovermögen den unten angezeigten Wert.<sup><a href="#fn1">[1]</a></sup> Passe ihn an deine persönliche Situation an\u00A0— dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.';
+    const SKIP_DESCRIPTION =
+        'Das mittlere Nettovermögen aller Haushalte in Deutschland beträgt den unten angezeigten Wert.<sup><a href="#fn1">[1]</a></sup> Passe ihn an deine persönliche Situation an\u00A0— dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.';
+
+    function setWealthDescription(skipped) {
+        wealthDescription.innerHTML = skipped ? SKIP_DESCRIPTION : DEFAULT_DESCRIPTION;
+    }
 
     /** Parse a German-formatted number string (dots as thousands sep, comma as decimal) */
     function parseDe(str) {
@@ -138,9 +152,9 @@
 
     /** Format wealth value for display */
     function formatWealth(value) {
-        if (value >= 1e9) return fmt1.format(value / 1e9) + " Mrd. €";
-        if (value >= 1e6) return fmt1.format(value / 1e6) + " Mio. €";
-        return fmt.format(value) + " €";
+        if (value >= 1e9) return fmt1.format(value / 1e9) + "\u00A0Mrd.\u00A0€";
+        if (value >= 1e6) return fmt1.format(value / 1e6) + "\u00A0Mio.\u00A0€";
+        return fmt.format(value) + "\u00A0€";
     }
 
     // --- State accessors ---
@@ -208,7 +222,7 @@
     // --- Rechenweg ---
 
     function renderSteps(myW, compW, count, massKg, volM3, edgeM, baths) {
-        const fmtEur = (v) => fmt.format(v) + " €";
+        const fmtEur = (v) => fmt.format(v) + "\u00A0€";
         const volL = volM3 * 1000;
         stepsContainer.innerHTML = `
       <p class="mb-2 text-muted"><strong>Konstanten:</strong>
@@ -242,7 +256,7 @@
     function syncSliderToInput() {
         const val = Math.round(parseFloat(slider.value));
         wealthInput.value = formatInput(val);
-        wealthDisplay.textContent = formatInput(val) + " €";
+        wealthDisplay.textContent = formatInput(val) + "\u00A0€";
     }
 
     function syncInputToSlider() {
@@ -250,7 +264,7 @@
         if (!isNaN(val) && val >= 1) {
             const clamped = Math.min(Math.max(Math.round(val), 1), 10000000);
             slider.value = clamped;
-            wealthDisplay.textContent = formatInput(clamped) + " €";
+            wealthDisplay.textContent = formatInput(clamped) + "\u00A0€";
         }
     }
 
@@ -269,7 +283,7 @@
         if (!isNaN(val) && val >= 1) {
             slider.value = Math.min(Math.max(Math.round(val), 1), 10000000);
             wealthInput.value = formatInput(val);
-            wealthDisplay.textContent = formatInput(val) + " €";
+            wealthDisplay.textContent = formatInput(val) + "\u00A0€";
         }
     });
 
@@ -293,6 +307,7 @@
 
     function selectAgeGroup(group, cardEl) {
         _selectedAgeGroup = group;
+        _skippedAgeGroup = false;
         document.querySelectorAll(".age-group-card").forEach((c) => c.classList.remove("selected"));
         cardEl.classList.add("selected");
 
@@ -300,7 +315,7 @@
         const val = Math.min(Math.max(Math.round(group.medianWealth), 1), 10000000);
         slider.value = val;
         wealthInput.value = formatInput(val);
-        wealthDisplay.textContent = formatInput(val) + " €";
+        wealthDisplay.textContent = formatInput(val) + "\u00A0€";
 
         // Update hint text using safe DOM methods
         ageGroupHint.innerHTML = "";
@@ -316,6 +331,31 @@
         ageGroupHint.append(" \u00b7 Haushaltsnettoverm\u00f6gen (Median): ");
         ageGroupHint.appendChild(medianStrong);
 
+        setWealthDescription(false);
+        showView("view-wealth");
+    }
+
+    function skipAgeGroupSelection(median) {
+        _selectedAgeGroup = null;
+        _skippedAgeGroup = true;
+        document.querySelectorAll(".age-group-card").forEach((c) => c.classList.remove("selected"));
+
+        const val = Math.min(Math.max(Math.round(median), 1), 10000000);
+        slider.value = val;
+        wealthInput.value = formatInput(val);
+        wealthDisplay.textContent = formatInput(val) + "\u00A0€";
+
+        // Update hint for skip path
+        ageGroupHint.innerHTML = "";
+        const icon = document.createElement("i");
+        icon.className = "bi bi-info-circle me-1";
+        const medianStrong = document.createElement("strong");
+        medianStrong.textContent = formatWealth(median);
+        ageGroupHint.appendChild(icon);
+        ageGroupHint.append("Gesamtmedian Deutschland \u00b7 ");
+        ageGroupHint.appendChild(medianStrong);
+
+        setWealthDescription(true);
         showView("view-wealth");
     }
 
@@ -344,6 +384,29 @@
         });
     }
 
+    function renderSkipButton(group) {
+        skipAgeGroupContainer.innerHTML = "";
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "age-group-card w-100";
+
+        const labelDiv = document.createElement("div");
+        labelDiv.className = "age-group-label";
+        labelDiv.textContent = "Ohne Altersgruppe fortfahren";
+
+        const medianDiv = document.createElement("div");
+        medianDiv.className = "age-group-median";
+        medianDiv.append("Gesamtmedian: ");
+        const strong = document.createElement("strong");
+        strong.textContent = formatWealth(group.medianWealth);
+        medianDiv.appendChild(strong);
+
+        card.appendChild(labelDiv);
+        card.appendChild(medianDiv);
+        card.addEventListener("click", () => skipAgeGroupSelection(group.medianWealth));
+        skipAgeGroupContainer.appendChild(card);
+    }
+
     // --- Load wealthy list from YAML ---
 
     function populateDropdown(entries) {
@@ -367,7 +430,15 @@
     fetch("./age-groups.yaml")
         .then((r) => r.text())
         .then((t) => jsyaml.load(t))
-        .then((data) => renderAgeGroups(data))
+        .then((data) => {
+            const ageGroups = data.filter((g) => !g.skip);
+            const skipGroup = data.find((g) => g.skip);
+            renderAgeGroups(ageGroups);
+            if (skipGroup) {
+                _overallMedian = skipGroup.medianWealth;
+                renderSkipButton(skipGroup);
+            }
+        })
         .catch(() => {
             ageGroupGrid.innerHTML = '<p class="text-danger">Fehler beim Laden der Altersgruppen.</p>';
         });
@@ -386,8 +457,8 @@
     syncSliderToInput();
     showView("view-age");
 
-    // --- Service Worker ---
-    if ("serviceWorker" in navigator) {
+    // --- Service Worker (skip on localhost to avoid stale caches during development) ---
+    if ("serviceWorker" in navigator && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
         navigator.serviceWorker
             .register("./sw.js")
             .then((reg) => {

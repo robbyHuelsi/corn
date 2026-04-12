@@ -32,3 +32,10 @@
   ageMin: 75
   ageMax: null
   medianWealth: 172_500
+
+# Gesamtmedian aller Haushalte in Deutschland (2023)
+- label: "Alle Altersgruppen"
+  ageMin: 0
+  ageMax: null
+  medianWealth: 103_100
+  skip: true

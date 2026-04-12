@@ -73,12 +73,14 @@
                         Wird geladen…
                     </div>
                 </div>
+                <h6 class="text-muted text-center mt-2 mb-2">Überspringen</h6>
+                <div id="skipAgeGroupContainer"></div>
             </div>
 
             <!-- View 2: Eigenes Vermögen -->
             <div class="view" id="view-wealth">
                 <h2 class="view-title"><i class="bi bi-wallet2 me-2"></i>Wie groß ist dein Vermögen?</h2>
-                <p class="text-muted mb-1">
+                <p class="text-muted mb-1" id="wealthDescription">
                     In Haushalten, in denen die älteste Person in deiner Altersgruppe ist, beträgt das mittlere
                     Nettovermögen den unten angezeigten Wert.<sup><a href="#fn1">[1]</a></sup>
                     Passe ihn an deine persönliche Situation an — dein Vermögen bestimmt den Wert eines einzelnen
@@ -107,7 +109,7 @@
                             class="d-grid text-muted small"
                             style="grid-template-columns: 1fr auto 1fr; align-items: center"
                         >
-                            <span class="text-start">1 €</span>
+                            <span class="text-start">1&nbsp;€</span>
                             <div class="input-group" style="width: 180px">
                                 <input
                                     type="text"
@@ -118,9 +120,9 @@
                                 />
                                 <span class="input-group-text">€</span>
                             </div>
-                            <span class="text-end">10 Mio. €</span>
+                            <span class="text-end">10&nbsp;Mio.&nbsp;€</span>
                         </div>
-                        <span class="d-none" id="wealthDisplay">65.374 €</span>
+                        <span class="d-none" id="wealthDisplay">65.374&nbsp;€</span>
                         <div class="text-center mt-3">
                             <button class="btn btn-sm btn-outline-secondary" id="resetToMedian">
                                 <i class="bi bi-arrow-counterclockwise me-1"></i>Auf Haushaltswert zurücksetzen

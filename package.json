@@ -5,7 +5,7 @@
     "type": "module",
     "description": "Vermögensungleichheit dargestellt in Maiskörnern",
     "scripts": {
-        "lint": "eslint src/**/*.js && stylelint src/**/*.css && htmlhint src/**/*.html && yaml-lint src/**/*.yaml && uv run ruff check server.py",
+        "lint": "eslint src/**/*.js && stylelint src/**/*.css && htmlhint src/**/*.html && yamllint src/**/*.yaml && uv run ruff check server.py",
         "lint:fix": "eslint --fix src/**/*.js && stylelint --fix src/**/*.css && uv run ruff check --fix server.py",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
@@ -25,7 +25,7 @@
             "prettier --write"
         ],
         "src/**/*.yaml": [
-            "yaml-lint",
+            "yamllint",
             "prettier --write"
         ],
         "*.py": [
