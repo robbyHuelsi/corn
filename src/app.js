@@ -28,6 +28,11 @@
     const wealthDescription = document.getElementById("wealthDescription");
     const skipAgeGroupContainer = document.getElementById("skipAgeGroupContainer");
     const resultSummary = document.getElementById("resultSummary");
+    const splitWealthModalEl = document.getElementById("splitWealthModal");
+    const splitWealthDivisor = document.getElementById("splitWealthDivisor");
+    const applySplitWealth = document.getElementById("applySplitWealth");
+    const splitWealthError = document.getElementById("splitWealthError");
+    const splitWealthButtons = document.querySelectorAll(".split-wealth-btn");
 
     const outCount = document.getElementById("outCount");
     const outMass = document.getElementById("outMass");
@@ -100,7 +105,7 @@
         wealthDescription.innerHTML = "";
         if (group) {
             // Age group path
-            wealthDescription.append("In Haushalten, in denen die älteste Person in deiner Altersgruppe (");
+            wealthDescription.append("In Haushalten, in denen die älteste Person in Deiner Altersgruppe (");
             const labelStrong = document.createElement("strong");
             labelStrong.textContent = group.label;
             wealthDescription.appendChild(labelStrong);
@@ -124,7 +129,7 @@
         sup.appendChild(fnLink);
         wealthDescription.appendChild(sup);
         wealthDescription.append(
-            " Passe den Wert an deine pers\u00F6nliche Situation an\u00A0\u2014 dein Verm\u00F6gen bestimmt den Wert eines einzelnen Maiskorns."
+            " Passe den Wert an Deine pers\u00F6nliche Situation an\u00A0\u2014 Dein Verm\u00F6gen bestimmt den Wert eines einzelnen Maiskorns."
         );
     }
 
@@ -290,6 +295,47 @@
         }
     }
 
+    function hideSplitError() {
+        splitWealthError.textContent = "";
+        splitWealthError.classList.add("d-none");
+    }
+
+    function showSplitError(message) {
+        splitWealthError.textContent = message;
+        splitWealthError.classList.remove("d-none");
+    }
+
+    function getMedianWealth() {
+        return _selectedAgeGroup ? _selectedAgeGroup.medianWealth : _overallMedian;
+    }
+
+    function applyWealthSplit(divisor) {
+        if (!Number.isFinite(divisor) || divisor <= 0) {
+            showSplitError("Bitte gib eine Zahl größer als 0 ein.");
+            return false;
+        }
+
+        const median = getMedianWealth();
+        if (median == null) return false;
+        const splitWealth = Math.min(Math.max(Math.round(median / divisor), 1), 10000000);
+        slider.value = splitWealth;
+        wealthInput.value = formatInput(splitWealth);
+        wealthDisplay.textContent = formatInput(splitWealth) + "\u00A0€";
+        hideSplitError();
+        bootstrap.Modal.getInstance(splitWealthModalEl).hide();
+        return true;
+    }
+
+    function updateSplitAmounts() {
+        const median = getMedianWealth();
+        [2, 3, 4].forEach((d) => {
+            const el = document.getElementById("splitAmount" + d);
+            if (el) {
+                el.textContent = median != null ? formatWealth(Math.round(median / d)) : "–";
+            }
+        });
+    }
+
     // --- Events ---
 
     slider.addEventListener("input", () => {
@@ -324,6 +370,35 @@
             customWealth.value = formatInput(val);
         }
     });
+
+    splitWealthButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const divisor = parseFloat(btn.dataset.divisor);
+            applyWealthSplit(divisor);
+        });
+    });
+
+    applySplitWealth.addEventListener("click", () => {
+        const divisor = parseDe(splitWealthDivisor.value);
+        applyWealthSplit(divisor);
+    });
+
+    splitWealthDivisor.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        event.preventDefault();
+        const divisor = parseDe(splitWealthDivisor.value);
+        applyWealthSplit(divisor);
+    });
+
+    splitWealthDivisor.addEventListener("input", hideSplitError);
+
+    if (splitWealthModalEl) {
+        splitWealthModalEl.addEventListener("show.bs.modal", () => {
+            updateSplitAmounts();
+            splitWealthDivisor.value = "";
+            hideSplitError();
+        });
+    }
 
     // --- Age group selection ---
 

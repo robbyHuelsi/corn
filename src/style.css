@@ -201,6 +201,21 @@ body {
     padding: 0.4rem 0.75rem;
 }
 
+/* Split-wealth modal grid */
+.split-wealth-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.split-wealth-custom {
+    cursor: default;
+}
+
+.split-wealth-custom:hover {
+    transform: none;
+}
+
 /* Buttons */
 .btn-corn {
     background: var(--corn-700);
