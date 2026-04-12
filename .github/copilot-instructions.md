@@ -3,7 +3,7 @@
 ## Build, test, and lint commands
 
 - Install dependencies with `npm install` and `uv sync`.
-- Run the local static dev server with `python3 server.py` and open `http://localhost:8081/src/`. Use `python3 server.py --port 9000` to change the port.
+- Run the local static dev server with `uv run server.py` and open `http://localhost:8081/`. Use `uv run server.py --port 9000` to change the port.
 - There is no build step. GitHub Pages deploys the contents of `src/` directly.
 - There is currently no automated test suite and no `npm test` script.
 - Formatting check: `npm run format:check`

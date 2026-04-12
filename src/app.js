@@ -77,6 +77,7 @@
     document.getElementById("backToCompare").addEventListener("click", () => showView("view-compare"));
     document.getElementById("resetToMedian").addEventListener("click", () => {
         const median = _selectedAgeGroup ? _selectedAgeGroup.medianWealth : _overallMedian;
+        if (median == null) return;
         const val = Math.min(Math.max(Math.round(median), 1), 10000000);
         slider.value = val;
         wealthInput.value = formatInput(val);
@@ -458,7 +459,7 @@
     showView("view-age");
 
     // --- Service Worker (skip on localhost to avoid stale caches during development) ---
-    if ("serviceWorker" in navigator && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+    if ("serviceWorker" in navigator && location.hostname !== "localhost" && location.hostname !== "127.0.0.1" && location.hostname !== "::1") {
         navigator.serviceWorker
             .register("./sw.js")
             .then((reg) => {
