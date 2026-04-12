@@ -90,6 +90,14 @@
         _selectedCompareWealth = null;
         _selectedCompareName = null;
         document.querySelectorAll(".age-group-card").forEach((c) => c.classList.remove("selected"));
+        const customWealth = document.getElementById("customWealth");
+        if (customWealth) {
+            customWealth.value = "";
+        }
+        const compareGrid = document.getElementById("compareGrid");
+        if (compareGrid) {
+            compareGrid.querySelectorAll(".selected").forEach((c) => c.classList.remove("selected"));
+        }
         setWealthDescription(null, _overallMedian);
         showView("view-age");
     });
@@ -506,6 +514,7 @@
         input.className = "form-control text-end";
         input.inputMode = "decimal";
         input.id = "customWealth";
+        input.setAttribute("aria-label", "Eigener Wert in Mrd. €");
 
         const suffix = document.createElement("span");
         suffix.className = "input-group-text";
@@ -514,6 +523,7 @@
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "btn btn-corn";
+        btn.setAttribute("aria-label", "Eigenen Wert vergleichen");
         btn.innerHTML = '<i class="bi bi-check-lg"></i>';
         btn.addEventListener("click", () => {
             const val = parseDe(input.value);
