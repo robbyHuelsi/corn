@@ -214,6 +214,8 @@ body {
 
 .split-wealth-custom:hover {
     transform: none;
+    background: inherit;
+    border-color: var(--corn-200);
 }
 
 /* Buttons */

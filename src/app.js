@@ -118,7 +118,7 @@
             // Skip path
             wealthDescription.append("Das mittlere Nettoverm\u00F6gen aller Haushalte in Deutschland betr\u00E4gt ");
             const medianStrong = document.createElement("strong");
-            medianStrong.textContent = formatWealth(median);
+            medianStrong.textContent = median == null ? "–" : formatWealth(median);
             wealthDescription.appendChild(medianStrong);
             wealthDescription.append(".");
         }
