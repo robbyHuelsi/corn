@@ -9,7 +9,7 @@
 - Formatting check: `npm run format:check`
 - Format everything: `npm run format`
 - Full lint script: `npm run lint`
-    - In CI, the YAML check is run as `npx yaml-lint src/**/*.yaml`.
+    - The `yaml-lint` npm package installs its binary as `yamllint` (no hyphen). Always invoke it via `npx yaml-lint` to resolve the package name correctly — this applies to scripts, lint-staged, and CI alike.
 - Run a single-file lint/check with the same tools CI uses:
     - JavaScript: `npx eslint src/app.js`
     - CSS: `npx stylelint src/style.css`
