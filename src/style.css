@@ -201,20 +201,30 @@ body {
     padding: 0.4rem 0.75rem;
 }
 
+/* Compare grid */
+.compare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
 /* Split-wealth modal grid */
 .split-wealth-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 0.75rem;
 }
 
-.split-wealth-custom {
+.split-wealth-custom,
+.compare-custom {
     cursor: default;
 }
 
-.split-wealth-custom:hover {
+.split-wealth-custom:hover,
+.compare-custom:hover {
     transform: none;
-    background: inherit;
+    background: #fff;
     border-color: var(--corn-200);
 }
 

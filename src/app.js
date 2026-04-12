@@ -16,14 +16,14 @@
     let _selectedAgeGroup = null;
     let _overallMedian = null;
     let _skippedAgeGroup = false;
+    let _selectedCompareWealth = null;
+    let _selectedCompareName = null;
 
     // --- DOM refs ---
     const slider = document.getElementById("wealthSlider");
     const wealthInput = document.getElementById("wealthInput");
     const wealthDisplay = document.getElementById("wealthDisplay");
-    const compareSelect = document.getElementById("compareSelect");
-    const customGroup = document.getElementById("customWealthGroup");
-    const customWealth = document.getElementById("customWealth");
+    const compareGrid = document.getElementById("compareGrid");
     const ageGroupGrid = document.getElementById("ageGroupGrid");
     const wealthDescription = document.getElementById("wealthDescription");
     const skipAgeGroupContainer = document.getElementById("skipAgeGroupContainer");
@@ -74,10 +74,6 @@
     document.getElementById("backToAge").addEventListener("click", () => showView("view-age"));
     document.getElementById("goToCompare").addEventListener("click", () => showView("view-compare"));
     document.getElementById("backToWealth").addEventListener("click", () => showView("view-wealth"));
-    document.getElementById("goToResult").addEventListener("click", () => {
-        calculate();
-        showView("view-result");
-    });
     document.getElementById("backToCompare").addEventListener("click", () => showView("view-compare"));
     document.getElementById("resetToMedian").addEventListener("click", () => {
         const median = _selectedAgeGroup ? _selectedAgeGroup.medianWealth : _overallMedian;
@@ -91,11 +87,10 @@
     document.getElementById("restart").addEventListener("click", () => {
         _selectedAgeGroup = null;
         _skippedAgeGroup = false;
+        _selectedCompareWealth = null;
+        _selectedCompareName = null;
         document.querySelectorAll(".age-group-card").forEach((c) => c.classList.remove("selected"));
         setWealthDescription(null, _overallMedian);
-        compareSelect.selectedIndex = 0;
-        customGroup.classList.add("d-none");
-        customWealth.value = "";
         showView("view-age");
     });
 
@@ -191,10 +186,7 @@
     }
 
     function getCompareWealth() {
-        if (compareSelect.value === "custom") {
-            return parseDe(customWealth.value) || 0;
-        }
-        return parseFloat(compareSelect.value) || 0;
+        return _selectedCompareWealth || 0;
     }
 
     // --- Calculation ---
@@ -230,10 +222,7 @@
     // --- Result summary ---
 
     function renderSummary(myW, compW, count) {
-        const selectedOption = compareSelect.options[compareSelect.selectedIndex];
-        const compareName = selectedOption
-            ? selectedOption.dataset.name || selectedOption.text
-            : "Die Vergleichsperson";
+        const compareName = _selectedCompareName || "Die Vergleichsperson";
         resultSummary.innerHTML = "";
         const line1 = document.createElement("div");
         line1.className = "summary-line";
@@ -355,22 +344,6 @@
         }
     });
 
-    compareSelect.addEventListener("change", () => {
-        if (compareSelect.value === "custom") {
-            customGroup.classList.remove("d-none");
-            customWealth.focus();
-        } else {
-            customGroup.classList.add("d-none");
-        }
-    });
-
-    customWealth.addEventListener("change", () => {
-        const val = parseDe(customWealth.value);
-        if (!isNaN(val) && val >= 0) {
-            customWealth.value = formatInput(val);
-        }
-    });
-
     splitWealthButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
             const divisor = parseFloat(btn.dataset.divisor);
@@ -486,20 +459,82 @@
 
     // --- Load wealthy list from YAML ---
 
-    function populateDropdown(entries) {
-        compareSelect.innerHTML = "";
+    function selectCompareEntry(wealthEur, name) {
+        _selectedCompareWealth = wealthEur;
+        _selectedCompareName = name;
+        calculate();
+        showView("view-result");
+    }
+
+    function renderCompareGrid(entries) {
+        compareGrid.innerHTML = "";
+        entries.sort((a, b) => a.wealth - b.wealth);
         entries.forEach((entry) => {
             const wealthEur = entry.wealth * 1e9;
-            const opt = document.createElement("option");
-            opt.value = wealthEur;
-            opt.dataset.name = entry.name;
-            opt.textContent = entry.name + " \u2014 " + formatWealth(wealthEur);
-            compareSelect.appendChild(opt);
+            const card = document.createElement("button");
+            card.type = "button";
+            card.className = "age-group-card";
+
+            const labelDiv = document.createElement("div");
+            labelDiv.className = "age-group-label";
+            labelDiv.textContent = entry.name;
+
+            const wealthDiv = document.createElement("div");
+            wealthDiv.className = "age-group-median";
+            wealthDiv.textContent = formatWealth(wealthEur);
+
+            card.appendChild(labelDiv);
+            card.appendChild(wealthDiv);
+            card.addEventListener("click", () => selectCompareEntry(wealthEur, entry.name));
+            compareGrid.appendChild(card);
         });
-        const customOpt = document.createElement("option");
-        customOpt.value = "custom";
-        customOpt.textContent = "Eigenen Wert eingeben\u2026";
-        compareSelect.appendChild(customOpt);
+    }
+
+    function appendCustomWealthCard() {
+        const card = document.createElement("div");
+        card.className = "age-group-card compare-custom";
+
+        const labelDiv = document.createElement("div");
+        labelDiv.className = "age-group-label";
+        labelDiv.textContent = "Eigener Wert";
+
+        const group = document.createElement("div");
+        group.className = "input-group input-group-sm mt-1";
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.className = "form-control text-end";
+        input.inputMode = "decimal";
+        input.id = "customWealth";
+
+        const suffix = document.createElement("span");
+        suffix.className = "input-group-text";
+        suffix.textContent = "Mrd.\u00A0\u20AC";
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "btn btn-corn";
+        btn.innerHTML = '<i class="bi bi-check-lg"></i>';
+        btn.addEventListener("click", () => {
+            const val = parseDe(input.value);
+            if (!isNaN(val) && val > 0) {
+                selectCompareEntry(val * 1e9, "Eigener Wert");
+            }
+        });
+
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                btn.click();
+            }
+        });
+
+        group.appendChild(input);
+        group.appendChild(suffix);
+        group.appendChild(btn);
+        card.appendChild(labelDiv);
+        card.appendChild(group);
+        compareGrid.appendChild(card);
     }
 
     // --- Data loading ---
@@ -523,10 +558,12 @@
     fetch("./wealthy.yaml")
         .then((r) => r.text())
         .then((t) => jsyaml.load(t))
-        .then((data) => populateDropdown(data))
+        .then((data) => {
+            renderCompareGrid(data);
+            appendCustomWealthCard();
+        })
         .catch(() => {
-            compareSelect.innerHTML = '<option value="custom" selected>Eigenen Wert eingeben\u2026</option>';
-            customGroup.classList.remove("d-none");
+            compareGrid.innerHTML = '<p class="text-danger">Fehler beim Laden der Vergleichsdaten.</p>';
         });
 
     // --- Initial ---
