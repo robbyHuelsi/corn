@@ -398,7 +398,7 @@
 
         const medianDiv = document.createElement("div");
         medianDiv.className = "age-group-median";
-        medianDiv.append("Gesamtmedian: ");
+        medianDiv.append("Gesamtmedian aller Haushalte in Deutschland: ");
         const strong = document.createElement("strong");
         strong.textContent = formatWealth(group.medianWealth);
         medianDiv.appendChild(strong);
