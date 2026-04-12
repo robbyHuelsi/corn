@@ -363,7 +363,8 @@ footer a {
         font-size: 1.3rem;
     }
 
-    .age-group-grid {
+    .age-group-grid,
+    .compare-grid {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
 
