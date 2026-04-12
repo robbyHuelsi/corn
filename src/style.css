@@ -191,15 +191,31 @@ body {
     color: #607d8b;
 }
 
-/* Age group hint on wealth view */
-.age-group-hint {
-    font-size: 0.82rem;
+/* Info hint boxes (shared style for wealth + age-group hints) */
+.info-hint {
+    font-size: 0.875em;
     color: var(--corn-800);
     background: var(--corn-50);
     border: 1px solid var(--corn-200);
     border-radius: 0.5rem;
     padding: 0.4rem 0.75rem;
-    display: inline-block;
+}
+
+/* Split-wealth modal grid */
+.split-wealth-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.split-wealth-custom {
+    cursor: default;
+}
+
+.split-wealth-custom:hover {
+    transform: none;
+    background: inherit;
+    border-color: var(--corn-200);
 }
 
 /* Buttons */

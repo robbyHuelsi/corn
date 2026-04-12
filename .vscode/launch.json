@@ -10,9 +10,27 @@
             "console": "integratedTerminal",
             "serverReadyAction": {
                 "pattern": "Serving on .*(http://localhost:[0-9]+)",
-                "uriFormat": "%s",
-                "action": "openExternally"
+                // "uriFormat": "%s",
+                "action": "startDebugging",
+                "name": "Open in Simple Browser"
             }
+        },
+        {
+            "name": "Open in Simple Browser",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": ["-e", "process.exit(0)"],
+            "env": { "TRIGGER": "${input:openSimpleBrowser}" },
+            "console": "internalConsole",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "openSimpleBrowser",
+            "type": "command",
+            "command": "simpleBrowser.api.open",
+            "args": "http://localhost:8081"
         }
     ]
 }
