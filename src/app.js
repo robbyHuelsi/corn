@@ -25,7 +25,6 @@
     const customGroup = document.getElementById("customWealthGroup");
     const customWealth = document.getElementById("customWealth");
     const ageGroupGrid = document.getElementById("ageGroupGrid");
-    const ageGroupHint = document.getElementById("ageGroupHint");
     const wealthDescription = document.getElementById("wealthDescription");
     const skipAgeGroupContainer = document.getElementById("skipAgeGroupContainer");
     const resultSummary = document.getElementById("resultSummary");
@@ -88,8 +87,7 @@
         _selectedAgeGroup = null;
         _skippedAgeGroup = false;
         document.querySelectorAll(".age-group-card").forEach((c) => c.classList.remove("selected"));
-        ageGroupHint.textContent = "";
-        setWealthDescription(false);
+        setWealthDescription(null, _overallMedian);
         compareSelect.selectedIndex = 0;
         customGroup.classList.add("d-none");
         customWealth.value = "";
@@ -98,13 +96,36 @@
 
     // --- Helpers ---
 
-    const DEFAULT_DESCRIPTION =
-        'In Haushalten, in denen die älteste Person in deiner Altersgruppe ist, beträgt das mittlere Nettovermögen den unten angezeigten Wert.<sup><a href="#fn1">[1]</a></sup> Passe ihn an deine persönliche Situation an\u00A0— dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.';
-    const SKIP_DESCRIPTION =
-        'Das mittlere Nettovermögen aller Haushalte in Deutschland beträgt den unten angezeigten Wert.<sup><a href="#fn1">[1]</a></sup> Passe ihn an deine persönliche Situation an\u00A0— dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.';
-
-    function setWealthDescription(skipped) {
-        wealthDescription.innerHTML = skipped ? SKIP_DESCRIPTION : DEFAULT_DESCRIPTION;
+    function setWealthDescription(group, median) {
+        wealthDescription.innerHTML = "";
+        if (group) {
+            // Age group path
+            wealthDescription.append("In Haushalten, in denen die älteste Person in deiner Altersgruppe (");
+            const labelStrong = document.createElement("strong");
+            labelStrong.textContent = group.label;
+            wealthDescription.appendChild(labelStrong);
+            wealthDescription.append(") ist, betr\u00E4gt das mittlere Nettoverm\u00F6gen ");
+            const medianStrong = document.createElement("strong");
+            medianStrong.textContent = formatWealth(group.medianWealth);
+            wealthDescription.appendChild(medianStrong);
+            wealthDescription.append(".");
+        } else {
+            // Skip path
+            wealthDescription.append("Das mittlere Nettoverm\u00F6gen aller Haushalte in Deutschland betr\u00E4gt ");
+            const medianStrong = document.createElement("strong");
+            medianStrong.textContent = formatWealth(median);
+            wealthDescription.appendChild(medianStrong);
+            wealthDescription.append(".");
+        }
+        const sup = document.createElement("sup");
+        const fnLink = document.createElement("a");
+        fnLink.href = "#fn1";
+        fnLink.textContent = "[1]";
+        sup.appendChild(fnLink);
+        wealthDescription.appendChild(sup);
+        wealthDescription.append(
+            " Passe den Wert an deine pers\u00F6nliche Situation an\u00A0\u2014 dein Verm\u00F6gen bestimmt den Wert eines einzelnen Maiskorns."
+        );
     }
 
     /** Parse a German-formatted number string (dots as thousands sep, comma as decimal) */
@@ -319,20 +340,8 @@
         wealthDisplay.textContent = formatInput(val) + "\u00A0€";
 
         // Update hint text using safe DOM methods
-        ageGroupHint.innerHTML = "";
-        const icon = document.createElement("i");
-        icon.className = "bi bi-info-circle me-1";
-        const labelStrong = document.createElement("strong");
-        labelStrong.textContent = group.label;
-        const medianStrong = document.createElement("strong");
-        medianStrong.textContent = formatWealth(group.medianWealth);
-        ageGroupHint.appendChild(icon);
-        ageGroupHint.append("Altersgruppe: ");
-        ageGroupHint.appendChild(labelStrong);
-        ageGroupHint.append(" \u00b7 Haushaltsnettoverm\u00f6gen (Median): ");
-        ageGroupHint.appendChild(medianStrong);
+        setWealthDescription(group, group.medianWealth);
 
-        setWealthDescription(false);
         showView("view-wealth");
     }
 
@@ -347,16 +356,8 @@
         wealthDisplay.textContent = formatInput(val) + "\u00A0€";
 
         // Update hint for skip path
-        ageGroupHint.innerHTML = "";
-        const icon = document.createElement("i");
-        icon.className = "bi bi-info-circle me-1";
-        const medianStrong = document.createElement("strong");
-        medianStrong.textContent = formatWealth(median);
-        ageGroupHint.appendChild(icon);
-        ageGroupHint.append("Gesamtmedian Deutschland \u00b7 ");
-        ageGroupHint.appendChild(medianStrong);
+        setWealthDescription(null, median);
 
-        setWealthDescription(true);
         showView("view-wealth");
     }
 
@@ -459,7 +460,12 @@
     showView("view-age");
 
     // --- Service Worker (skip on localhost to avoid stale caches during development) ---
-    if ("serviceWorker" in navigator && location.hostname !== "localhost" && location.hostname !== "127.0.0.1" && location.hostname !== "::1") {
+    if (
+        "serviceWorker" in navigator &&
+        location.hostname !== "localhost" &&
+        location.hostname !== "127.0.0.1" &&
+        location.hostname !== "::1"
+    ) {
         navigator.serviceWorker
             .register("./sw.js")
             .then((reg) => {

@@ -3,7 +3,7 @@
 # Quelle: https://www.iwd.de/datei/haushaltsnettovermoegen-in-deutschland-658115/
 # Vermögen in Euro
 
-- label: "Unter 35 Jahre"
+- label: "unter 35 Jahre"
   ageMin: 0
   ageMax: 34
   medianWealth: 17_300
