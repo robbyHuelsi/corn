@@ -353,6 +353,27 @@ footer a {
     word-break: break-all;
 }
 
+/* Footnote reference badges */
+.fn-ref {
+    font-size: 0.65em;
+    font-weight: normal;
+    vertical-align: baseline;
+    text-decoration: none !important;
+    cursor: pointer;
+    margin-left: 0.15em;
+    line-height: 1;
+    padding: 0.2em 0.45em;
+    position: relative;
+    top: -0.15em;
+}
+
+footer .fn-ref {
+    font-size: 0.85em;
+    margin-right: 0.25em;
+    margin-left: 0;
+    top: 0;
+}
+
 /* Info CTA section on result page */
 .info-cta {
     border-top: 1px solid var(--corn-200);

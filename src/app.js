@@ -133,12 +133,11 @@
             wealthDescription.appendChild(medianStrong);
             wealthDescription.append(".");
         }
-        const sup = document.createElement("sup");
         const fnLink = document.createElement("a");
         fnLink.href = "#fn1";
-        fnLink.textContent = "[1]";
-        sup.appendChild(fnLink);
-        wealthDescription.appendChild(sup);
+        fnLink.className = "fn-ref badge rounded-pill text-bg-success";
+        fnLink.textContent = "1";
+        wealthDescription.appendChild(fnLink);
         wealthDescription.append(
             " Passe den Wert an Deine pers\u00F6nliche Situation an\u00A0\u2014 Dein Verm\u00F6gen bestimmt den Wert eines einzelnen Maiskorns."
         );
