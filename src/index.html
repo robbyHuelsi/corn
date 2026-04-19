@@ -245,6 +245,317 @@
                         <i class="bi bi-arrow-counterclockwise me-1"></i>Neu starten
                     </button>
                 </div>
+
+                <!-- CTA: Weiter informieren -->
+                <div class="info-cta mt-4">
+                    <p class="text-muted text-center mb-2">
+                        <i class="bi bi-lightbulb me-1"></i>Möchtest Du mehr erfahren?
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <button class="btn btn-danger-soft" id="goToContext">
+                            <i class="bi bi-exclamation-triangle me-1"></i>Warum ist das ein Problem?
+                        </button>
+                        <button class="btn btn-green-soft" id="goToSolutions">
+                            <i class="bi bi-check-circle me-1"></i>Was können wir tun?
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View 5: Kontext — Warum Vermögensungleichheit gefährlich ist -->
+            <div class="view" id="view-context">
+                <h2 class="view-title"><i class="bi bi-exclamation-triangle me-2"></i>Warum ist das ein Problem?</h2>
+                <p class="text-muted mb-4">
+                    Deutschland gehört zu den Ländern mit der höchsten Vermögensungleichheit in Europa — und die
+                    Konzentration wächst weiter.
+                </p>
+
+                <!-- Kennzahlen -->
+                <div class="stat-cards mb-4">
+                    <div class="stat-card stat-card--danger">
+                        <div class="stat-value">27–35 %</div>
+                        <div class="stat-label">
+                            des Gesamtvermögens gehört dem reichsten 1 %<sup><a href="#fn3">[3]</a></sup>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card--danger">
+                        <div class="stat-value">1,3–2,4 %</div>
+                        <div class="stat-label">
+                            besitzt die untere Hälfte der Bevölkerung<sup><a href="#fn3">[3]</a></sup
+                            ><sup><a href="#fn4">[4]</a></sup>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card--danger">
+                        <div class="stat-value">172</div>
+                        <div class="stat-label">
+                            Milliardäre in Deutschland (840 Mrd. USD)<sup><a href="#fn5">[5]</a></sup>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card--warning">
+                        <div class="stat-value">62–77 %</div>
+                        <div class="stat-label">
+                            der Deutschen befürworten eine Vermögensteuer<sup><a href="#fn6">[6]</a></sup>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: Mechanismen -->
+                <div class="accordion context-accordion mb-4" id="contextAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#contextPolitik"
+                            >
+                                <i class="bi bi-bank me-2"></i>Politische Einflussnahme
+                            </button>
+                        </h3>
+                        <div id="contextPolitik" class="accordion-collapse collapse" data-bs-parent="#contextAccordion">
+                            <div class="accordion-body">
+                                <p>
+                                    Die Politikwissenschaftler Gilens und Page analysierten 1.779 politische
+                                    Entscheidungen über 20 Jahre und kamen zum Ergebnis:<sup
+                                        ><a href="#fn7">[7]</a></sup
+                                    >
+                                </p>
+                                <blockquote class="context-quote">
+                                    „Die Präferenzen des Durchschnittsbürgers haben einen verschwindend geringen,
+                                    statistisch nicht signifikanten Einfluss auf politische Entscheidungen."
+                                    <cite>— Gilens &amp; Page (2014)</cite>
+                                </blockquote>
+                                <p>
+                                    Eine PNAS-Studie (2024) zeigt: Je ungleicher ein Land, desto höher das Risiko eines
+                                    autoritären Regierungschefs — bis zu
+                                    <strong>7× höheres Risiko</strong> demokratischer Erosion.<sup
+                                        ><a href="#fn8">[8]</a></sup
+                                    >
+                                </p>
+                                <blockquote class="context-quote">
+                                    „Demokratie verdrängt Oligarchie nicht — sie verschmilzt mit ihr."
+                                    <cite>— Jeffrey Winters, „Oligarchy" (2011)</cite><sup><a href="#fn9">[9]</a></sup>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#contextMedien"
+                            >
+                                <i class="bi bi-megaphone me-2"></i>Medienkonzentration
+                            </button>
+                        </h3>
+                        <div id="contextMedien" class="accordion-collapse collapse" data-bs-parent="#contextAccordion">
+                            <div class="accordion-body">
+                                <p>
+                                    Milliardäre kontrollieren zunehmend die Infrastruktur öffentlicher Meinungsbildung:
+                                    Musk (X), Bezos (Washington Post), Zuckerberg (Facebook/Instagram/WhatsApp), die
+                                    Ellison-Familie (Paramount/CBS).
+                                </p>
+                                <blockquote class="context-quote">
+                                    „Als Medienmagnat kann man sich effektiv gegen die Demokratie absichern, indem man
+                                    Kritik an sich selbst und anderen Plutokraten unterdrückt."
+                                    <cite>— Robert Reich</cite><sup><a href="#fn10">[10]</a></sup>
+                                </blockquote>
+                                <p>
+                                    Elon Musk gab mindestens <strong>277 Mio. Dollar</strong> an Trump-unterstützende
+                                    Super PACs — das entspricht den kombinierten Spenden von 3 Millionen
+                                    Kleinspendern.<sup><a href="#fn11">[11]</a></sup>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#contextDE"
+                            >
+                                <i class="bi bi-geo-alt me-2"></i>Situation in Deutschland
+                            </button>
+                        </h3>
+                        <div id="contextDE" class="accordion-collapse collapse" data-bs-parent="#contextAccordion">
+                            <div class="accordion-body">
+                                <p>
+                                    LobbyControl dokumentiert ein „groteskes Ungleichgewicht der finanziellen Mittel der
+                                    Interessengruppen" und warnt vor wachsenden Gefahren durch die Konzentration
+                                    politischer und ökonomischer Macht in wenigen Konzernen.<sup
+                                        ><a href="#fn12">[12]</a></sup
+                                    >
+                                </p>
+                                <p>
+                                    <strong>71 %</strong> der Milliardärsvermögen stammen aus Erbschaften — nicht aus
+                                    eigener Leistung.<sup><a href="#fn5">[5]</a></sup> Gleichzeitig lebt ein Fünftel der
+                                    Bevölkerung in Armut.
+                                </p>
+                                <blockquote class="context-quote">
+                                    „Die Eigentumskonzentration verleiht einer kleinen Gruppe weit mehr politischen
+                                    Einfluss, als mit einem demokratischen Gemeinwesen vereinbar ist."
+                                    <cite>— Thomas Piketty, „Kapital und Ideologie" (2019)</cite
+                                    ><sup><a href="#fn13">[13]</a></sup>
+                                </blockquote>
+                                <p>
+                                    <strong>60 %</strong> der Bundesbürger finden, dass es in Deutschland ungerecht
+                                    zugeht — der höchste Wert seit 15 Jahren (ARD-DeutschlandTREND, Juli 2025).<sup
+                                        ><a href="#fn14">[14]</a></sup
+                                    >
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-outline-secondary" id="backToResult">
+                        <i class="bi bi-arrow-left me-1"></i>Zurück zum Ergebnis
+                    </button>
+                    <button class="btn btn-green-soft" id="goToSolutionsFromContext">
+                        Was können wir tun?<i class="bi bi-arrow-right ms-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- View 6: Grüne Forderungen -->
+            <div class="view" id="view-solutions">
+                <h2 class="view-title"><i class="bi bi-check-circle me-2"></i>Was fordern die Grünen?</h2>
+                <p class="text-muted mb-4">
+                    🌻 Konkrete Vorschläge für eine gerechtere Vermögensverteilung — unterstützt von einer breiten
+                    Mehrheit der Bevölkerung.
+                </p>
+
+                <!-- Forderung 1: Erbschaftssteuer -->
+                <div class="solution-card mb-3">
+                    <div class="solution-card-header">
+                        <i class="bi bi-house-heart me-2"></i>Erbschaftssteuer-Reform
+                    </div>
+                    <div class="solution-card-body">
+                        <div class="solution-highlights">
+                            <div class="solution-highlight">
+                                <span class="solution-highlight-value">25 %</span>
+                                <span class="solution-highlight-label">einheitlicher Steuersatz</span>
+                            </div>
+                            <div class="solution-highlight">
+                                <span class="solution-highlight-value">Hoher Freibetrag</span>
+                                <span class="solution-highlight-label">pro Person (lebenslang)</span>
+                            </div>
+                        </div>
+                        <ul class="solution-list mt-3">
+                            <li>
+                                <strong>Wer „Omas Häuschen" erbt</strong> und selbst darin wohnt, bleibt weiterhin
+                                geschützt.
+                            </li>
+                            <li>
+                                Die meisten Menschen zahlen durch den hohen Freibetrag <strong>gar keine</strong>
+                                Erbschaftsteuer.
+                            </li>
+                            <li>
+                                Privilegien für Konzern-Erben über 26 Mio. € werden abgeschafft — mit Stundungsmodellen
+                                für Liquidität.
+                            </li>
+                        </ul>
+                        <details class="solution-details">
+                            <summary>Mehr Details</summary>
+                            <p class="mt-2 mb-1">
+                                Formel: <code>Steuer = (Gesamterbe − Lebensfreibetrag) × 25 %</code>
+                            </p>
+                            <p class="mb-1">
+                                Privilegien für große Immobilienbestände (über 300 Wohnungen) werden ebenfalls
+                                gestrichen.<sup><a href="#fn15">[15]</a></sup>
+                            </p>
+                            <p class="mb-0">
+                                Allein die Abschaffung der Privilegien über 26 Mio. € hätte 2023 rund
+                                <strong>2 Mrd. € mehr</strong> eingebracht.<sup><a href="#fn15">[15]</a></sup>
+                            </p>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Forderung 2: Vermögensteuer -->
+                <div class="solution-card mb-3">
+                    <div class="solution-card-header"><i class="bi bi-piggy-bank me-2"></i>Vermögensteuer</div>
+                    <div class="solution-card-body">
+                        <div class="solution-highlights">
+                            <div class="solution-highlight">
+                                <span class="solution-highlight-value">1 % / Jahr</span>
+                                <span class="solution-highlight-label">Steuersatz</span>
+                            </div>
+                            <div class="solution-highlight">
+                                <span class="solution-highlight-value">Ab 2 Mio. €</span>
+                                <span class="solution-highlight-label">Freibetrag pro Person</span>
+                            </div>
+                        </div>
+                        <div class="solution-example mt-3">
+                            <div class="solution-example-title">
+                                <i class="bi bi-calculator me-1"></i>Rechenbeispiel
+                            </div>
+                            <p class="mb-1">Person mit 2,5 Mio. € Nettovermögen:</p>
+                            <p class="mb-0">
+                                <code>(2.500.000 € − 2.000.000 €) × 1 % = <strong>5.000 € / Jahr</strong></code>
+                            </p>
+                        </div>
+                        <ul class="solution-list mt-3">
+                            <li>
+                                Ein durchschnittliches Eigenheim führt <strong>nicht</strong> zum Anfall dieser Steuer.
+                            </li>
+                            <li>Betriebsvermögen erhält Begünstigungen zum Schutz von Investitionen.</li>
+                            <li>Wird als Ländersteuer erhoben.</li>
+                        </ul>
+                        <details class="solution-details">
+                            <summary>Wissenschaftlicher Kontext</summary>
+                            <p class="mt-2 mb-1">
+                                <strong>Gabriel Zucman</strong> (UC Berkeley) schlägt global 2 % auf Vermögen über 1
+                                Mrd. USD vor — geschätztes Aufkommen: 200–250 Mrd. USD jährlich.<sup
+                                    ><a href="#fn16">[16]</a></sup
+                                >
+                            </p>
+                            <p class="mb-1">
+                                <strong>Stefan Bach</strong> (DIW) berechnet bis zu 147 Mrd. € jährliches Aufkommen bei
+                                einer progressiven Vermögensteuer ab 2,3 Mio. €.<sup><a href="#fn17">[17]</a></sup>
+                            </p>
+                            <p class="mb-0">
+                                „Kaum ein Land besteuert Arbeit so hoch und Vermögen so niedrig wie Deutschland." —
+                                Marcel Fratzscher, DIW-Präsident<sup><a href="#fn18">[18]</a></sup>
+                            </p>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Einnahmen und Wirkung -->
+                <div class="solution-card solution-card--accent mb-4">
+                    <div class="solution-card-header"><i class="bi bi-graph-up-arrow me-2"></i>Erwartete Einnahmen</div>
+                    <div class="solution-card-body">
+                        <ul class="solution-list mb-0">
+                            <li>
+                                Mehreinnahmen in <strong>zweistelliger Milliardenhöhe</strong> durch Schließung von
+                                Steuerlücken
+                            </li>
+                            <li>
+                                Globale Milliardärssteuer könnte für Deutschland ca.
+                                <strong>5,7 Mrd. €</strong> einbringen<sup><a href="#fn19">[19]</a></sup>
+                            </li>
+                            <li>
+                                Stabile Zustimmung: <strong>69 %</strong> für Vermögensabgabe, selbst
+                                <strong>55 %</strong> der CDU/CSU-Anhänger<sup><a href="#fn6">[6]</a></sup>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-outline-secondary" id="backToContext">
+                        <i class="bi bi-arrow-left me-1"></i>Zurück
+                    </button>
+                    <button class="btn btn-outline-corn" id="restartFromSolutions">
+                        <i class="bi bi-arrow-counterclockwise me-1"></i>Neu starten
+                    </button>
+                </div>
             </div>
         </main>
 
@@ -327,7 +638,7 @@
                         Der Informationsdienst des Instituts der deutschen Wirtschaft</a
                     >
                 </p>
-                <p class="mb-0" id="fn2">
+                <p class="mb-1" id="fn2">
                     <strong>[2]</strong> Vermögenswerte der reichsten Deutschen. Quelle:
                     <a
                         href="https://de.wikipedia.org/wiki/Liste_der_reichsten_Deutschen_(Manager_Magazin)"
@@ -335,6 +646,194 @@
                         rel="noopener"
                     >
                         Wikipedia — Liste der reichsten Deutschen (Manager Magazin)</a
+                    >
+                </p>
+                <p class="mb-1" id="fn3">
+                    <strong>[3]</strong> DIW Berlin, SOEP-P: „Vermögenskonzentration in Deutschland höher als bisher
+                    bekannt". Quelle:
+                    <a
+                        href="https://www.diw.de/de/diw_01.c.793891.de/vermoegenskonzentration_in_deutschland_hoeher_als_bisher_bekannt.html"
+                        target="_blank"
+                        rel="noopener"
+                        >diw.de</a
+                    >
+                </p>
+                <p class="mb-1" id="fn4">
+                    <strong>[4]</strong> Deutsche Bundesbank, Panel on Household Finances (PHF), Bezugsjahr 2023.
+                    Quelle:
+                    <a
+                        href="https://publikationen.bundesbank.de/publikationen-de/berichte-studien/monatsberichte/monatsbericht-april-2025-954594?article=vermoegen-und-finanzen-privater-haushalte-in-deutschland-ergebnisse-der-vermoegensbefragung-2023--954598"
+                        target="_blank"
+                        rel="noopener"
+                        >bundesbank.de</a
+                    >
+                </p>
+                <p class="mb-1" id="fn5">
+                    <strong>[5]</strong> Oxfam-Ungleichheitsbericht 2026: „Resisting the Rule of the Rich". Quelle:
+                    <a
+                        href="https://www.oxfam.de/publikationen/bericht-soziale-ungleichheit-2026"
+                        target="_blank"
+                        rel="noopener"
+                        >oxfam.de</a
+                    >
+                </p>
+                <p class="mb-1" id="fn6">
+                    <strong>[6]</strong> Infratest dimap, ARD-DeutschlandTREND April 2025. Quellen:
+                    <a
+                        href="https://www.infratest-dimap.de/umfragen-analysen/bundesweit/ard-deutschlandtrend/2025/april/"
+                        target="_blank"
+                        rel="noopener"
+                        >infratest-dimap.de</a
+                    >
+                    ·
+                    <a
+                        href="https://www.finanznachrichten.de/nachrichten-2025-04/65023189-umfrage-auch-unionsanhaenger-mehrheitlich-fuer-steuer-auf-hohe-vermoegen-016.htm"
+                        target="_blank"
+                        rel="noopener"
+                        >finanznachrichten.de</a
+                    >
+                </p>
+                <p class="mb-1" id="fn7">
+                    <strong>[7]</strong> Gilens, M. &amp; Page, B. (2014): „Testing Theories of American Politics",
+                    Perspectives on Politics. Quelle:
+                    <a
+                        href="https://www.cambridge.org/core/journals/perspectives-on-politics/article/abs/testing-theories-of-american-politics-elites-interest-groups-and-average-citizens/62327F513959D0A304D4893B382B992B"
+                        target="_blank"
+                        rel="noopener"
+                        >cambridge.org</a
+                    >
+                </p>
+                <p class="mb-1" id="fn8">
+                    <strong>[8]</strong> Rau, R. &amp; Stokes, L. (2024): „Economic inequality and the rise of
+                    authoritarian leaders", PNAS. Quelle:
+                    <a href="https://www.pnas.org/doi/10.1073/pnas.2422543121" target="_blank" rel="noopener"
+                        >pnas.org</a
+                    >
+                </p>
+                <p class="mb-1" id="fn9">
+                    <strong>[9]</strong> Winters, J. (2011): „Oligarchy", Cambridge University Press. Quelle:
+                    <a
+                        href="https://www.cambridge.org/core/books/oligarchy/4FBD6D2E32B0E7B88CEF7839A36B72B4"
+                        target="_blank"
+                        rel="noopener"
+                        >cambridge.org</a
+                    >
+                </p>
+                <p class="mb-1" id="fn10">
+                    <strong>[10]</strong> Reich, R.: „Billionaires, the Media, and Trump". Quelle:
+                    <a
+                        href="https://robertreich.substack.com/p/billionaires-the-media-and-trump"
+                        target="_blank"
+                        rel="noopener"
+                        >robertreich.substack.com</a
+                    >
+                </p>
+                <p class="mb-1" id="fn11">
+                    <strong>[11]</strong> Musk-Spenden an Super PACs (277 Mio. $). Quellen:
+                    <a
+                        href="https://www.washingtonpost.com/technology/2024/12/06/elon-musk-trump-campaign-spending-fec/"
+                        target="_blank"
+                        rel="noopener"
+                        >washingtonpost.com</a
+                    >
+                    ·
+                    <a
+                        href="https://www.opensecrets.org/news/2025/03/elon-musk-tops-list-of-2024-political-donors-but-six-others-gave-more-than-100-million/"
+                        target="_blank"
+                        rel="noopener"
+                        >opensecrets.org</a
+                    >
+                </p>
+                <p class="mb-1" id="fn12">
+                    <strong>[12]</strong> LobbyControl, Lobbyregister-Auswertung März 2025. Quelle:
+                    <a
+                        href="https://www.lobbycontrol.de/pressemitteilung/auswertung-des-lobbyregisters-zeigt-uebermacht-der-wirtschaftslobby-120096/"
+                        target="_blank"
+                        rel="noopener"
+                        >lobbycontrol.de</a
+                    >
+                </p>
+                <p class="mb-1" id="fn13">
+                    <strong>[13]</strong> Piketty, T. (2019): „Kapital und Ideologie", Suhrkamp. Quelle:
+                    <a
+                        href="https://www.suhrkamp.de/buch/thomas-piketty-kapital-und-ideologie-t-9783518587508"
+                        target="_blank"
+                        rel="noopener"
+                        >suhrkamp.de</a
+                    >
+                </p>
+                <p class="mb-1" id="fn14">
+                    <strong>[14]</strong> Infratest dimap, ARD-DeutschlandTREND Juli 2025. Quelle:
+                    <a
+                        href="https://www.infratest-dimap.de/umfragen-analysen/bundesweit/ard-deutschlandtrend/2025/juli/"
+                        target="_blank"
+                        rel="noopener"
+                        >infratest-dimap.de</a
+                    >
+                </p>
+                <p class="mb-1" id="fn15">
+                    <strong>[15]</strong> Grüne Bundestagsfraktion: „Plan für mehr Steuergerechtigkeit". Quelle:
+                    <a
+                        href="https://www.gruene-bundestag.de/wir-im-bundestag/unsere-fraktion/unsere-zukunftsideen/plan-fuer-mehr-steuergerechtigkeit/"
+                        target="_blank"
+                        rel="noopener"
+                        >gruene-bundestag.de</a
+                    >
+                </p>
+                <p class="mb-1" id="fn16">
+                    <strong>[16]</strong> Zucman, G. (2024): G20-Blueprint für globale Milliardärsteuer. Quellen:
+                    <a href="https://gabriel-zucman.eu/files/report-g20.pdf" target="_blank" rel="noopener"
+                        >gabriel-zucman.eu (PDF)</a
+                    >
+                    ·
+                    <a
+                        href="https://www.icij.org/investigations/pandora-papers/top-economist-pitches-global-billionaire-tax-to-g20-finance-leaders/"
+                        target="_blank"
+                        rel="noopener"
+                        >icij.org</a
+                    >
+                </p>
+                <p class="mb-1" id="fn17">
+                    <strong>[17]</strong> Bach, S. (DIW): Studien zur Vermögensbesteuerung. Quellen:
+                    <a
+                        href="https://www.handelsblatt.com/politik/deutschland/steuern-diw-sieht-milliardenpotenzial-bei-einfuehrung-der-vermoegensteuer-02/100198091.html"
+                        target="_blank"
+                        rel="noopener"
+                        >handelsblatt.com</a
+                    >
+                    ·
+                    <a
+                        href="https://www.diw.de/de/diw_02.c.299125.de/projekte/studien_zur_vermoegensbesteuerung.html"
+                        target="_blank"
+                        rel="noopener"
+                        >diw.de</a
+                    >
+                </p>
+                <p class="mb-1" id="fn18">
+                    <strong>[18]</strong> Fratzscher, M. (DIW): „Kapital und Arbeit sollten gleich besteuert werden".
+                    Quellen:
+                    <a
+                        href="https://www.tagesspiegel.de/wirtschaft/kapital-und-arbeit-sollten-gleich-besteuert-werden-3712954.html"
+                        target="_blank"
+                        rel="noopener"
+                        >tagesspiegel.de</a
+                    >
+                    ·
+                    <a
+                        href="https://www.diw.de/de/diw_01.c.991469.de/nachrichten/wir_muessen_superreiche_endlich_staerker_besteuern.html"
+                        target="_blank"
+                        rel="noopener"
+                        >diw.de</a
+                    >
+                </p>
+                <p class="mb-0" id="fn19">
+                    <strong>[19]</strong> EU Tax Observatory (März 2025): „Resources for a Safe and Resilient Europe".
+                    Quelle:
+                    <a
+                        href="https://www.taxobservatory.eu/www-site/uploads/2025/03/Resources-for-a-Safe-and-Resilient-Europe_The-Case-for-Minimum-Taxation-of-Ultra-High-Net-Worth-Individuals-in-the-EU-1.pdf"
+                        target="_blank"
+                        rel="noopener"
+                        >taxobservatory.eu (PDF)</a
                     >
                 </p>
             </div>

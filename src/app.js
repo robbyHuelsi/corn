@@ -41,7 +41,7 @@
     const stepsContainer = document.getElementById("stepsContainer");
 
     // --- Views ---
-    const views = ["view-age", "view-wealth", "view-compare", "view-result"];
+    const views = ["view-age", "view-wealth", "view-compare", "view-result", "view-context", "view-solutions"];
     const steps = ["step1", "step2", "step3", "step4"];
 
     function showView(viewId) {
@@ -75,6 +75,14 @@
     document.getElementById("goToCompare").addEventListener("click", () => showView("view-compare"));
     document.getElementById("backToWealth").addEventListener("click", () => showView("view-wealth"));
     document.getElementById("backToCompare").addEventListener("click", () => showView("view-compare"));
+    document.getElementById("goToContext").addEventListener("click", () => showView("view-context"));
+    document.getElementById("goToSolutions").addEventListener("click", () => showView("view-solutions"));
+    document.getElementById("goToSolutionsFromContext").addEventListener("click", () => showView("view-solutions"));
+    document.getElementById("backToResult").addEventListener("click", () => showView("view-result"));
+    document.getElementById("backToContext").addEventListener("click", () => showView("view-context"));
+    document.getElementById("restartFromSolutions").addEventListener("click", () => {
+        document.getElementById("restart").click();
+    });
     document.getElementById("resetToMedian").addEventListener("click", () => {
         const median = _selectedAgeGroup ? _selectedAgeGroup.medianWealth : _overallMedian;
         if (median == null) return;
