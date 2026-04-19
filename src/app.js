@@ -588,6 +588,35 @@
     syncSliderToInput();
     showView("view-age");
 
+    // --- Footnote collapse handling ---
+    const footnotesCollapse = document.getElementById("footnotesCollapse");
+    if (footnotesCollapse) {
+        const bsCollapse = new bootstrap.Collapse(footnotesCollapse, { toggle: false });
+
+        document.addEventListener("click", function (e) {
+            const fnRef = e.target.closest("a.fn-ref[href^='#fn']");
+            if (!fnRef) return;
+            e.preventDefault();
+
+            const targetId = fnRef.getAttribute("href").slice(1);
+            const targetEl = document.getElementById(targetId);
+            if (!targetEl) return;
+
+            if (!footnotesCollapse.classList.contains("show")) {
+                footnotesCollapse.addEventListener(
+                    "shown.bs.collapse",
+                    function () {
+                        targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                    },
+                    { once: true }
+                );
+                bsCollapse.show();
+            } else {
+                targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        });
+    }
+
     // --- Service Worker (skip on localhost to avoid stale caches during development) ---
     if (
         "serviceWorker" in navigator &&
