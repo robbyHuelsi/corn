@@ -19,8 +19,8 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 | 2   | ✅     | Korrekte Quelle                                                                      |
 | 3   | ✅     | Behauptung korrekt                                                                   |
 | 4   | ✅     | Behauptung korrekt                                                                   |
-| 5   | ⚠️     | 172 Milliardäre / 840 Mrd bestätigt; „71 %" nicht im Seitentext sichtbar             |
-| 6   | ✅     | **Korrigiert:** 55 % → 66 % CDU/CSU-Anhänger (war falsch, Quelle sagt 66 %)          |
+| 5   | ⚠️     | 172 Milliardär\*innen / 840 Mrd bestätigt; „71 %" nicht im Seitentext sichtbar       |
+| 6   | ✅     | **Korrigiert:** 55 % → 66 % CDU/CSU-Anhänger\*innen (war falsch, Quelle sagt 66 %)   |
 | 7   | ✅     | 1.779 Entscheidungen, Zitat korrekt (Paraphrase)                                     |
 | 8   | 🔒     | Nicht zugänglich (Login)                                                             |
 | 9   | 🔒     | Cambridge-Server liefert HTTP 500                                                    |
@@ -64,7 +64,7 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 
 ---
 
-### [2] Wikipedia — Reichste Deutsche (Manager Magazin)
+### [2] Wikipedia — Reichste Deutsche\* (Manager Magazin)
 
 **Behauptung:** Vermögenswerte der reichsten Deutschen aus der Manager-Magazin-Liste.
 
@@ -107,8 +107,8 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 
 ### [5] Oxfam — Ungleichheitsbericht 2026
 
-**Behauptung (Stat-Card):** „172 Milliardäre in Deutschland (840 Mrd. USD)"
-**Behauptung (Accordion):** „71 % der Milliardärsvermögen stammen aus Erbschaften"
+**Behauptung (Stat-Card):** „172 Milliardär*innen in Deutschland (840 Mrd. USD)"
+**Behauptung (Accordion):** „71 % der Milliardär*innenvermögen stammen aus Erbschaften"
 
 **URL:** https://www.oxfam.de/publikationen/bericht-soziale-ungleichheit-2026
 
@@ -125,7 +125,7 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 ### [6] Infratest dimap, April 2025
 
 **Behauptung (Stat-Card):** „62–77 % der Deutschen befürworten eine Vermögensteuer"
-**Behauptung (Einnahmen-Card):** „69 % für Vermögensabgabe, selbst 55 % der CDU/CSU-Anhänger"
+**Behauptung (Einnahmen-Card):** „69 % für Vermögensabgabe, selbst 55 % der CDU/CSU-Anhänger\*innen"
 
 **URLs:**
 
@@ -135,7 +135,7 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 **Prüfergebnis: ✅ Korrigiert**
 
 - ✅ 69 % insgesamt für Vermögensteuer: **bestätigt** (finanznachrichten.de: „mehr als zwei Drittel (69 Prozent)")
-- ✅ **„55 % der CDU/CSU-Anhänger" → auf „66 %" korrigiert** (Quelle belegt 66 % Unionsanhänger)
+- ✅ **„55 % der CDU/CSU-Anhänger\*innen" → auf „66 %" korrigiert** (Quelle belegt 66 % Unionsanhänger\*innen)
 - ⚠️ „62–77 %": Die 69 % ist ein Datenpunkt. Die Grenzen 62 % und 77 % müssten aus anderen Umfragen/Zeitpunkten stammen, werden aber allein mit [fn6] belegt.
 
 **Empfehlung:** ~~„55 %" auf „66 %" korrigieren~~ ✅ Erledigt. Für den Bereich 62–77 % weitere Quellen ergänzen.
@@ -144,7 +144,7 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 
 ### [7] Gilens & Page (2014) — Testing Theories of American Politics
 
-**Behauptung:** „1.779 politische Entscheidungen" analysiert; Zitat: „Die Präferenzen des Durchschnittsbürgers haben einen verschwindend geringen, statistisch nicht signifikanten Einfluss auf politische Entscheidungen."
+**Behauptung:** „1.779 politische Entscheidungen" analysiert; Zitat: „Die Präferenzen der Durchschnittsbürger\*innen haben einen verschwindend geringen, statistisch nicht signifikanten Einfluss auf politische Entscheidungen."
 
 **URL:** https://www.cambridge.org/core/journals/perspectives-on-politics/article/abs/testing-theories-of-american-politics-...
 
@@ -186,7 +186,7 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 
 ### [10] Robert Reich — Billionaires, the Media, and Trump
 
-**Behauptung/Zitat:** „Als Medienmagnat kann man sich effektiv gegen die Demokratie absichern, indem man Kritik an sich selbst und anderen Plutokraten unterdrückt."
+**Behauptung/Zitat:** „Als Medienmagnat\*in kann man sich effektiv gegen die Demokratie absichern, indem man Kritik an sich selbst und anderen Plutokraten unterdrückt."
 
 **URL:** https://robertreich.substack.com/p/billionaires-the-media-and-trump
 
@@ -194,7 +194,7 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 
 - Artikel existiert (25. Nov. 2025).
 - Tatsächlicher Titel: „A toxic combo: Trump, Billionaires, and the Media" (Fußnote sagt „Billionaires, the Media, and Trump" — leichte Abweichung in der Reihenfolge).
-- Inhalt beginnt mit Aufzählung der Milliardäre und ihrer Medienbesitze (Musk/X, Ellison/Paramount, Zuckerberg/Facebook, Bezos/WashPost).
+- Inhalt beginnt mit Aufzählung der Milliardär\*innen und ihrer Medienbesitze (Musk/X, Ellison/Paramount, Zuckerberg/Facebook, Bezos/WashPost).
 - Volltext hinter Paywall; das Zitat in der Webapp konnte nicht wortgetreu bestätigt werden, ist aber thematisch konsistent.
 
 ---
@@ -252,7 +252,7 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 
 ### [14] Infratest dimap — DeutschlandTREND Juli 2025
 
-**Behauptung:** „60 % der Bundesbürger finden, dass es in Deutschland ungerecht zugeht — der höchste Wert seit 15 Jahren."
+**Behauptung:** „60 % der Bundesbürger\*innen finden, dass es in Deutschland ungerecht zugeht — der höchste Wert seit 15 Jahren."
 
 **URL:** https://www.infratest-dimap.de/umfragen-analysen/bundesweit/ard-deutschlandtrend/2025/juli/
 
@@ -437,7 +437,7 @@ Quelle: Wikipedia/Manager Magazin (Oktober 2024). Die Werte sind Momentaufnahmen
 
 ### ~~Sofort korrigieren (Fehler)~~ ✅ Alle erledigt (19.04.2026)
 
-1. ~~**fn6: „55 % der CDU/CSU-Anhänger" → „66 %"**~~
+1. ~~**fn6: „55 % der CDU/CSU-Anhänger\*innen" → „66 %"**~~
     - Korrigiert in `src/index.html`.
 
 2. ~~**fn13: URL korrigieren**~~
