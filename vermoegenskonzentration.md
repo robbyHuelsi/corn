@@ -124,7 +124,7 @@ Was die Debatte besonders bemerkenswert macht: Es besteht **kein Mangel an Lösu
 
 [^13]: Rau, R. & Stokes, L. (2024): „Economic inequality and the rise of authoritarian leaders", PNAS. [pnas.org](https://www.pnas.org/doi/10.1073/pnas.2422543121) · [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC11725924/)
 
-[^14]: Winters, J. (2011): „Oligarchy", Cambridge University Press. [cambridge.org](https://www.cambridge.org/core/books/oligarchy/4FBD6D2E32B0E7B88CEF7839A36B72B4)
+[^14]: Winters, J. (2011): „Oligarchy", Cambridge University Press. [cambridge.org](https://www.cambridge.org/core/books/oligarchy/5CC556B4483F7F3FDE1CADF928C04671)
 
 [^15]: Piketty, T. (2019): „Kapital und Ideologie", C.H.Beck. [chbeck.de](https://www.chbeck.de/piketty-kapital-ideologie/product/29712172) · Zusammenfassung: [cnbc.com](https://www.cnbc.com/2019/09/12/billionaires-should-be-taxed-out-of-existence-says-thomas-piketty.html)
 

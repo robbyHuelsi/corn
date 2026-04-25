@@ -174,7 +174,7 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 
 **Behauptung/Zitat:** „Demokratie verdrängt Oligarchie nicht — sie verschmilzt mit ihr."
 
-**URL:** https://www.cambridge.org/core/books/oligarchy/4FBD6D2E32B0E7B88CEF7839A36B72B4
+**URL:** https://www.cambridge.org/core/books/oligarchy/5CC556B4483F7F3FDE1CADF928C04671
 
 **Prüfergebnis: 🔒 Server-Fehler (HTTP 500)**
 
