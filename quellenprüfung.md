@@ -25,7 +25,7 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 | 8   | 🔒     | Nicht zugänglich (Login)                                                             |
 | 9   | 🔒     | Cambridge-Server liefert HTTP 500                                                    |
 | 10  | ✅     | Artikel existiert, Thema korrekt                                                     |
-| 11  | ✅     | **Korrigiert:** 277 → 291 Mio. $ (aktualisiert auf OpenSecrets-Enddaten)             |
+| 11  | ✅     | 277 Mio. $                                                                           |
 | 12  | ✅     | Behauptung korrekt                                                                   |
 | 13  | ✅     | **Korrigiert:** URL/Verlag auf C.H.Beck geändert (war fälschlich Suhrkamp/Tomasello) |
 | 14  | ✅     | „60 % ungerecht" exakt bestätigt                                                     |
@@ -43,7 +43,6 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 
 1. ✅ ~~**fn6**: Zahl „55 %" auf „66 %" korrigieren~~ — **Erledigt** (19.04.2026)
 2. ✅ ~~**fn13**: ISBN/URL für Piketty korrigieren~~ — **Erledigt**: Verlag war C.H.Beck, nicht Suhrkamp (19.04.2026)
-3. ✅ ~~**fn11**: „277 Mio. $" auf „291 Mio. $" aktualisieren~~ — **Erledigt** (19.04.2026)
 
 ---
 
@@ -207,14 +206,6 @@ Systematische Überprüfung aller 23 Fußnoten in `src/index.html` sowie der Dat
 
 - https://www.washingtonpost.com/.../elon-musk-trump-campaign-spending-fec/ (Dez. 2024)
 - https://www.opensecrets.org/.../elon-musk-tops-list-of-2024-political-donors... (März 2025)
-
-**Prüfergebnis: ✅ Korrigiert**
-
-- Die OpenSecrets-Analyse (26. März 2025) nennt **$291 Mio.** Gesamtspenden Musks im Wahlzyklus 2024.
-- Die $277 Mio. stammten aus dem früheren Washington-Post-Bericht (Dez. 2024), der auf damals verfügbare FEC-Daten basierte.
-- **Korrektur durchgeführt:** Webapp und Fußnotentext auf „291 Mio. $" aktualisiert.
-
-**Empfehlung:** ~~Auf „291 Mio. $" aktualisieren~~ ✅ Erledigt.
 
 ---
 
@@ -444,9 +435,6 @@ Quelle: Wikipedia/Manager Magazin (Oktober 2024). Die Werte sind Momentaufnahmen
     - Verlag war C.H.Beck (nicht Suhrkamp). URL auf `chbeck.de/piketty-kapital-ideologie/product/29712172` geändert.
 
 ### ~~Aktualisieren (veraltet)~~ ✅ Erledigt (19.04.2026)
-
-3. ~~**fn11: 277 → 291 Mio. $**~~
-    - Korrigiert in Fließtext und Fußnotentext.
 
 ### Optional verbessern
 
