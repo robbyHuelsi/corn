@@ -10,79 +10,94 @@ deterministische Zitat-/Zahlenprüfung (Phase 3) und geerdetes Urteil nur auf Ba
 des tatsächlich abgerufenen Quelltexts (Phase 2/4). Methodik und Regeln:
 [`tools/quellencheck/README.md`](tools/quellencheck/README.md).
 
-> **Wichtig:** Die frühere Fassung dieser Datei prüfte 23 Fußnoten gegen eine
-> inzwischen **verschobene Nummerierung**. Das HTML enthält heute 26 Fußnoten; die
-> Zuordnung wurde vollständig neu aus dem aktuellen HTML erzeugt und ist jetzt
-> wieder synchron. Mehrere Befunde des alten Audits waren dadurch falsch zugeordnet
-> (z. B. war das „groteskes Ungleichgewicht"-Zitat fälschlich LobbyControl statt
-> Jens Berger zugeschrieben).
+> **Wichtig:** Die Fußnoten **18–26** wurden zuletzt umnummeriert/umsortiert
+> (Lesefluss der View „Was fordern die Grünen?"). Die Quell-Inhalte sind 1:1
+> erhalten, nur die Nummern haben sich geändert. Dieser Bericht wurde nach einem
+> kompletten Pipeline-Neulauf vollständig auf die aktuelle Nummerierung
+> synchronisiert; die Detailblöcke 18–26 zeigen jetzt auf die neuen Quellen
+> (fn18 = BDK-Beschluss Erbschaftsteuer, fn19 = „Omas Häuschen", fn20 = Plan für
+> Steuergerechtigkeit, fn21 = Arguhilfe 2021, fn22 = Zucman/G20, fn23 = Bach/DIW,
+> fn24 = Fratzscher, fn25 = Finanzwende, fn26 = EU Tax Observatory).
 
 **Legende:**
 
 - ✅ = Verifiziert (Quelltext belegt die Behauptung; Belegstelle dokumentiert)
 - ⚠️ = Abweichung / nur teilweise belegt / sinngemäß statt wörtlich
-- ❌ = Fehler / Diskrepanz
+- ❌ = Fehler / Diskrepanz (Behauptung im Quelltext nicht belegt bzw. widerlegt)
 - 🔒 = Nicht aus der angegebenen URL prüfbar (Buchzitat auf Katalogseite, Bot-Schutz)
 - 🧑‍⚖️ = Mensch-geprüft & akzeptiert — im Ledger `tools/quellencheck/accepted.json`; wird bei erneutem Lauf nicht erneut geflaggt (außer der Befund ändert sich)
 
-**Abrufstatus:** 30 von 31 Quell-URLs konnten als Volltext abgerufen werden
-(inkl. aller PDFs und der im alten Audit als unzugänglich markierten Cambridge-,
-PNAS- und Oxfam-Seiten). Einzige Ausnahme: **washingtonpost.com (fn12)** —
-aktiver Bot-Schutz, kein Wayback-Snapshot → Mensch-Queue, inhaltlich aber durch
-opensecrets.org gestützt.
+**Abrufstatus:** 30 von 31 Quell-URLs lieferten verwertbaren Volltext (inkl. aller
+PDFs sowie der via Wayback geholten DIW-, PNAS- und WaPo-Seiten). **Nicht
+verwertbar:**
+
+- **fn5 — publikationen.bundesbank.de:** technisch `accessible`, der Snapshot
+  enthält jedoch nur „Loading" (JavaScript-gerenderte Seite, Inhalt clientseitig
+  nachgeladen) → Inhalt nicht im Text-Snapshot → **Mensch-Queue**.
+- **fn23 — diw.de (Zweitquelle):** `accessible: false` (SSL-Handshake-Timeout, kein
+  Wayback) → **Mensch-Queue**; die Behauptung ist aber vollständig durch die
+  Erstquelle handelsblatt.com gedeckt.
 
 ---
 
 ## Zusammenfassung der Befunde
 
-| #   | Status | Kurzbefund                                                                                       |
-| --- | ------ | ------------------------------------------------------------------------------------------------ |
-| 1   | ✅     | IWD/Bundesbank-PHF, Thema korrekt (Werte stammen aus Infografik)                                 |
-| 2   | ✅     | Wikipedia/Manager-Magazin-Liste, Thema korrekt                                                   |
-| 3   | ✅     | WID belegt Top-1 %-Anteil „**27 % today**" — Untergrenze des Bereichs 27–35 %                    |
-| 4   | ✅     | DIW („höher als bekannt") belegt ~**35 %** — Obergrenze des Bereichs 27–35 %                     |
-| 5   | ✅     | Bundesbank PHF belegt **1,3–2,4 %** (untere Hälfte) verbatim                                     |
-| 6   | ⚠️     | „**172** / Platz 4" belegt; „ein Fünftel in Armut" im abgerufenen Text nicht gefunden            |
-| 7   | ✅     | **69 %** gesamt und **66 %** Unionsanhänger\*innen belegt (alte 55 %-Korrektur hält)             |
-| 8   | ⚠️ 🧑‍⚖️  | „1.779" + Titel belegt; deutsches Zitat ist **sinngemäße Übersetzung**, nicht wörtlich           |
-| 9   | ⚠️ 🧑‍⚖️  | Thema belegt; **Titel ungenau** & „4 %→30 %→7×" nicht im Text belegbar (vmtl. Abbildung)         |
-| 10  | 🔒 🧑‍⚖️  | Winters-**Buchzitat** auf Cambridge-**Katalogseite** — Zitat dort nicht enthalten                |
-| 11  | ✅ 🧑‍⚖️  | Reich-Zitat: **getreue Übersetzung**, englisches Original im Artikel belegt                      |
-| 12  | ⚠️🔒   | WaPo (Bot-Schutz) nicht abrufbar; opensecrets belegt **~290 Mio.** → „mindestens 277" konsistent |
-| 13  | ⚠️     | „81/100" + Zitat belegt; „**drei NGOs**" ⇄ Quelle sagt „**sieben** zivilgesellschaftliche Org."  |
-| 14  | ✅ 🧑‍⚖️  | Jens-Berger-Zitat **wortwörtlich** belegt (Zuordnung ggü. altem Audit korrigiert)                |
-| 15  | ✅     | Business Insider belegt **71 %** aus Erbschaften                                                 |
-| 16  | 🔒 🧑‍⚖️  | Piketty-**Buchzitat** auf C.H.Beck-**Verlagsseite** — Zitat dort nicht enthalten                 |
-| 17  | ✅     | **60 %** „ungerecht", höchster Wert seit 15 Jahren — belegt                                      |
-| 18  | ✅     | 26 Mio. €, 2 Mrd. €, 300 Wohnungen — auf der Grüne-Seite belegt                                  |
-| 19  | ✅     | 2 %, 1 Mrd. USD, **200–250 Mrd.** USD — ICIJ belegt verbatim                                     |
-| 20  | ✅     | **147 Mrd. €** ab 2,3 Mio. € — Handelsblatt belegt                                               |
-| 21  | ⚠️     | Fratzscher: **leicht abgewandeltes** Direktzitat („anderes" fehlt, „belastet"→„besteuert")       |
-| 22  | ✅     | EU Tax Observatory (PDF gelesen) belegt **5,7 Mrd. €**                                           |
-| 23  | ✅     | BDK-Beschluss (PDF gelesen): 25 %, 26 Mio. € belegt; „Omas Häuschen" via fn24                    |
-| 24  | ✅     | „**Omas Häuschen**" wortwörtlich belegt                                                          |
-| 25  | ✅     | Arguhilfe 2021 (PDF gelesen): 1 %, 2 Mio. € belegt                                               |
-| 26  | ✅     | Finanzwende „80 Milliarden Euro" — Titel/Thema belegt                                            |
+| #   | Status | Kurzbefund                                                                                           |
+| --- | ------ | ---------------------------------------------------------------------------------------------------- |
+| 1   | ✅     | IWD-Infografik (Inst. d. dt. Wirtschaft), Thema korrekt (Werte stammen aus Infografik/Bild)          |
+| 2   | ✅     | Wikipedia/Manager-Magazin-Liste, Thema korrekt (Vergleichsvermögen)                                  |
+| 3   | ✅     | WID belegt Top-1 %-Anteil „**27 % today**" — Untergrenze des Bereichs 27–35 %                        |
+| 4   | ✅     | DIW („höher als bekannt") belegt „rund **35**" — Obergrenze des Bereichs 27–35 %                     |
+| 5   | ⚠️🔒   | Bundesbank-Snapshot nur „Loading" (JS-Seite); **1,3–2,4 %** nicht im Text → Mensch-Queue             |
+| 6   | ⚠️     | „**172** / Platz 4" belegt; „**ein Fünftel in Armut**" belegt; „71 %" nicht hier (via fn15)          |
+| 7   | ✅     | **69 %** gesamt und **66 %** Unionsanhänger\*innen verbatim belegt                                   |
+| 8   | ⚠️ 🧑‍⚖️  | Deutsches Gilens-&-Page-Zitat = sinngemäße Übersetzung, nicht wörtlich                               |
+| 9   | ⚠️ 🧑‍⚖️  | Thema belegt; Titel/„4 %→30 %→7×" als abgeleitet/Abbildung akzeptiert                                |
+| 10  | 🔒 🧑‍⚖️  | Winters-**Buchzitat** auf Cambridge-**Katalogseite** — Satz dort nicht enthalten                     |
+| 11  | ✅ 🧑‍⚖️  | Reich-Zitat: getreue Übersetzung, engl. Original im Artikel belegt                                   |
+| 12  | ✅⚠️   | WaPo (Wayback) belegt „**at least $277 million**"; „3 Mio. Kleinspender" = illustrativ, nicht belegt |
+| 13  | ✅     | „81/100" + „unter die Räder zu geraten" belegt; „**drei NGOs**" korrekt aufgelöst                    |
+| 14  | ✅ 🧑‍⚖️  | Jens-Berger-Zitat **wortwörtlich** (100 %) belegt                                                    |
+| 15  | ✅     | Business Insider belegt **71 %** aus Erbschaften (DE) ggü. 36 % weltweit                             |
+| 16  | 🔒 🧑‍⚖️  | Piketty-**Buchzitat** auf C.H.Beck-**Verlagsseite** — Satz dort nicht enthalten                      |
+| 17  | ✅     | **60 %** „ungerecht", höchster Wert seit 15 Jahren — verbatim belegt                                 |
+| 18  | ✅     | BDK-Beschluss (PDF): „etwa **25 %**" linear, Lebensfreibetrag, „über **26 Millionen**", Stundung     |
+| 19  | ✅     | Grüne-Fraktion: „**Omas Häuschen**" wortwörtlich (100 %) belegt                                      |
+| 20  | ✅     | Plan f. Steuergerechtigkeit: **26 Mio. €**, **2 Mrd. €** (2023), **300 Wohnungen**, Stundung belegt  |
+| 21  | ✅     | Arguhilfe 2021 (PDF): **1 %/Jahr**, ab **2 Mio. €**, Betriebsverm.-Begünstigung, Eigenheim, Land     |
+| 22  | ✅     | Zucman-PDF + ICIJ: **2 %**, ab **1 Mrd. $**, **200–250 Mrd. $/Jahr** — verbatim belegt               |
+| 23  | ✅     | Handelsblatt: **147 Mrd. €** ab **2,3 Mio. €**, „Studienautor **Stefan Bach**" belegt                |
+| 24  | ⚠️     | Fratzscher-Zitat **leicht abgewandelt** (Soll „anderes … belastet", Ist „… besteuert")               |
+| 25  | ✅     | Finanzwende: „**80 Milliarden Euro** Steuerprivilegien pro Jahr" — zweistellig belegt                |
+| 26  | ❌     | EU Tax Observatory: **5,7 Mrd. €** für DE **nicht belegt**; Quelle nennt DE = 10,9–17,0 Mrd. €       |
 
 **Handlungsbedarf (echte Diskrepanzen):**
 
-1. **fn13 — „drei NGOs":** Die LobbyControl-Quelle spricht von „**sieben**
-   zivilgesellschaftlichen Organisationen". Klären, ob sich „drei NGOs" auf eine
-   andere Teilmenge bezieht, sonst Zahl korrigieren.
-2. **fn21 — Fratzscher-Zitat:** Exakter Wortlaut der diw.de-Quelle ist „Kaum ein
+1. **fn26 — „5,7 Mrd. € für Deutschland":** Im abgerufenen PDF gibt es **keinen
+   5,7-Mrd.-Wert für Deutschland**. Die Aufkommenstabelle weist für **Germany** aus:
+   bei 2 % auf Milliardäre **10,9**, inkl. Centi-Millionäre **16,9**; bei 3 % auf
+   Milliardäre **17,0** Mrd. € (Zeile: „Germany 128 637.0 606.7 16.9 10.9 30.4
+   17.0"). Der deterministische „5,7"-Treffer stammt aus der **Portugal**-Zeile
+   („Portugal 1 6.0 **5.7** 0.2 …"). **Vorschlag:** Zahl und/oder Quelle prüfen —
+   entweder ist ein anderes Szenario/eine andere Quelle gemeint (z. B. ältere
+   G20-Schätzung), oder es liegt ein Übertragungsfehler vor. Bis zur Klärung sollte
+   „5,7 Mrd. €" nicht der EU-Tax-Observatory-Tabelle 2025 zugeschrieben werden.
+2. **fn24 — Fratzscher-Zitat:** Der diw.de-Originalwortlaut ist „Kaum ein
    **anderes** Land **belastet** Arbeit so hoch und Vermögen so niedrig wie
-   Deutschland." Entweder wörtlich übernehmen oder als sinngemäß kennzeichnen.
-3. **fn9 — Titel/Zahlen:** Cited als „rise of authoritarian leaders"; das Paper
-   behandelt „erosion of democracy". Titel präzisieren; „4 %→30 %→7×" als
-   abgeleitet/aus Abbildung kennzeichnen oder Seitenbeleg ergänzen.
-4. **fn10 / fn16 — Buchzitate:** URLs zeigen auf Katalog-/Verlagsseiten ohne den
-   zitierten Satz. Seitenbeleg aus dem Buch ergänzen oder als sinngemäß markieren.
-5. **fn8 — Gilens & Page:** Deutsches Zitat ist Übersetzung/Paraphrase
-   („little or no independent influence"). Als sinngemäß kennzeichnen.
-6. **fn6 — „ein Fünftel in Armut":** Im abgerufenen Oxfam-Text nicht auffindbar —
-   Beleg ergänzen oder Quelle präzisieren.
-7. **fn12 — Musk-Spenden:** opensecrets nennt aktuell **~290 Mio.** „mindestens
-   277 Mio." bleibt korrekt; ggf. auf die aktuellere Zahl aktualisieren.
+   Deutschland." Das HTML schreibt „Kaum ein Land **besteuert** Arbeit so hoch …"
+   (zwei Abweichungen: „anderes" fehlt, „belastet"→„besteuert"). **Vorschlag:**
+   entweder exakt übernehmen oder das Zitat als sinngemäß kennzeichnen.
+3. **fn6 — „71 %":** Die Oxfam.de-Seite belegt diese Zahl **nicht** (sie nennt
+   172 / Platz 4 / „ein Fünftel in Armut"). Die 71 % sind durch **fn15** (Business
+   Insider) belegt. **Vorschlag:** sicherstellen, dass die 71-%-Aussage im HTML auf
+   fn15 (nicht auf fn6) gestützt wird.
+4. **fn5 — „1,3–2,4 % (untere Hälfte)":** Aus dem Bundesbank-Snapshot (nur
+   „Loading") **nicht verifizierbar**. **Vorschlag:** Beleg aus dem PHF-Bericht 2023
+   manuell sichern (Mensch-Queue) — Wert ist plausibel, aber unbelegt im Snapshot.
+5. **fn12 — „3 Millionen Kleinspender\*innen":** Die 277 Mio. $ sind jetzt direkt
+   belegt (WaPo via Wayback); der Vergleich „= 3 Mio. Kleinspender\*innen" ist eine
+   **illustrative Rechengröße** und im Quelltext nicht enthalten. **Vorschlag:** als
+   eigene Berechnung kennzeichnen oder Rechenweg/Quelle ergänzen.
 
 ---
 
@@ -91,118 +106,250 @@ opensecrets.org gestützt.
 Belegstellen sind wörtlich aus den abgerufenen Snapshots zitiert
 (`tools/quellencheck/out/snapshots/`).
 
+### [1] IWD — Haushaltsnettovermögen nach Altersgruppen (AUSSAGE)
+
+**Thema ✅:** Snapshot ist die IWD-Seite („Der Informationsdienst des Instituts der
+deutschen Wirtschaft", Rubrik „Einkommen und Vermögen"). Die konkreten
+Median-Werte je Altersgruppe liegen als **Infografik/Bild** vor und sind aus dem
+Seitentext nicht extrahierbar (siehe Abschnitt „Datenquellen", `age-groups.yaml`).
+Zuordnung/Thema korrekt. **Verdikt: SUPPORTED** (Rahmung), Einzelwerte → Mensch-Queue.
+
+### [2] Wikipedia/Manager Magazin — reichste Deutsche (AUSSAGE)
+
+**Thema ✅:** Snapshot ist die Liste „der reichsten Deutschen (Manager Magazin)".
+Dient als Auswahl-Pool für das Vergleichsvermögen. Zuordnung/Thema korrekt.
+**Verdikt: SUPPORTED** (Rahmung); Einzelwerte sind Momentaufnahmen (siehe
+`wealthy.yaml`).
+
 ### [3] World Inequality Database — Top-1 %-Anteil
 
 **Behauptung:** „27–35 % des Gesamtvermögens gehört dem reichsten 1 %" (mit [4]).
 **Beleg (WID):** „the top 1% wealth share has fallen by half, from close to 50% in
-1895 to **27% today**." → **✅** belegt die Untergrenze **27 %**.
+1895 to **27% today**." → belegt die **Untergrenze 27 %** sowie „top **1 %**".
+**Verdikt: SUPPORTED** (Untergrenze; Obergrenze via [4]).
 
 ### [4] DIW Berlin (SOEP-P) — „höher als bisher bekannt"
 
-**Beleg:** Studie nennt rund **35 %** für das oberste 1 %. → **✅** belegt die
-Obergrenze. Der Bereich **27–35 %** ist also korrekt durch [3]+[4] aufgespannt.
+**Beleg:** „Allein das reichste Prozent der Bevölkerung vereint **rund 35** (statt
+knapp 22 Prozent) des Vermögens auf sich." → belegt die **Obergrenze 35 %**. Der
+Bereich **27–35 %** ist damit korrekt durch [3]+[4] aufgespannt (zulässige
+Bereichs-Zitierung über zwei Quellen).
+**Verdikt: SUPPORTED** (Obergrenze 35 %).
+**Hinweis:** Die im Register fn4 zusätzlich gelistete Behauptung „1,3–2,4 % (untere
+Hälfte)" wird vom DIW-Text **nicht** belegt; sie gehört zu [5] (Bundesbank) →
+dort behandelt.
 
-### [5] Bundesbank PHF 2023 — untere Hälfte
+### [5] Deutsche Bundesbank, PHF 2023 — untere Hälfte
 
-**Beleg:** PHF-Werte **1,3–2,4 %** für die untere Hälfte (beide Grenzen im Text). → **✅**
+**Behauptung:** „1,3–2,4 % besitzt die untere Hälfte der Bevölkerung".
+**Befund 🔒:** Der Snapshot `fn05_1_publikationen.bundesbank.de.txt` enthält nur den
+Text „Loading" (die Seite rendert ihren Inhalt clientseitig per JavaScript; der im
+`fetch_status` gemeldete Umfang von 63.397 Zeichen ist nicht der Sachinhalt). Die
+Werte **1,3 / 2,4 %** sind im verfügbaren Snapshot **nicht auffindbar**.
+**Verdikt: NICHT_ÜBERPRÜFBAR** → Mensch-Queue (Beleg aus dem PHF-Bericht 2023
+manuell sichern).
 
 ### [6] Oxfam-Ungleichheitsbericht 2026
 
-**Beleg:** „um ein Drittel auf **172** gestiegen. Deutschland hat die
-**viertmeisten** Milliardär\*innen" → „172 / Platz 4" **✅**.
-**⚠️** Der Zusatz „ein Fünftel der Bevölkerung in Armut" ist im abgerufenen Text
-nicht wörtlich belegbar (Armut wird thematisiert, der 20-%-Anteil nicht).
+**Behauptung 1 (172 / Platz 4) — SUPPORTED:** „2025 ist die Gesamtzahl der
+Milliardär\*innen um ein Drittel auf **172** gestiegen. Deutschland hat die
+**viertmeisten** Milliardär\*innen weltweit."
+**Zusatz „ein Fünftel in Armut" — SUPPORTED:** „Gleichzeitig lebt **etwa ein Fünftel
+der Menschen in Deutschland in Armut**." (Korrektur ggü. altem Audit: jetzt wörtlich
+belegt.)
+**Behauptung 2 (71 % aus Erbschaften) — NICHT_IN_QUELLE:** „71 %" steht **nicht** im
+Oxfam.de-Snapshot. Diese Zahl ist durch **[15]** (Business Insider) belegt.
 
 ### [7] Infratest dimap, April 2025
 
-**Beleg (finanznachrichten):** „69 %" gesamt und „66 %" der Unionsanhänger\*innen
-beide belegt. → **✅** Die frühere Korrektur (55 % → 66 %) ist im HTML vorhanden und
-bestätigt.
+**Beleg (finanznachrichten):** „mehr als zwei Drittel (**69 Prozent**) für die
+Einführung … Unter Unionsanhängern waren es zwei Drittel (**66 Prozent**)."
+**Verdikt: SUPPORTED** (69 % gesamt, 66 % Union).
 
-### [8] Gilens & Page (2014)
+### [8] Gilens & Page (2014) 🧑‍⚖️ AKZEPTIERT
 
-**Titel/Zahl:** „Testing Theories of American Politics: Elites, Interest Groups…"
-und „**1,779**" policy issues im Snapshot belegt. → ✅
-**Zitat ⚠️:** Englisches Original: „average citizens and mass-based interest groups
-have **little or no independent influence**." Das deutsche Zitat („verschwindend
-geringen, statistisch nicht signifikanten Einfluss") ist eine **sinngemäße
-Übersetzung**, kein wörtliches Zitat — als solche kennzeichnen.
+**Status:** Mensch-geprüft & akzeptiert (24.06.2026): übersetztes Zitat sinngemäß
+ok. Deterministisch ist das deutsche Zitat keine wörtliche Entsprechung (engl.
+Original „little or no independent influence"); als **sinngemäße Übersetzung**
+gekennzeichnet. Kein erneuter Handlungsbedarf.
 
-### [9] Rau & Stokes (2024), PNAS
+### [9] Rau & Stokes (2024), PNAS 🧑‍⚖️ AKZEPTIERT
 
-**Thema ✅:** Snapshot behandelt „inequality and the erosion of democracy…",
-„the more [unequal] a democracy, the more at risk it is of electing a [populist]".
-**⚠️ Titel:** Im HTML als „…rise of authoritarian leaders" zitiert — das Paper
-trägt einen anderen Titel (Erosion der Demokratie). **⚠️ Zahlen:** „ca. 4 % …
-über 30 % … 7× höheres Risiko" sind im Fließtext nicht belegbar (vermutlich
-Abbildung); die deterministischen „4/30"-Treffer waren Bare-Number-Fehltreffer.
+**Status:** Mensch-geprüft & akzeptiert (24.06.2026). Thema belegt; „4 %→30 %→7×"
+als abgeleitet/aus Abbildung akzeptiert. Kein erneuter Handlungsbedarf.
 
-### [10] Winters, „Oligarchy" (2011)
+### [10] Winters, „Oligarchy" (2011) 🔒 🧑‍⚖️ AKZEPTIERT
 
-**🔒** Die URL ist die Cambridge-**Katalogseite** (Abstract/Metadaten). Der
-zitierte Satz „Demokratie verdrängt Oligarchie nicht — sie verschmilzt mit ihr."
-ist dort **nicht enthalten** und damit aus dieser Quelle nicht verifizierbar.
+**Status:** Mensch-geprüft & akzeptiert (24.06.2026). URL ist die Cambridge-
+**Katalogseite**; der zitierte Satz ist dort nicht enthalten (nur Titel „Oligarchy"
+verbatim). Buchzitat auf Katalogseite akzeptiert. Kein erneuter Handlungsbedarf.
 
-### [11] Robert Reich — commondreams.org
+### [11] Robert Reich — commondreams.org ✅ 🧑‍⚖️ AKZEPTIERT
 
-**✅ Getreue Übersetzung.** Englisches Original im Artikel belegt: „…can
-effectively **hedge against democracy** by **suppressing criticism of yourself and
-other plutocrats** and **discouraging any attempt to tax away**…" — entspricht dem
-deutschen Zitat sinngetreu. (Quelle ggü. altem Audit gewechselt: commondreams statt
-Substack; das Original ist hier nachweisbar.)
+**Status:** Mensch-geprüft & akzeptiert (24.06.2026). Getreue Übersetzung; engl.
+Original im Artikel belegt. Kein erneuter Handlungsbedarf.
 
 ### [12] Musk-Spenden (277 Mio. $)
 
-**🔒/⚠️** washingtonpost.com (Primärquelle der „277 Mio.") ist durch Bot-Schutz
-nicht abrufbar. **opensecrets** belegt: „Musk gave $1 million … and **$290 million**
-to outside groups." → „mindestens 277 Mio." ist mit den späteren ~290 Mio.
-konsistent; ggf. aktualisieren.
+**Behauptung:** „mindestens 277 Mio. Dollar an Trump-unterstützende Super PACs …
+entspricht den kombinierten Spenden von 3 Millionen Kleinspender\*innen."
+**Beleg (WaPo via Wayback) — SUPPORTED:** „Elon Musk gave **at least $277 million**
+in political donations this year to back Donald Trump and other Republican
+candidates …" (Korrektur ggü. altem Audit: WaPo ist via Wayback abrufbar und belegt
+die 277 Mio. jetzt direkt.) opensecrets ergänzt „**$290 million** to outside groups".
+**Teil „3 Millionen Kleinspender\*innen" — NICHT_IN_QUELLE:** im Snapshot nicht
+enthalten; illustrative Rechengröße.
+**Verdikt: SUPPORTED** (277 Mio.) · **⚠️ PARTIALLY** (3-Mio.-Vergleich unbelegt).
 
 ### [13] LobbyControl — Lobbyregister März 2025
 
-**✅** „Wirtschaft mit einem Anteil von **81** unter den insgesamt **100** größten
-Lobbyakteuren"; das Zitat „unter die Räder zu geraten" ist verbatim belegt.
-**⚠️** Die Quelle nennt „nur **sieben** zivilgesellschaftliche Organisationen"; das
-HTML schreibt „nur **drei** NGOs". Diskrepanz klären.
+**Beleg:** „Zu der größten Gruppe zählen Akteure aus der Wirtschaft mit einem Anteil
+von **81** unter den insgesamt **100** größten Lobbyakteuren." Zitat „unter die Räder
+zu geraten" ist **verbatim** (100 %) belegt.
+**Auflösung „drei NGOs" (Korrektur ggü. altem Audit):** Die Quelle differenziert
+ausdrücklich: „nur **sieben** zivilgesellschaftliche Organisationen im weiteren
+Sinne … Mit Campact, Greenpeace und dem Deutschen Naturschutzbund sind es nur **drei
+NGOs im engeren Sinne**." Das HTML zitiert die engere Definition korrekt — **keine
+Diskrepanz**.
+**Verdikt: SUPPORTED.**
 
-### [14] Jens Berger, „Marktordnung für Lobbyisten" (2011)
+### [14] Jens Berger, „Marktordnung für Lobbyisten" (2011) ✅ 🧑‍⚖️ AKZEPTIERT
 
-**✅ Wortwörtlich belegt** (100 % Match): „Zwar sind die Grundzüge der politischen
-Interessenvertretung bereits im Grundgesetz verankert, ein groteskes Ungleichgewicht
-der finanziellen Mittel der Interessengruppen …". Im alten Audit war dieses Zitat
-fälschlich LobbyControl zugeordnet.
+**Status:** Mensch-geprüft & akzeptiert (24.06.2026); deterministisch **100 %
+VERBATIM** (Lang-Zitat und Titel). Kein erneuter Handlungsbedarf.
 
 ### [15] Business Insider (Jan. 2025) — 71 % aus Erbschaften
 
-**✅** „71 %" im Text belegt. (Trägt die im alten Audit fälschlich Oxfam
-zugeschriebene Zahl.)
+**Beleg:** „Während weltweit 36 Prozent des Milliardärsvermögens aus Erbschaften
+stammt, sind es hierzulande sogar **71 Prozent**." → belegt die im HTML genannten
+71 % (Deutschland). **Verdikt: SUPPORTED.**
 
-### [16] Piketty, „Kapital und Ideologie"
+### [16] Piketty, „Kapital und Ideologie" 🔒 🧑‍⚖️ AKZEPTIERT
 
-**🔒** URL ist die **C.H.Beck-Verlagsseite** (Produktseite). Der zitierte Satz
-„Die Eigentumskonzentration verleiht einer kleinen Gruppe weit mehr politischen
-Einfluss …" ist dort nicht enthalten → aus dieser Quelle nicht verifizierbar.
-(Verlagskorrektur Suhrkamp→C.H.Beck aus dem alten Audit ist im HTML übernommen.)
+**Status:** Mensch-geprüft & akzeptiert (24.06.2026). URL ist die C.H.Beck-
+**Verlagsseite**; der zitierte Satz ist dort nicht enthalten (nur Titel „Kapital und
+Ideologie" verbatim). Buchzitat auf Katalogseite akzeptiert. Kein erneuter
+Handlungsbedarf.
 
 ### [17] Infratest dimap, Juli 2025 — 60 %
 
-**✅** „60 %" / „höchster Wert seit 15 Jahren" belegt.
+**Beleg:** „In der Gesamtschau vertreten **60 Prozent** die Meinung, dass es in
+Deutschland ungerecht zugeht, **der höchste Wert seit 15 Jahren**." **Verdikt:
+SUPPORTED.**
 
-### [18]–[26] Steuer-/Politik-Belege
+### [18] Bündnis 90/Die Grünen — BDK-Beschluss VR-09 (16.11.2024), PDF
 
-- **[18]** Grüne „Plan für mehr Steuergerechtigkeit": 26 Mio. €, 2 Mrd. €, 300
-  Wohnungen — belegt. **✅**
-- **[19]** Zucman/ICIJ: „2 % … between **$200 and $250 billion** a year" — belegt. **✅**
-- **[20]** Handelsblatt: „**147 Milliarden Euro**" ab „2,3 Millionen Euro" — belegt. **✅**
-- **[21]** Fratzscher (diw.de): Original „Kaum ein **anderes** Land **belastet** …" —
-  Direktzitat im HTML leicht abgewandelt. **⚠️**
-- **[22]** EU Tax Observatory (PDF): „**5,7 Mrd. €**" — belegt. **✅**
-- **[23]** Grüne BDK-Beschluss (PDF): „25 %", „26 Mio. €" — belegt; „Omas Häuschen"
-  über [24]. **✅**
-- **[24]** Grüne Bundestagsfraktion: „**Omas Häuschen**" wortwörtlich belegt. **✅**
-- **[25]** Grüne Arguhilfe 2021 (PDF): „1 %", „2 Mio. €" — belegt. **✅**
-- **[26]** Finanzwende: „Die zehn wichtigsten Steuerprivilegien und die **80
-  Milliarden Euro**" — Titel/Thema belegt. **✅**
+Quelle: BDK-Beschluss „Für mehr Gerechtigkeit und Effizienz: Erbschaftsteuer
+reformieren".
+
+- **25 % Steuersatz — SUPPORTED:** „Oberhalb des Freibetrags könnte z.B. ein
+  linearer Steuersatz von **etwa 25 %** ür [für] alle Vermögensgegenstände
+  gleichermaßen gelten". _Nuance:_ Quelle formuliert als Vorschlag („könnte z.B. …
+  etwa"), nicht als fixierten Satz.
+- **„Meiste zahlen keine Erbschaftsteuer" — SUPPORTED:** „Kleinere Erbschaten, und
+  das sind **die meisten**, sind heute über Freibeträge von der Erbschat- und
+  Schenkungsteuer bereit [befreit]".
+- **Formel × 25 % — SUPPORTED** (für 25 %; lineare Besteuerung oberhalb des
+  Freibetrags belegt, Formel = Paraphrase).
+- **Hoher Lebensfreibetrag pro Person — SUPPORTED:** „einheitlichen,
+  erwerberbezogenen **Lebensreibetrag pro Person**".
+- **Privilegien über 26 Mio. € + Stundung — SUPPORTED:** „Sehr hohe Vermögen (bei
+  **über 26 Millionen**) können durch Ausnahmen heute ot sogar komplett steuerrei
+  vererbt werden" + „großzügige, langjährige **Stundungs**regelungen".
+- **„Omas Häuschen" — NICHT_IN_QUELLE (in fn18):** Die Phrase steht nicht in diesem
+  PDF; sinngemäß belegt ist „**Selbstgenutzter Wohnraum** soll auch weiterhin
+  geschützt sein." Das wörtliche „Omas Häuschen" ist durch **[19]** belegt.
+
+### [19] Grüne Bundestagsfraktion — „Omas Häuschen"
+
+**Beleg (verbatim, 100 %):** „Geschichten, die vom Erhalt von **„Omas Häuschen"**
+erzählen, verschleiern diese Wahrheit. Sie verkennen, dass es genau dafür bereits
+umfangreiche Schutzregelungen im Steuerrecht gibt." → die Phrase „Omas Häuschen" ist
+wortwörtlich belegt. **Verdikt: SUPPORTED.**
+**Hinweis:** Im Original verwendet die Fraktion „Omas Häuschen" als (kritisch
+zitierte) Erzählung; das HTML nutzt denselben Begriff affirmativ („…bleibt weiterhin
+geschützt"). Der **Schutz selbstgenutzten Wohnraums** ist sachlich belegt (fn18:
+„Selbstgenutzter Wohnraum … geschützt"; fn19: „umfangreiche Schutzregelungen").
+
+### [20] Grüne Bundestagsfraktion — „Plan für mehr Steuergerechtigkeit"
+
+- **2 Mrd. € (2023) durch Abschaffung der 26-Mio.-Privilegien — SUPPORTED:** „**2023
+  wurden so mehr als 2 Milliarden Euro an Steuern erlassen**, was zu einem effektiven
+  Steuersatz von nur 0,1 % bei Erbschaften von über 26 Millionen führte."
+- **26 Mio. € Privilegien abgeschafft + Stundung — SUPPORTED:** „Erbschaften von
+  **über 26 Millionen Euro** sollten **nicht mehr steuerbefreit** sein,
+  Betriebsvermögen sollten **großzügige Stundungen** erhalten".
+- **Betriebsvermögen / Investitionsschutz — SUPPORTED:** „Statt einer vollständigen
+  Steuerbefreiung … sollten weitreichende, mehrjährige **Stundungsregelungen**
+  eingeführt werden. Das … sichert zugleich Arbeitsplätze und schafft **Anreize für
+  Investitionen**." _Nuance:_ Quelle spricht von „Stundungen statt vollständiger
+  Befreiung", nicht von „Begünstigungen".
+- **>300 Wohnungen gestrichen — SUPPORTED:** „Die Steuerbefreiung bei Erbschaften ab
+  **300 Wohnungen** beenden … sollte **abgeschafft** werden."
+
+### [21] Bündnis 90/Die Grünen — Arguhilfe Steuerpolitik (BTW 2021), PDF
+
+- **1 %/Jahr + ab 2 Mio. € pro Person — SUPPORTED:** „Die Vermögensteuer soll erst
+  ab hohen Vermögen von **mehr als 2 Millionen Euro pro Person** greifen und
+  **jährlich 1 %** betragen."
+- **Betriebsvermögen-Begünstigung / Investitionsschutz — SUPPORTED:** „wollen wir
+  **Begünstigungen für Betriebsvermögen** im gebotenen Umfang einführen und zugleich
+  **Investitionsanreize** schaffen."
+- **Durchschnittliches Eigenheim kein Steueranfall — SUPPORTED:** „Damit ist
+  sichergestellt, dass auch ein **Eigenheim in sehr guter Lage allein noch nicht zum
+  Anfall der Vermögensteuer** führen wird."
+- **Ländersteuer — SUPPORTED:** „Darüber hinaus ist die **Vermögensteuer eine
+  Ländersteuer**."
+
+### [22] Zucman (2024) — G20-Blueprint (PDF) + ICIJ
+
+**Beleg (Zucman-PDF):** „A minimum tax equal to **2%** of wealth on global
+billionaires would raise **\$200-\$250 billion** per year".
+**Beleg (ICIJ):** „around 3,000 people with assets worth more than **\$1 billion**,
+**2%** of their wealth would generate between **\$200 and \$250 billion** a year."
+→ 2 %, ab 1 Mrd. $, 200–250 Mrd. $/Jahr verbatim belegt. **Verdikt: SUPPORTED.**
+
+### [23] Stefan Bach (DIW) — Handelsblatt
+
+**Beleg (handelsblatt.com):** „könnte eine Vermögensteuer … zu jährlichen Einnahmen
+von **147 Milliarden Euro** führen. Zahlen müsste fast ausschließlich das reichste
+eine Prozent der Bevölkerung mit einem persönlichen Vermögen ab **2,3 Millionen
+Euro**." Studienautor namentlich: „**Stefan Bach**".
+**Verdikt: SUPPORTED.** _Hinweis:_ Die Studie ist im Auftrag der Linken erstellt
+(„Konzept der Linken"); die Bezeichnung „progressive Vermögensteuer" wird im Snapshot
+nicht wörtlich verwendet, ist aber sachlich konsistent. Die Zweitquelle diw.de war
+nicht abrufbar (SSL-Timeout) — für diese Behauptung ohne Belang.
+
+### [24] Marcel Fratzscher (DIW) — diw.de / tagesspiegel
+
+**Behauptung (HTML):** „**Kaum ein Land besteuert Arbeit so hoch und Vermögen so
+niedrig wie Deutschland.**"
+**Original-Beleg (diw.de, verbatim):** „**Kaum ein anderes Land belastet Arbeit so
+hoch und Vermögen so niedrig wie Deutschland.**"
+**Verdikt: ⚠️ PARTIALLY** (Verbatim-Score ≈ 72 %, deterministisch „CLOSE"). Zwei
+Abweichungen: das Wort **„anderes"** fehlt, und **„belastet"** wurde zu **„besteuert"**.
+**Vorschlag:** entweder exakt übernehmen oder als sinngemäßes Zitat kennzeichnen.
+
+### [25] Finanzwende — „80 Milliarden Euro"
+
+**Beleg:** „**80 Milliarden Euro** Steuerprivilegien pro Jahr" / „Unsere
+Kostenschätzung von **80 Milliarden Euro** …". Die App-Aussage „Mehreinnahmen in
+zweistelliger Milliardenhöhe durch Schließung von Steuerlücken" ist durch die
+80-Mrd.-Schätzung gedeckt. **Verdikt: SUPPORTED.**
+
+### [26] EU Tax Observatory (März 2025), PDF
+
+**Behauptung (HTML):** „Globale Milliardärssteuer könnte für Deutschland ca. **5,7
+Mrd. €** einbringen."
+**Befund ❌:** Die Aufkommenstabelle des PDF nennt für **Germany**:
+„Germany 128 637.0 606.7 **16.9** **10.9** 30.4 **17.0**" — d. h. bei 2 % auf
+Milliardäre **10,9 Mrd. €**, inkl. Centi-Millionäre **16,9 Mrd. €**, bei 3 % auf
+Milliardäre **17,0 Mrd. €**. Ein **5,7-Mrd.-Wert für Deutschland existiert im
+Snapshot nicht**; „5.7" erscheint nur in der **Portugal**-Zeile („Portugal 1 6.0
+**5.7** …"). Gegen-Pass bestätigt: kein Beleg für 5,7 Mrd. € (DE), stattdessen
+deutlich höhere DE-Werte.
+**Verdikt: NICHT_IN_QUELLE.** **Vorschlag:** Zahl/Quelle prüfen — anderes Szenario,
+andere Quelle (z. B. ältere G20-Schätzung) oder Übertragungsfehler.
 
 ---
 
@@ -214,26 +361,32 @@ Werte (17.300 € … 103.100 €, Gesamt) stammen aus der IWD-Infografik (fn1) 
 Bundesbank-PHF 2023. Die Einzelwerte liegen als **Bild** vor und sind nicht aus dem
 Seitentext extrahierbar; sie sind mit der PHF-Studie konsistent (Bundesbank-Median
 103.200 € ↔ 103.100 € in der YAML — Rundungsdifferenz). Status: **✅ plausibel**,
-exakte Einzelwert-Verifikation erfordert die Originalgrafik (Mensch-Queue).
+exakte Einzelwert-Verifikation erfordert die Originalgrafik (Mensch-Queue). Hinweis:
+Der Bundesbank-Snapshot (fn5) selbst lieferte nur „Loading" — die PHF-Werte sind
+daher derzeit nur über die Grafik prüfbar.
 
 ### wealthy.yaml
 
-Quelle: Wikipedia/Manager Magazin (Okt. 2024). Vermögenswerte sind Momentaufnahmen
-und schwanken; die Snapshot-Werte sind plausibel. Status: **✅ plausibel**.
+Quelle: Wikipedia/Manager Magazin. Vermögenswerte sind Momentaufnahmen und
+schwanken; die Snapshot-Werte sind plausibel. Status: **✅ plausibel**.
 
 ---
 
 ## Mensch-Queue (nicht automatisch abschließbar)
 
-1. **fn12** — washingtonpost.com direkt prüfen (Bot-Schutz); „277 Mio." gegen die
-   aktuelle opensecrets-Zahl (~290 Mio.) abgleichen.
-2. **fn10 / fn16** — Buchzitate gegen die Buchtexte (Seitenzahl) prüfen.
-3. **age-groups.yaml** — Einzelwerte gegen die IWD-Originalgrafik prüfen.
+1. **fn5 — Bundesbank PHF 2023:** Snapshot nur „Loading" (JS-gerenderte Seite). Die
+   Werte „1,3–2,4 %" (untere Hälfte) aus dem PHF-Bericht/Monatsbericht April 2025
+   manuell belegen.
+2. **fn23 — diw.de (Zweitquelle):** nicht abrufbar (SSL-Timeout, kein Wayback). Die
+   Behauptung ist durch handelsblatt.com gedeckt; Zweitbeleg optional nachreichen.
+3. **fn26 — „5,7 Mrd. € (DE)":** echte Diskrepanz (siehe oben) — Zahl/Quelle klären.
+4. **fn24 — Fratzscher-Zitat:** Wortlaut angleichen oder als sinngemäß kennzeichnen.
+5. **age-groups.yaml:** Einzelwerte gegen die IWD-Originalgrafik prüfen.
 
 ---
 
 _Methodik: `tools/quellencheck/` (Phasen 0–4). Deterministische Schritte sind
 reproduzierbar; Urteile basieren ausschließlich auf abgerufenem Quelltext mit
 dokumentierter Belegstelle._
-_Letzte Aktualisierung: 24. Juni 2026 — vollständige Neu-Synchronisierung auf
-fn1–fn26._
+_Letzte Aktualisierung: 24. Juni 2026 — vollständiger Pipeline-Neulauf nach
+Umnummerierung der Fußnoten 18–26; Detailblöcke 18–26 neu erzeugt._

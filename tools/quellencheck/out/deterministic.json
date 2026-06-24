@@ -1,932 +1,777 @@
 [
-  {
-    "fn": 1,
-    "type": "AUSSAGE",
-    "claim": "In Haushalten, in denen die älteste Person in Deiner Altersgruppe ist, beträgt das mittlere Nettovermögen den unten angezeigten Wert. Passe den Wert an Deine persönliche Situation an — Dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.",
-    "snapshots_used": [
-      "fn01_1_iwd.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "21c042788a7f",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 2,
-    "type": "AUSSAGE",
-    "claim": "Wähle ein Vergleichsvermögen, das in Maiskörner umgerechnet wird.",
-    "snapshots_used": [
-      "fn02_1_de.wikipedia.org.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "cb14c8a19c86",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 3,
-    "type": "ZAHL",
-    "claim": "27–35 % des Gesamtvermögens gehört dem reichsten 1 %",
-    "snapshots_used": [
-      "fn03_1_wid.world.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "27–35 %",
-        "parts_found": [
-          "27"
+    {
+        "fn": 1,
+        "type": "AUSSAGE",
+        "claim": "In Haushalten, in denen die älteste Person in Deiner Altersgruppe ist, beträgt das mittlere Nettovermögen den unten angezeigten Wert. Passe den Wert an Deine persönliche Situation an — Dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.",
+        "snapshots_used": ["fn01_1_iwd.de.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "21c042788a7f",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 2,
+        "type": "AUSSAGE",
+        "claim": "Wähle ein Vergleichsvermögen, das in Maiskörner umgerechnet wird.",
+        "snapshots_used": ["fn02_1_de.wikipedia.org.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "cb14c8a19c86",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 3,
+        "type": "ZAHL",
+        "claim": "27–35 % des Gesamtvermögens gehört dem reichsten 1 %",
+        "snapshots_used": ["fn03_1_wid.world.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "27–35 %",
+                "parts_found": ["27"],
+                "parts_missing": ["35"],
+                "verdict": "PARTIAL",
+                "snapshot": "fn03_1_wid.world.txt"
+            },
+            {
+                "token": "1 %",
+                "parts_found": ["1"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn03_1_wid.world.txt"
+            }
         ],
-        "parts_missing": [
-          "35"
+        "fingerprint": "61d6e774d21e",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 4,
+        "type": "ZAHL",
+        "claim": "1,3–2,4 % besitzt die untere Hälfte der Bevölkerung",
+        "snapshots_used": ["fn04_1_diw.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "1,3–2,4 %",
+                "parts_found": ["1,3"],
+                "parts_missing": ["2,4"],
+                "verdict": "PARTIAL",
+                "snapshot": "fn04_1_diw.de.txt"
+            }
         ],
-        "verdict": "PARTIAL",
-        "snapshot": "fn03_1_wid.world.txt"
-      },
-      {
-        "token": "1 %",
-        "parts_found": [
-          "1"
+        "fingerprint": "d9784c184e71",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 4,
+        "type": "ZAHL",
+        "claim": "27–35 % des Gesamtvermögens gehört dem reichsten 1 %",
+        "snapshots_used": ["fn04_1_diw.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "27–35 %",
+                "parts_found": ["35"],
+                "parts_missing": ["27"],
+                "verdict": "PARTIAL",
+                "snapshot": "fn04_1_diw.de.txt"
+            },
+            {
+                "token": "1 %",
+                "parts_found": ["1"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn04_1_diw.de.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn03_1_wid.world.txt"
-      }
-    ],
-    "fingerprint": "61d6e774d21e",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 4,
-    "type": "ZAHL",
-    "claim": "1,3–2,4 % besitzt die untere Hälfte der Bevölkerung",
-    "snapshots_used": [
-      "fn04_1_diw.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "1,3–2,4 %",
-        "parts_found": [
-          "1,3"
+        "fingerprint": "6776506c1484",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 5,
+        "type": "ZAHL",
+        "claim": "1,3–2,4 % besitzt die untere Hälfte der Bevölkerung",
+        "snapshots_used": ["fn05_1_publikationen.bundesbank.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "1,3–2,4 %",
+                "parts_found": ["1,3", "2,4"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn05_1_publikationen.bundesbank.de.txt"
+            }
         ],
-        "parts_missing": [
-          "2,4"
+        "fingerprint": "d0570d12bf8e",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 6,
+        "type": "AUSSAGE",
+        "claim": "172 Milliardär*innen in Deutschland — Platz 4 weltweit",
+        "snapshots_used": ["fn06_1_oxfam.de.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "6eb94bfd288d",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 6,
+        "type": "ZAHL",
+        "claim": "71 % der Milliardär*innenvermögen stammen aus Erbschaften — nicht aus eigener Leistung. Gleichzeitig lebt ein Fünftel der Bevölkerung in Armut.",
+        "snapshots_used": ["fn06_1_oxfam.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "71 %",
+                "parts_found": [],
+                "parts_missing": ["71"],
+                "verdict": "ABSENT",
+                "snapshot": null
+            }
         ],
-        "verdict": "PARTIAL",
-        "snapshot": "fn04_1_diw.de.txt"
-      }
-    ],
-    "fingerprint": "d9784c184e71",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 4,
-    "type": "ZAHL",
-    "claim": "27–35 % des Gesamtvermögens gehört dem reichsten 1 %",
-    "snapshots_used": [
-      "fn04_1_diw.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "27–35 %",
-        "parts_found": [
-          "35"
+        "fingerprint": "256f9af324ed",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 7,
+        "type": "ZAHL",
+        "claim": "69 % der Deutschen befürworten eine Vermögensteuer",
+        "snapshots_used": ["fn07_1_infratest_dimap.de.txt", "fn07_2_finanznachrichten.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "69 %",
+                "parts_found": ["69"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn07_2_finanznachrichten.de.txt"
+            }
         ],
-        "parts_missing": [
-          "27"
+        "fingerprint": "b786e8e7d1d6",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 7,
+        "type": "ZAHL",
+        "claim": "Stabile Zustimmung: 69 % für Vermögensabgabe, selbst 66 % der CDU/CSU-Anhänger*innen",
+        "snapshots_used": ["fn07_1_infratest_dimap.de.txt", "fn07_2_finanznachrichten.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "69 %",
+                "parts_found": ["69"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn07_2_finanznachrichten.de.txt"
+            },
+            {
+                "token": "66 %",
+                "parts_found": ["66"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn07_2_finanznachrichten.de.txt"
+            }
         ],
-        "verdict": "PARTIAL",
-        "snapshot": "fn04_1_diw.de.txt"
-      },
-      {
-        "token": "1 %",
-        "parts_found": [
-          "1"
+        "fingerprint": "1dcf77e2d9c6",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 8,
+        "type": "ZITAT",
+        "claim": "„Die Präferenzen der Durchschnittsbürger*innen haben einen verschwindend geringen, statistisch nicht signifikanten Einfluss auf politische Entscheidungen.\" — Gilens & Page (2014)",
+        "snapshots_used": ["fn08_1_cambridge.org.txt"],
+        "quote_checks": [
+            {
+                "quote": "Die Präferenzen der Durchschnittsbürger*innen haben einen verschwindend geringen, statistisch nicht signifikanten Einfluss auf politische Entscheidungen.",
+                "verdict": "NOT_FOUND",
+                "coverage": 0.059,
+                "snapshot": "fn08_1_cambridge.org.txt",
+                "matched_span": " statisti"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn04_1_diw.de.txt"
-      }
-    ],
-    "fingerprint": "6776506c1484",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 5,
-    "type": "ZAHL",
-    "claim": "1,3–2,4 % besitzt die untere Hälfte der Bevölkerung",
-    "snapshots_used": [
-      "fn05_1_publikationen.bundesbank.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "1,3–2,4 %",
-        "parts_found": [
-          "1,3",
-          "2,4"
+        "number_checks": [],
+        "fingerprint": "6c62b02e4d06",
+        "accepted": true,
+        "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
+    },
+    {
+        "fn": 9,
+        "type": "ZAHL",
+        "claim": "Eine PNAS-Studie (2024) zeigt: Je ungleicher ein Land, desto höher das Risiko einer autoritären Regierung. Von ca. 4 % in den gleichsten bis zu über 30 % in den ungleichsten Demokratien - also ein etwa 7× höheres Risiko demokratischer Erosion.",
+        "snapshots_used": ["fn09_1_pnas.org.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "4 %",
+                "parts_found": ["4"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn09_1_pnas.org.txt"
+            },
+            {
+                "token": "30 %",
+                "parts_found": ["30"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn09_1_pnas.org.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn05_1_publikationen.bundesbank.de.txt"
-      }
-    ],
-    "fingerprint": "a8aba2b340f5",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 6,
-    "type": "AUSSAGE",
-    "claim": "172 Milliardär*innen in Deutschland — Platz 4 weltweit",
-    "snapshots_used": [
-      "fn06_1_oxfam.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "6eb94bfd288d",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 6,
-    "type": "ZAHL",
-    "claim": "71 % der Milliardär*innenvermögen stammen aus Erbschaften — nicht aus eigener Leistung. Gleichzeitig lebt ein Fünftel der Bevölkerung in Armut.",
-    "snapshots_used": [
-      "fn06_1_oxfam.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "71 %",
-        "parts_found": [],
-        "parts_missing": [
-          "71"
+        "fingerprint": "0c2be98b324f",
+        "accepted": true,
+        "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
+    },
+    {
+        "fn": 10,
+        "type": "ZITAT",
+        "claim": "„Demokratie verdrängt Oligarchie nicht — sie verschmilzt mit ihr.\" — Jeffrey Winters, „Oligarchy“ (2011)",
+        "snapshots_used": ["fn10_1_cambridge.org.txt"],
+        "quote_checks": [
+            {
+                "quote": "Demokratie verdrängt Oligarchie nicht — sie verschmilzt mit ihr.",
+                "verdict": "NOT_FOUND",
+                "coverage": 0.172,
+                "snapshot": "fn10_1_cambridge.org.txt",
+                "matched_span": "demokratie "
+            },
+            {
+                "quote": "Oligarchy",
+                "verdict": "VERBATIM",
+                "coverage": 1.0,
+                "snapshot": "fn10_1_cambridge.org.txt",
+                "matched_span": "Oligarchy"
+            }
         ],
-        "verdict": "ABSENT",
-        "snapshot": null
-      }
-    ],
-    "fingerprint": "256f9af324ed",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 7,
-    "type": "ZAHL",
-    "claim": "69 % der Deutschen befürworten eine Vermögensteuer",
-    "snapshots_used": [
-      "fn07_1_infratest_dimap.de.txt",
-      "fn07_2_finanznachrichten.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "69 %",
-        "parts_found": [
-          "69"
+        "number_checks": [],
+        "fingerprint": "46fa65771e7b",
+        "accepted": true,
+        "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
+    },
+    {
+        "fn": 11,
+        "type": "ZITAT",
+        "claim": "„Als Medienmagnat*in kann man sich effektiv gegen die Demokratie absichern, indem man Kritik an sich selbst und anderen Plutokraten unterdrückt und Versuche entmutigt, das eigene Vermögen über Steuern abzuschöpfen.\" — Robert Reich",
+        "snapshots_used": ["fn11_1_commondreams.org.txt"],
+        "quote_checks": [
+            {
+                "quote": "Als Medienmagnat*in kann man sich effektiv gegen die Demokratie absichern, indem man Kritik an sich selbst und anderen Plutokraten unterdrückt und Versuche entmutigt, das eigene Vermögen über Steuern abzuschöpfen.",
+                "verdict": "NOT_FOUND",
+                "coverage": 0.028,
+                "snapshot": "fn11_1_commondreams.org.txt",
+                "matched_span": "s medi"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn07_2_finanznachrichten.de.txt"
-      }
-    ],
-    "fingerprint": "b786e8e7d1d6",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 7,
-    "type": "ZAHL",
-    "claim": "Stabile Zustimmung: 69 % für Vermögensabgabe, selbst 66 % der CDU/CSU-Anhänger*innen",
-    "snapshots_used": [
-      "fn07_1_infratest_dimap.de.txt",
-      "fn07_2_finanznachrichten.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "69 %",
-        "parts_found": [
-          "69"
+        "number_checks": [],
+        "fingerprint": "55d7305047c8",
+        "accepted": true,
+        "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
+    },
+    {
+        "fn": 12,
+        "type": "ZAHL",
+        "claim": "Elon Musk gab mindestens 277 Mio. Dollar an Trump-unterstützende Super PACs — das entspricht den kombinierten Spenden von 3 Millionen Kleinspender*innen.",
+        "snapshots_used": ["fn12_1_washingtonpost.com.txt", "fn12_2_opensecrets.org.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "277 Mio.",
+                "parts_found": ["277"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn12_1_washingtonpost.com.txt"
+            },
+            {
+                "token": "3 Millionen",
+                "parts_found": ["3"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn12_1_washingtonpost.com.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn07_2_finanznachrichten.de.txt"
-      },
-      {
-        "token": "66 %",
-        "parts_found": [
-          "66"
+        "fingerprint": "cce7ccb7fe3f",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 13,
+        "type": "ZITAT",
+        "claim": "LobbyControl zeigt anhand des Lobbyregisters, wie sich konzentriertes Vermögen in politischen Einfluss verwandelt: Unter den 100 größten Lobbyakteuren finden sich nur drei NGOs — 81 sind Wirtschaftsakteure. Gesellschaftliche Anliegen ohne finanzstarke Lobby drohen dadurch „unter die Räder zu geraten\". LobbyControl fordert deshalb einen Parteispendendeckel, der explizit den Einfluss von finanzstarken Konzernen und Superreichen abschwächt.",
+        "snapshots_used": ["fn13_1_lobbycontrol.de.txt"],
+        "quote_checks": [
+            {
+                "quote": "unter die Räder zu geraten",
+                "verdict": "VERBATIM",
+                "coverage": 1.0,
+                "snapshot": "fn13_1_lobbycontrol.de.txt",
+                "matched_span": "unter die Räder zu geraten"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn07_2_finanznachrichten.de.txt"
-      }
-    ],
-    "fingerprint": "1dcf77e2d9c6",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 8,
-    "type": "ZITAT",
-    "claim": "„Die Präferenzen der Durchschnittsbürger*innen haben einen verschwindend geringen, statistisch nicht signifikanten Einfluss auf politische Entscheidungen.\" — Gilens & Page (2014)",
-    "snapshots_used": [
-      "fn08_1_cambridge.org.txt"
-    ],
-    "quote_checks": [
-      {
-        "quote": "Die Präferenzen der Durchschnittsbürger*innen haben einen verschwindend geringen, statistisch nicht signifikanten Einfluss auf politische Entscheidungen.",
-        "verdict": "NOT_FOUND",
-        "coverage": 0.059,
-        "snapshot": "fn08_1_cambridge.org.txt",
-        "matched_span": " statisti"
-      }
-    ],
-    "number_checks": [],
-    "fingerprint": "6c62b02e4d06",
-    "accepted": true,
-    "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
-  },
-  {
-    "fn": 9,
-    "type": "ZAHL",
-    "claim": "Eine PNAS-Studie (2024) zeigt: Je ungleicher ein Land, desto höher das Risiko einer autoritären Regierung. Von ca. 4 % in den gleichsten bis zu über 30 % in den ungleichsten Demokratien - also ein etwa 7× höheres Risiko demokratischer Erosion.",
-    "snapshots_used": [
-      "fn09_1_pnas.org.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "4 %",
-        "parts_found": [
-          "4"
+        "number_checks": [],
+        "fingerprint": "5ff47b09c2c2",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 14,
+        "type": "ZITAT",
+        "claim": "„Zwar sind die Grundzüge der politischen Interessenvertretung bereits im Grundgesetz verankert, ein groteskes Ungleichgewicht der finanziellen Mittel der Interessengruppen und eine erschreckende Intransparenz sorgen jedoch dafür, dass finanzstarke Interessen sich in der politischen Welt ein ungleich besseres Gehör verschaffen können.\" — Jens Berger, „Marktordnung für Lobbyisten\" (2011)",
+        "snapshots_used": ["fn14_1_nachdenkseiten.de.txt"],
+        "quote_checks": [
+            {
+                "quote": "Zwar sind die Grundzüge der politischen Interessenvertretung bereits im Grundgesetz verankert, ein groteskes Ungleichgewicht der finanziellen Mittel der Interessengruppen und eine erschreckende Intransparenz sorgen jedoch dafür, dass finanzstarke Interessen sich in der politischen Welt ein ungleich besseres Gehör verschaffen können.",
+                "verdict": "VERBATIM",
+                "coverage": 1.0,
+                "snapshot": "fn14_1_nachdenkseiten.de.txt",
+                "matched_span": "Zwar sind die Grundzüge der politischen Interessenvertretung bereits im Grundgesetz verankert, ein groteskes Ungleichgewicht der finanziellen Mittel der Interessengruppen und eine erschreckende Intransparenz sorgen jedoch dafür, dass finanzstarke Interessen sich in der politischen Welt ein ungleich besseres Gehör verschaffen können."
+            },
+            {
+                "quote": "Marktordnung für Lobbyisten",
+                "verdict": "VERBATIM",
+                "coverage": 1.0,
+                "snapshot": "fn14_1_nachdenkseiten.de.txt",
+                "matched_span": "Marktordnung für Lobbyisten"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn09_1_pnas.org.txt"
-      },
-      {
-        "token": "30 %",
-        "parts_found": [
-          "30"
+        "number_checks": [],
+        "fingerprint": "3e92a3880333",
+        "accepted": true,
+        "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
+    },
+    {
+        "fn": 15,
+        "type": "ZAHL",
+        "claim": "71 % der Milliardär*innenvermögen stammen aus Erbschaften — nicht aus eigener Leistung. Gleichzeitig lebt ein Fünftel der Bevölkerung in Armut.",
+        "snapshots_used": ["fn15_1_businessinsider.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "71 %",
+                "parts_found": ["71"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn15_1_businessinsider.de.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn09_1_pnas.org.txt"
-      }
-    ],
-    "fingerprint": "0c2be98b324f",
-    "accepted": true,
-    "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
-  },
-  {
-    "fn": 10,
-    "type": "ZITAT",
-    "claim": "„Demokratie verdrängt Oligarchie nicht — sie verschmilzt mit ihr.\" — Jeffrey Winters, „Oligarchy“ (2011)",
-    "snapshots_used": [
-      "fn10_1_cambridge.org.txt"
-    ],
-    "quote_checks": [
-      {
-        "quote": "Demokratie verdrängt Oligarchie nicht — sie verschmilzt mit ihr.",
-        "verdict": "NOT_FOUND",
-        "coverage": 0.172,
-        "snapshot": "fn10_1_cambridge.org.txt",
-        "matched_span": "demokratie "
-      },
-      {
-        "quote": "Oligarchy",
-        "verdict": "VERBATIM",
-        "coverage": 1.0,
-        "snapshot": "fn10_1_cambridge.org.txt",
-        "matched_span": "Oligarchy"
-      }
-    ],
-    "number_checks": [],
-    "fingerprint": "46fa65771e7b",
-    "accepted": true,
-    "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
-  },
-  {
-    "fn": 11,
-    "type": "ZITAT",
-    "claim": "„Als Medienmagnat*in kann man sich effektiv gegen die Demokratie absichern, indem man Kritik an sich selbst und anderen Plutokraten unterdrückt und Versuche entmutigt, das eigene Vermögen über Steuern abzuschöpfen.\" — Robert Reich",
-    "snapshots_used": [
-      "fn11_1_commondreams.org.txt"
-    ],
-    "quote_checks": [
-      {
-        "quote": "Als Medienmagnat*in kann man sich effektiv gegen die Demokratie absichern, indem man Kritik an sich selbst und anderen Plutokraten unterdrückt und Versuche entmutigt, das eigene Vermögen über Steuern abzuschöpfen.",
-        "verdict": "NOT_FOUND",
-        "coverage": 0.028,
-        "snapshot": "fn11_1_commondreams.org.txt",
-        "matched_span": "s medi"
-      }
-    ],
-    "number_checks": [],
-    "fingerprint": "55d7305047c8",
-    "accepted": true,
-    "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
-  },
-  {
-    "fn": 12,
-    "type": "ZAHL",
-    "claim": "Elon Musk gab mindestens 277 Mio. Dollar an Trump-unterstützende Super PACs — das entspricht den kombinierten Spenden von 3 Millionen Kleinspender*innen.",
-    "snapshots_used": [
-      "fn12_2_opensecrets.org.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "277 Mio.",
-        "parts_found": [],
-        "parts_missing": [
-          "277"
+        "fingerprint": "e0d69e7b7d28",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 16,
+        "type": "ZITAT",
+        "claim": "„Die Eigentumskonzentration verleiht einer kleinen Gruppe weit mehr politischen Einfluss, als mit einem demokratischen Gemeinwesen vereinbar ist.\" — Thomas Piketty, „Kapital und Ideologie\" (2019)",
+        "snapshots_used": ["fn16_1_chbeck.de.txt"],
+        "quote_checks": [
+            {
+                "quote": "Die Eigentumskonzentration verleiht einer kleinen Gruppe weit mehr politischen Einfluss, als mit einem demokratischen Gemeinwesen vereinbar ist.",
+                "verdict": "NOT_FOUND",
+                "coverage": 0.118,
+                "snapshot": "fn16_1_chbeck.de.txt",
+                "matched_span": "demokratischen ge"
+            },
+            {
+                "quote": "Kapital und Ideologie",
+                "verdict": "VERBATIM",
+                "coverage": 1.0,
+                "snapshot": "fn16_1_chbeck.de.txt",
+                "matched_span": "Kapital und Ideologie"
+            }
         ],
-        "verdict": "ABSENT",
-        "snapshot": null
-      },
-      {
-        "token": "3 Millionen",
-        "parts_found": [
-          "3"
+        "number_checks": [],
+        "fingerprint": "ed376cd0e6c4",
+        "accepted": true,
+        "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
+    },
+    {
+        "fn": 17,
+        "type": "ZAHL",
+        "claim": "60 % der Bundesbürger*innen finden, dass es in Deutschland ungerecht zugeht — der höchste Wert seit 15 Jahren (ARD-DeutschlandTREND, Juli 2025).",
+        "snapshots_used": ["fn17_1_infratest_dimap.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "60 %",
+                "parts_found": ["60"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn17_1_infratest_dimap.de.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn12_2_opensecrets.org.txt"
-      }
-    ],
-    "fingerprint": "e94d3c47900d",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 13,
-    "type": "ZITAT",
-    "claim": "LobbyControl zeigt anhand des Lobbyregisters, wie sich konzentriertes Vermögen in politischen Einfluss verwandelt: Unter den 100 größten Lobbyakteuren finden sich nur drei NGOs — 81 sind Wirtschaftsakteure. Gesellschaftliche Anliegen ohne finanzstarke Lobby drohen dadurch „unter die Räder zu geraten\". LobbyControl fordert deshalb einen Parteispendendeckel, der explizit den Einfluss von finanzstarken Konzernen und Superreichen abschwächt.",
-    "snapshots_used": [
-      "fn13_1_lobbycontrol.de.txt"
-    ],
-    "quote_checks": [
-      {
-        "quote": "unter die Räder zu geraten",
-        "verdict": "VERBATIM",
-        "coverage": 1.0,
-        "snapshot": "fn13_1_lobbycontrol.de.txt",
-        "matched_span": "unter die Räder zu geraten"
-      }
-    ],
-    "number_checks": [],
-    "fingerprint": "5ff47b09c2c2",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 14,
-    "type": "ZITAT",
-    "claim": "„Zwar sind die Grundzüge der politischen Interessenvertretung bereits im Grundgesetz verankert, ein groteskes Ungleichgewicht der finanziellen Mittel der Interessengruppen und eine erschreckende Intransparenz sorgen jedoch dafür, dass finanzstarke Interessen sich in der politischen Welt ein ungleich besseres Gehör verschaffen können.\" — Jens Berger, „Marktordnung für Lobbyisten\" (2011)",
-    "snapshots_used": [
-      "fn14_1_nachdenkseiten.de.txt"
-    ],
-    "quote_checks": [
-      {
-        "quote": "Zwar sind die Grundzüge der politischen Interessenvertretung bereits im Grundgesetz verankert, ein groteskes Ungleichgewicht der finanziellen Mittel der Interessengruppen und eine erschreckende Intransparenz sorgen jedoch dafür, dass finanzstarke Interessen sich in der politischen Welt ein ungleich besseres Gehör verschaffen können.",
-        "verdict": "VERBATIM",
-        "coverage": 1.0,
-        "snapshot": "fn14_1_nachdenkseiten.de.txt",
-        "matched_span": "Zwar sind die Grundzüge der politischen Interessenvertretung bereits im Grundgesetz verankert, ein groteskes Ungleichgewicht der finanziellen Mittel der Interessengruppen und eine erschreckende Intransparenz sorgen jedoch dafür, dass finanzstarke Interessen sich in der politischen Welt ein ungleich besseres Gehör verschaffen können."
-      },
-      {
-        "quote": "Marktordnung für Lobbyisten",
-        "verdict": "VERBATIM",
-        "coverage": 1.0,
-        "snapshot": "fn14_1_nachdenkseiten.de.txt",
-        "matched_span": "Marktordnung für Lobbyisten"
-      }
-    ],
-    "number_checks": [],
-    "fingerprint": "3e92a3880333",
-    "accepted": true,
-    "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
-  },
-  {
-    "fn": 15,
-    "type": "ZAHL",
-    "claim": "71 % der Milliardär*innenvermögen stammen aus Erbschaften — nicht aus eigener Leistung. Gleichzeitig lebt ein Fünftel der Bevölkerung in Armut.",
-    "snapshots_used": [
-      "fn15_1_businessinsider.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "71 %",
-        "parts_found": [
-          "71"
+        "fingerprint": "92e7e78c388b",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 18,
+        "type": "ZAHL",
+        "claim": "25 % einheitlicher Steuersatz",
+        "snapshots_used": ["fn18_1_cms.gruene.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "25 %",
+                "parts_found": ["25"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn18_1_cms.gruene.de.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn15_1_businessinsider.de.txt"
-      }
-    ],
-    "fingerprint": "e0d69e7b7d28",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 16,
-    "type": "ZITAT",
-    "claim": "„Die Eigentumskonzentration verleiht einer kleinen Gruppe weit mehr politischen Einfluss, als mit einem demokratischen Gemeinwesen vereinbar ist.\" — Thomas Piketty, „Kapital und Ideologie\" (2019)",
-    "snapshots_used": [
-      "fn16_1_chbeck.de.txt"
-    ],
-    "quote_checks": [
-      {
-        "quote": "Die Eigentumskonzentration verleiht einer kleinen Gruppe weit mehr politischen Einfluss, als mit einem demokratischen Gemeinwesen vereinbar ist.",
-        "verdict": "NOT_FOUND",
-        "coverage": 0.118,
-        "snapshot": "fn16_1_chbeck.de.txt",
-        "matched_span": "demokratischen ge"
-      },
-      {
-        "quote": "Kapital und Ideologie",
-        "verdict": "VERBATIM",
-        "coverage": 1.0,
-        "snapshot": "fn16_1_chbeck.de.txt",
-        "matched_span": "Kapital und Ideologie"
-      }
-    ],
-    "number_checks": [],
-    "fingerprint": "ed376cd0e6c4",
-    "accepted": true,
-    "accepted_reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung."
-  },
-  {
-    "fn": 17,
-    "type": "ZAHL",
-    "claim": "60 % der Bundesbürger*innen finden, dass es in Deutschland ungerecht zugeht — der höchste Wert seit 15 Jahren (ARD-DeutschlandTREND, Juli 2025).",
-    "snapshots_used": [
-      "fn17_1_infratest_dimap.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "60 %",
-        "parts_found": [
-          "60"
+        "fingerprint": "2795e2a8895d",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 18,
+        "type": "AUSSAGE",
+        "claim": "Die meisten Menschen zahlen durch den hohen Freibetrag gar keine Erbschaftsteuer.",
+        "snapshots_used": ["fn18_1_cms.gruene.de.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "68ad6005ca6b",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 18,
+        "type": "ZAHL",
+        "claim": "Formel: Steuer = (Gesamterbe − Lebensfreibetrag) × 25 %",
+        "snapshots_used": ["fn18_1_cms.gruene.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "25 %",
+                "parts_found": ["25"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn18_1_cms.gruene.de.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn17_1_infratest_dimap.de.txt"
-      }
-    ],
-    "fingerprint": "92e7e78c388b",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 18,
-    "type": "ZAHL",
-    "claim": "Allein die Abschaffung der Privilegien über 26 Mio. € hätte 2023 rund 2 Mrd. € mehr eingebracht.",
-    "snapshots_used": [
-      "fn18_1_gruene_bundestag.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "26 Mio.",
-        "parts_found": [
-          "26"
+        "fingerprint": "30ac3f1b70ad",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 18,
+        "type": "AUSSAGE",
+        "claim": "Hoher Freibetrag pro Person (lebenslang)",
+        "snapshots_used": ["fn18_1_cms.gruene.de.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "bde28d2213e3",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 18,
+        "type": "ZAHL",
+        "claim": "Privilegien für Konzern-Erb*innen über 26 Mio. € werden abgeschafft — mit Stundungsmodellen für Liquidität.",
+        "snapshots_used": ["fn18_1_cms.gruene.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "26 Mio.",
+                "parts_found": ["26"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn18_1_cms.gruene.de.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn18_1_gruene_bundestag.de.txt"
-      },
-      {
-        "token": "2 Mrd.",
-        "parts_found": [
-          "2"
+        "fingerprint": "d2817f0e4512",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 18,
+        "type": "ZITAT",
+        "claim": "Wer „Omas Häuschen\" erbt und selbst darin wohnt, bleibt weiterhin geschützt.",
+        "snapshots_used": ["fn18_1_cms.gruene.de.txt"],
+        "quote_checks": [
+            {
+                "quote": "Omas Häuschen",
+                "verdict": "NOT_FOUND",
+                "coverage": 0.385,
+                "snapshot": "fn18_1_cms.gruene.de.txt",
+                "matched_span": "schen"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn18_1_gruene_bundestag.de.txt"
-      }
-    ],
-    "fingerprint": "b1149cc5796c",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 18,
-    "type": "AUSSAGE",
-    "claim": "Betriebsvermögen erhält Begünstigungen zum Schutz von Investitionen.",
-    "snapshots_used": [
-      "fn18_1_gruene_bundestag.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "57a34fd8cdc4",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 18,
-    "type": "ZAHL",
-    "claim": "Privilegien für Konzern-Erb*innen über 26 Mio. € werden abgeschafft — mit Stundungsmodellen für Liquidität.",
-    "snapshots_used": [
-      "fn18_1_gruene_bundestag.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "26 Mio.",
-        "parts_found": [
-          "26"
+        "number_checks": [],
+        "fingerprint": "00a96454edb4",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 19,
+        "type": "ZITAT",
+        "claim": "Wer „Omas Häuschen\" erbt und selbst darin wohnt, bleibt weiterhin geschützt.",
+        "snapshots_used": ["fn19_1_gruene_bundestag.de.txt"],
+        "quote_checks": [
+            {
+                "quote": "Omas Häuschen",
+                "verdict": "VERBATIM",
+                "coverage": 1.0,
+                "snapshot": "fn19_1_gruene_bundestag.de.txt",
+                "matched_span": "Omas Häuschen"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn18_1_gruene_bundestag.de.txt"
-      }
-    ],
-    "fingerprint": "d2817f0e4512",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 18,
-    "type": "AUSSAGE",
-    "claim": "Privilegien für große Immobilienbestände (über 300 Wohnungen) werden ebenfalls gestrichen.",
-    "snapshots_used": [
-      "fn18_1_gruene_bundestag.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "f1a14cb4b58d",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 19,
-    "type": "ZAHL",
-    "claim": "Gabriel Zucman (UC Berkeley) schlägt global 2 % auf Vermögen über 1 Mrd. USD vor — geschätztes Aufkommen: 200–250 Mrd. USD jährlich.",
-    "snapshots_used": [
-      "fn19_1_gabriel_zucman.eu.txt",
-      "fn19_2_icij.org.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "2 %",
-        "parts_found": [
-          "2"
+        "number_checks": [],
+        "fingerprint": "e54ea5ae9024",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 20,
+        "type": "ZAHL",
+        "claim": "Allein die Abschaffung der Privilegien über 26 Mio. € hätte 2023 rund 2 Mrd. € mehr eingebracht.",
+        "snapshots_used": ["fn20_1_gruene_bundestag.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "26 Mio.",
+                "parts_found": ["26"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn20_1_gruene_bundestag.de.txt"
+            },
+            {
+                "token": "2 Mrd.",
+                "parts_found": ["2"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn20_1_gruene_bundestag.de.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn19_1_gabriel_zucman.eu.txt"
-      },
-      {
-        "token": "1 Mrd.",
-        "parts_found": [
-          "1"
+        "fingerprint": "bd36dc4041a2",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 20,
+        "type": "AUSSAGE",
+        "claim": "Betriebsvermögen erhält Begünstigungen zum Schutz von Investitionen.",
+        "snapshots_used": ["fn20_1_gruene_bundestag.de.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "38ff31220a76",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 20,
+        "type": "ZAHL",
+        "claim": "Privilegien für Konzern-Erb*innen über 26 Mio. € werden abgeschafft — mit Stundungsmodellen für Liquidität.",
+        "snapshots_used": ["fn20_1_gruene_bundestag.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "26 Mio.",
+                "parts_found": ["26"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn20_1_gruene_bundestag.de.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn19_1_gabriel_zucman.eu.txt"
-      },
-      {
-        "token": "200–250 Mrd.",
-        "parts_found": [
-          "200",
-          "250"
+        "fingerprint": "abed98dcc21f",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 20,
+        "type": "AUSSAGE",
+        "claim": "Privilegien für große Immobilienbestände (über 300 Wohnungen) werden ebenfalls gestrichen.",
+        "snapshots_used": ["fn20_1_gruene_bundestag.de.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "2e6d962c6581",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 21,
+        "type": "ZAHL",
+        "claim": "1 % / Jahr Steuersatz",
+        "snapshots_used": ["fn21_1_cms.gruene.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "1 %",
+                "parts_found": ["1"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn21_1_cms.gruene.de.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn19_1_gabriel_zucman.eu.txt"
-      }
-    ],
-    "fingerprint": "fc3e9ebf163b",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 20,
-    "type": "ZAHL",
-    "claim": "Stefan Bach (DIW) berechnet bis zu 147 Mrd. € jährliches Aufkommen bei einer progressiven Vermögensteuer ab 2,3 Mio. €.",
-    "snapshots_used": [
-      "fn20_1_handelsblatt.com.txt",
-      "fn20_2_diw.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "147 Mrd.",
-        "parts_found": [
-          "147"
+        "fingerprint": "364731a1559e",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 21,
+        "type": "ZAHL",
+        "claim": "Ab 2 Mio. € Freibetrag pro Person",
+        "snapshots_used": ["fn21_1_cms.gruene.de.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "2 Mio.",
+                "parts_found": ["2"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn21_1_cms.gruene.de.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn20_1_handelsblatt.com.txt"
-      },
-      {
-        "token": "2,3 Mio.",
-        "parts_found": [
-          "2,3"
+        "fingerprint": "949da7483746",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 21,
+        "type": "AUSSAGE",
+        "claim": "Betriebsvermögen erhält Begünstigungen zum Schutz von Investitionen.",
+        "snapshots_used": ["fn21_1_cms.gruene.de.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "5f6b71a76b8d",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 21,
+        "type": "AUSSAGE",
+        "claim": "Ein durchschnittliches Eigenheim führt nicht zum Anfall dieser Steuer.",
+        "snapshots_used": ["fn21_1_cms.gruene.de.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "b0e65602e754",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 21,
+        "type": "AUSSAGE",
+        "claim": "Wird als Ländersteuer erhoben.",
+        "snapshots_used": ["fn21_1_cms.gruene.de.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "6ae163a8df11",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 22,
+        "type": "ZAHL",
+        "claim": "Gabriel Zucman (UC Berkeley) schlägt global 2 % auf Vermögen über 1 Mrd. USD vor — geschätztes Aufkommen: 200–250 Mrd. USD jährlich.",
+        "snapshots_used": ["fn22_1_gabriel_zucman.eu.txt", "fn22_2_icij.org.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "2 %",
+                "parts_found": ["2"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn22_1_gabriel_zucman.eu.txt"
+            },
+            {
+                "token": "1 Mrd.",
+                "parts_found": ["1"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn22_1_gabriel_zucman.eu.txt"
+            },
+            {
+                "token": "200–250 Mrd.",
+                "parts_found": ["200", "250"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn22_1_gabriel_zucman.eu.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn20_1_handelsblatt.com.txt"
-      }
-    ],
-    "fingerprint": "3b7fea4eb884",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 21,
-    "type": "ZITAT",
-    "claim": "„Kaum ein Land besteuert Arbeit so hoch und Vermögen so niedrig wie Deutschland.\" — Marcel Fratzscher, DIW-Präsident",
-    "snapshots_used": [
-      "fn21_1_tagesspiegel.de.txt",
-      "fn21_2_diw.de.txt"
-    ],
-    "quote_checks": [
-      {
-        "quote": "Kaum ein Land besteuert Arbeit so hoch und Vermögen so niedrig wie Deutschland.",
-        "verdict": "CLOSE",
-        "coverage": 0.722,
-        "snapshot": "fn21_2_diw.de.txt",
-        "matched_span": "t arbeit so hoch und vermögen so niedrig wie deutschland."
-      }
-    ],
-    "number_checks": [],
-    "fingerprint": "85d611faceda",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 22,
-    "type": "ZAHL",
-    "claim": "Globale Milliardärssteuer könnte für Deutschland ca. 5,7 Mrd. € einbringen",
-    "snapshots_used": [
-      "fn22_1_taxobservatory.eu.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "5,7 Mrd.",
-        "parts_found": [
-          "5,7"
+        "fingerprint": "02532cd81900",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 23,
+        "type": "ZAHL",
+        "claim": "Stefan Bach (DIW) berechnet bis zu 147 Mrd. € jährliches Aufkommen bei einer progressiven Vermögensteuer ab 2,3 Mio. €.",
+        "snapshots_used": ["fn23_1_handelsblatt.com.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "147 Mrd.",
+                "parts_found": ["147"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn23_1_handelsblatt.com.txt"
+            },
+            {
+                "token": "2,3 Mio.",
+                "parts_found": ["2,3"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn23_1_handelsblatt.com.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn22_1_taxobservatory.eu.txt"
-      }
-    ],
-    "fingerprint": "c9d7c00f12c2",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 23,
-    "type": "ZAHL",
-    "claim": "25 % einheitlicher Steuersatz",
-    "snapshots_used": [
-      "fn23_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "25 %",
-        "parts_found": [
-          "25"
+        "fingerprint": "ad2a66235075",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 24,
+        "type": "ZITAT",
+        "claim": "„Kaum ein Land besteuert Arbeit so hoch und Vermögen so niedrig wie Deutschland.\" — Marcel Fratzscher, DIW-Präsident",
+        "snapshots_used": ["fn24_1_tagesspiegel.de.txt", "fn24_2_diw.de.txt"],
+        "quote_checks": [
+            {
+                "quote": "Kaum ein Land besteuert Arbeit so hoch und Vermögen so niedrig wie Deutschland.",
+                "verdict": "CLOSE",
+                "coverage": 0.722,
+                "snapshot": "fn24_2_diw.de.txt",
+                "matched_span": "t arbeit so hoch und vermögen so niedrig wie deutschland."
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn23_1_cms.gruene.de.txt"
-      }
-    ],
-    "fingerprint": "4a8a60d65f05",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 23,
-    "type": "AUSSAGE",
-    "claim": "Die meisten Menschen zahlen durch den hohen Freibetrag gar keine Erbschaftsteuer.",
-    "snapshots_used": [
-      "fn23_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "0329c3ed10dd",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 23,
-    "type": "ZAHL",
-    "claim": "Formel: Steuer = (Gesamterbe − Lebensfreibetrag) × 25 %",
-    "snapshots_used": [
-      "fn23_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "25 %",
-        "parts_found": [
-          "25"
+        "number_checks": [],
+        "fingerprint": "86197307954c",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 25,
+        "type": "AUSSAGE",
+        "claim": "Mehreinnahmen in zweistelliger Milliardenhöhe durch Schließung von Steuerlücken",
+        "snapshots_used": ["fn25_1_finanzwende.de.txt"],
+        "quote_checks": [],
+        "number_checks": [],
+        "fingerprint": "749fb0ddb379",
+        "accepted": false,
+        "accepted_reason": null
+    },
+    {
+        "fn": 26,
+        "type": "ZAHL",
+        "claim": "Globale Milliardärssteuer könnte für Deutschland ca. 5,7 Mrd. € einbringen",
+        "snapshots_used": ["fn26_1_taxobservatory.eu.txt"],
+        "quote_checks": [],
+        "number_checks": [
+            {
+                "token": "5,7 Mrd.",
+                "parts_found": ["5,7"],
+                "parts_missing": [],
+                "verdict": "PRESENT",
+                "snapshot": "fn26_1_taxobservatory.eu.txt"
+            }
         ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn23_1_cms.gruene.de.txt"
-      }
-    ],
-    "fingerprint": "22f228213616",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 23,
-    "type": "AUSSAGE",
-    "claim": "Hoher Freibetrag pro Person (lebenslang)",
-    "snapshots_used": [
-      "fn23_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "870aebad17c0",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 23,
-    "type": "ZAHL",
-    "claim": "Privilegien für Konzern-Erb*innen über 26 Mio. € werden abgeschafft — mit Stundungsmodellen für Liquidität.",
-    "snapshots_used": [
-      "fn23_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "26 Mio.",
-        "parts_found": [
-          "26"
-        ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn23_1_cms.gruene.de.txt"
-      }
-    ],
-    "fingerprint": "680cda89e5e0",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 23,
-    "type": "ZITAT",
-    "claim": "Wer „Omas Häuschen\" erbt und selbst darin wohnt, bleibt weiterhin geschützt.",
-    "snapshots_used": [
-      "fn23_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [
-      {
-        "quote": "Omas Häuschen",
-        "verdict": "NOT_FOUND",
-        "coverage": 0.385,
-        "snapshot": "fn23_1_cms.gruene.de.txt",
-        "matched_span": "schen"
-      }
-    ],
-    "number_checks": [],
-    "fingerprint": "79e1d87f08b7",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 24,
-    "type": "ZITAT",
-    "claim": "Wer „Omas Häuschen\" erbt und selbst darin wohnt, bleibt weiterhin geschützt.",
-    "snapshots_used": [
-      "fn24_1_gruene_bundestag.de.txt"
-    ],
-    "quote_checks": [
-      {
-        "quote": "Omas Häuschen",
-        "verdict": "VERBATIM",
-        "coverage": 1.0,
-        "snapshot": "fn24_1_gruene_bundestag.de.txt",
-        "matched_span": "Omas Häuschen"
-      }
-    ],
-    "number_checks": [],
-    "fingerprint": "61b11e8d854a",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 25,
-    "type": "ZAHL",
-    "claim": "1 % / Jahr Steuersatz",
-    "snapshots_used": [
-      "fn25_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "1 %",
-        "parts_found": [
-          "1"
-        ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn25_1_cms.gruene.de.txt"
-      }
-    ],
-    "fingerprint": "405ea825749b",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 25,
-    "type": "ZAHL",
-    "claim": "Ab 2 Mio. € Freibetrag pro Person",
-    "snapshots_used": [
-      "fn25_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [
-      {
-        "token": "2 Mio.",
-        "parts_found": [
-          "2"
-        ],
-        "parts_missing": [],
-        "verdict": "PRESENT",
-        "snapshot": "fn25_1_cms.gruene.de.txt"
-      }
-    ],
-    "fingerprint": "08600a510d0f",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 25,
-    "type": "AUSSAGE",
-    "claim": "Betriebsvermögen erhält Begünstigungen zum Schutz von Investitionen.",
-    "snapshots_used": [
-      "fn25_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "7b4ffc83d235",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 25,
-    "type": "AUSSAGE",
-    "claim": "Ein durchschnittliches Eigenheim führt nicht zum Anfall dieser Steuer.",
-    "snapshots_used": [
-      "fn25_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "3a429d68e99d",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 25,
-    "type": "AUSSAGE",
-    "claim": "Wird als Ländersteuer erhoben.",
-    "snapshots_used": [
-      "fn25_1_cms.gruene.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "119cf5039b08",
-    "accepted": false,
-    "accepted_reason": null
-  },
-  {
-    "fn": 26,
-    "type": "AUSSAGE",
-    "claim": "Mehreinnahmen in zweistelliger Milliardenhöhe durch Schließung von Steuerlücken",
-    "snapshots_used": [
-      "fn26_1_finanzwende.de.txt"
-    ],
-    "quote_checks": [],
-    "number_checks": [],
-    "fingerprint": "92d72e510a48",
-    "accepted": false,
-    "accepted_reason": null
-  }
+        "fingerprint": "2eaadff43c94",
+        "accepted": false,
+        "accepted_reason": null
+    }
 ]
