@@ -48,6 +48,10 @@ __pycache__/
 ### Agents ###
 .agents/skills/cave*
 
+### Quellencheck ###
+# Fetched third-party source snapshots (provenance kept in fetch_status.json).
+tools/quellencheck/out/snapshots/
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
