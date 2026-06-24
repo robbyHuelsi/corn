@@ -1,4 +1,4 @@
-const CACHE_NAME = "corn-v3";
+const CACHE_NAME = "corn-v4";
 const ASSETS = [
     "./",
     "./index.html",

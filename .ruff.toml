@@ -19,5 +19,26 @@ ignore = [
     "S101", # assert (allow to use assertions)
 ]
 
+# The source-checking pipeline under tools/quellencheck/ consists of standalone
+# CLI scripts. Relax rules that are noise for such scripts (console output,
+# deliberate network fetches, parser complexity) while keeping docstrings,
+# type annotations and the rest of the ruleset enforced.
+[lint.per-file-ignores]
+"tools/quellencheck/*.py" = [
+    "T201", # print (intentional CLI output)
+    "S310", # suspicious-url-open (we fetch known http(s) source URLs)
+    "BLE001", # blind-except (network/parse errors are summarised, not raised)
+    "PLR2004", # magic-value-comparison
+    "C901", # complex-structure (the HTML parser is inherently branchy)
+    "PERF203", # try-except-in-loop (needed for the fetch retry loop)
+    "PLR0911", # too-many-return-statements
+    "PLR0912", # too-many-branches
+    "PLR0915", # too-many-statements
+    "TRY003", # raise-vanilla-args
+    "EM101", # raw-string-in-exception
+    "EM102", # f-string-in-exception
+    "INP001", # implicit-namespace-package (scripts, no __init__)
+]
+
 [format]
 quote-style = "double"

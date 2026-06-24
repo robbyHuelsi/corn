@@ -41,7 +41,7 @@
     const stepsContainer = document.getElementById("stepsContainer");
 
     // --- Views ---
-    const views = ["view-age", "view-wealth", "view-compare", "view-result"];
+    const views = ["view-age", "view-wealth", "view-compare", "view-result", "view-context", "view-solutions"];
     const steps = ["step1", "step2", "step3", "step4"];
 
     function showView(viewId) {
@@ -75,6 +75,14 @@
     document.getElementById("goToCompare").addEventListener("click", () => showView("view-compare"));
     document.getElementById("backToWealth").addEventListener("click", () => showView("view-wealth"));
     document.getElementById("backToCompare").addEventListener("click", () => showView("view-compare"));
+    document.getElementById("goToContext").addEventListener("click", () => showView("view-context"));
+    document.getElementById("goToSolutions").addEventListener("click", () => showView("view-solutions"));
+    document.getElementById("goToSolutionsFromContext").addEventListener("click", () => showView("view-solutions"));
+    document.getElementById("backToResult").addEventListener("click", () => showView("view-result"));
+    document.getElementById("backToContext").addEventListener("click", () => showView("view-context"));
+    document.getElementById("restartFromSolutions").addEventListener("click", () => {
+        document.getElementById("restart").click();
+    });
     document.getElementById("resetToMedian").addEventListener("click", () => {
         const median = _selectedAgeGroup ? _selectedAgeGroup.medianWealth : _overallMedian;
         if (median == null) return;
@@ -125,12 +133,11 @@
             wealthDescription.appendChild(medianStrong);
             wealthDescription.append(".");
         }
-        const sup = document.createElement("sup");
         const fnLink = document.createElement("a");
         fnLink.href = "#fn1";
-        fnLink.textContent = "[1]";
-        sup.appendChild(fnLink);
-        wealthDescription.appendChild(sup);
+        fnLink.className = "fn-ref badge rounded-pill text-bg-success";
+        fnLink.textContent = "1";
+        wealthDescription.appendChild(fnLink);
         wealthDescription.append(
             " Passe den Wert an Deine pers\u00F6nliche Situation an\u00A0\u2014 Dein Verm\u00F6gen bestimmt den Wert eines einzelnen Maiskorns."
         );
@@ -580,6 +587,35 @@
     document.getElementById("bathtubLiters").textContent = BATHTUB_LITERS;
     syncSliderToInput();
     showView("view-age");
+
+    // --- Footnote collapse handling ---
+    const footnotesCollapse = document.getElementById("footnotesCollapse");
+    if (footnotesCollapse) {
+        const bsCollapse = new bootstrap.Collapse(footnotesCollapse, { toggle: false });
+
+        document.addEventListener("click", function (e) {
+            const fnRef = e.target.closest("a.fn-ref[href^='#fn']");
+            if (!fnRef) return;
+            e.preventDefault();
+
+            const targetId = fnRef.getAttribute("href").slice(1);
+            const targetEl = document.getElementById(targetId);
+            if (!targetEl) return;
+
+            if (!footnotesCollapse.classList.contains("show")) {
+                footnotesCollapse.addEventListener(
+                    "shown.bs.collapse",
+                    function () {
+                        targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                    },
+                    { once: true }
+                );
+                bsCollapse.show();
+            } else {
+                targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        });
+    }
 
     // --- Service Worker (skip on localhost to avoid stale caches during development) ---
     if (

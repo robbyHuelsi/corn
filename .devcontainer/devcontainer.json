@@ -1,0 +1,65 @@
+{
+    "name": "corn",
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "context": "."
+    },
+
+    // Mount only the workspace folder — no other host paths are exposed
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace",
+
+    // Persist RTK stats/config and shell history across container restart/rebuild
+    "mounts": [
+        "source=${localWorkspaceFolderBasename}-rtk-data,target=/home/vscode/.local/share/rtk,type=volume",
+        "source=${localWorkspaceFolderBasename}-rtk-config,target=/home/vscode/.config/rtk,type=volume",
+        "source=${localWorkspaceFolderBasename}-commandhistory,target=/home/vscode/.local/share/commandhistory,type=volume"
+    ],
+
+    // Drop all Linux capabilities and prevent privilege escalation
+    "runArgs": ["--cap-drop=ALL", "--security-opt=no-new-privileges"],
+
+    // Run VS Code server as the non-root 'vscode' user
+    "remoteUser": "vscode",
+
+    // Keep zsh history in persistent volume
+    "remoteEnv": {
+        "VIRTUAL_ENV": "/workspace/.venv",
+        "PATH": "/workspace/.venv/bin:${containerEnv:PATH}",
+        "HISTFILE": "/home/vscode/.local/share/commandhistory/.zsh_history",
+        "HISTSIZE": "10000",
+        "SAVEHIST": "10000"
+    },
+
+    "postCreateCommand": "bash .devcontainer/scripts/post-create.sh",
+    "postStartCommand": "bash .devcontainer/scripts/post-start.sh",
+
+    // Forward port for the local dev server (server.py default: 8081)
+    "forwardPorts": [8081],
+    "portsAttributes": {
+        "8081": { "label": "Dev Server" }
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "stylelint.vscode-stylelint",
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.python"
+                },
+                "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
+                "python.terminal.activateEnvironment": true
+            }
+        }
+    }
+}

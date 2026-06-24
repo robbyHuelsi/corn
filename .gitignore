@@ -38,7 +38,19 @@ Temporary Items
 node_modules/
 
 ### Python ###
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
 .venv/
+
+### Agents ###
+.agents/skills/cave*
+
+### Quellencheck ###
+# Fetched third-party source snapshots (provenance kept in fetch_status.json).
+tools/quellencheck/out/snapshots/
 
 ### VisualStudioCode ###
 .vscode/*

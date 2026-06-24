@@ -4,20 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#2e7d32" />
-        <meta
-            name="description"
-            content="Berechne Vermögensungleichheit, dargestellt in Maiskörnern. Alle Berechnungen lokal im Browser."
-        />
+        <meta name="description" content="Berechne Vermögensungleichheit, dargestellt in Maiskörnern. Alle Berechnungen lokal im Browser." />
         <title>Vermögen in Maiskörnern</title>
         <link rel="manifest" href="manifest.json" />
         <link rel="icon" href="icons/icon-192.png" type="image/png" />
         <link rel="apple-touch-icon" href="icons/icon-192.png" />
         <!-- Bootstrap 5 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-            rel="stylesheet"
-        />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="style.css" />
     </head>
 
@@ -26,10 +20,7 @@
         <header class="hero">
             <div class="corn-icon">🌽</div>
             <h1>Vermögen in Maiskörnern</h1>
-            <p class="privacy-note">
-                <i class="bi bi-shield-lock me-1"></i>Alle Berechnungen erfolgen lokal in Deinem Browser — keine
-                Eingabewerte werden an einen Server übermittelt.
-            </p>
+            <p class="privacy-note"><i class="bi bi-shield-lock me-1"></i>Alle Berechnungen erfolgen lokal in Deinem Browser — keine Eingabewerte werden an einen Server übermittelt.</p>
         </header>
 
         <!-- Progress indicator -->
@@ -63,10 +54,7 @@
             <!-- View 1: Altersgruppe -->
             <div class="view active" id="view-age">
                 <h2 class="view-title"><i class="bi bi-person-fill me-2"></i>Wie alt bist Du?</h2>
-                <p class="text-muted mb-3">
-                    Anhand Deines Alters schlagen wir Dir einen Startwert vor, den Du im nächsten Schritt anpassen
-                    kannst.
-                </p>
+                <p class="text-muted mb-3">Anhand Deines Alters schlagen wir Dir einen Startwert vor, den Du im nächsten Schritt anpassen kannst.</p>
                 <div class="age-group-grid" id="ageGroupGrid">
                     <!-- Age group cards rendered by JS -->
                     <div class="text-center text-muted py-4">
@@ -82,68 +70,34 @@
             <div class="view" id="view-wealth">
                 <h2 class="view-title"><i class="bi bi-wallet2 me-2"></i>Wie groß ist Dein Vermögen?</h2>
                 <p class="text-muted mb-1" id="wealthDescription">
-                    In Haushalten, in denen die älteste Person in Deiner Altersgruppe ist, beträgt das mittlere
-                    Nettovermögen den unten angezeigten Wert.<sup><a href="#fn1">[1]</a></sup>
-                    Passe den Wert an Deine persönliche Situation an — Dein Vermögen bestimmt den Wert eines einzelnen
-                    Maiskorns.
+                    In Haushalten, in denen die älteste Person in Deiner Altersgruppe ist, beträgt das mittlere Nettovermögen den unten angezeigten Wert. <a href="#fn1" class="fn-ref badge rounded-pill text-bg-success">1</a>
+                    Passe den Wert an Deine persönliche Situation an — Dein Vermögen bestimmt den Wert eines einzelnen Maiskorns.
                 </p>
                 <div class="info-hint d-flex align-items-start gap-2 mb-3">
                     <i class="bi bi-info-circle-fill mt-1"></i>
-                    <div>
-                        <strong>Vermögen ≠ Einkommen.</strong> Gemeint ist Dein Nettovermögen: Immobilien, Ersparnisse,
-                        Wertpapiere, Fahrzeuge — abzüglich aller Schulden und Kredite. Nicht Dein monatliches Gehalt.
-                    </div>
+                    <div><strong>Vermögen ≠ Einkommen.</strong> Gemeint ist Dein Nettovermögen: Immobilien, Ersparnisse, Wertpapiere, Fahrzeuge — abzüglich aller Schulden und Kredite. Nicht Dein monatliches Gehalt.</div>
                 </div>
 
                 <div class="card mb-4">
                     <div class="card-body">
-                        <input
-                            type="range"
-                            class="form-range mb-2"
-                            id="wealthSlider"
-                            min="1"
-                            max="10000000"
-                            step="1"
-                            value="65374"
-                        />
-                        <div
-                            class="d-grid text-muted small"
-                            style="grid-template-columns: 1fr auto 1fr; align-items: center"
-                        >
+                        <input type="range" class="form-range mb-2" id="wealthSlider" min="1" max="10000000" step="1" value="65374" />
+                        <div class="d-grid text-muted small" style="grid-template-columns: 1fr auto 1fr; align-items: center">
                             <span class="text-start">1&nbsp;€</span>
                             <div class="input-group" style="width: 180px">
-                                <input
-                                    type="text"
-                                    class="form-control text-end"
-                                    id="wealthInput"
-                                    value="65.374"
-                                    inputmode="numeric"
-                                />
+                                <input type="text" class="form-control text-end" id="wealthInput" value="65.374" inputmode="numeric" />
                                 <span class="input-group-text">€</span>
                             </div>
                             <span class="text-end">10&nbsp;Mio.&nbsp;€</span>
                         </div>
                         <span class="visually-hidden" aria-live="polite" id="wealthDisplay">65.374&nbsp;€</span>
                         <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
-                            <button
-                                class="btn btn-sm btn-outline-secondary"
-                                id="openSplitWealthModal"
-                                type="button"
-                                data-bs-toggle="modal"
-                                data-bs-target="#splitWealthModal"
-                            >
-                                <i class="bi bi-person-check me-1"></i>Auf Person umrechnen
-                            </button>
-                            <button class="btn btn-sm btn-outline-secondary" id="resetToMedian" type="button">
-                                <i class="bi bi-arrow-counterclockwise me-1"></i>Auf Haushaltswert zurücksetzen
-                            </button>
+                            <button class="btn btn-sm btn-outline-secondary" id="openSplitWealthModal" type="button" data-bs-toggle="modal" data-bs-target="#splitWealthModal"><i class="bi bi-person-check me-1"></i>Auf Person umrechnen</button>
+                            <button class="btn btn-sm btn-outline-secondary" id="resetToMedian" type="button"><i class="bi bi-arrow-counterclockwise me-1"></i>Auf Haushaltswert zurücksetzen</button>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-outline-secondary" id="backToAge">
-                        <i class="bi bi-arrow-left me-1"></i>Zurück
-                    </button>
+                    <button class="btn btn-outline-secondary" id="backToAge"><i class="bi bi-arrow-left me-1"></i>Zurück</button>
                     <button class="btn btn-corn" id="goToCompare">Weiter<i class="bi bi-arrow-right ms-1"></i></button>
                 </div>
             </div>
@@ -151,9 +105,7 @@
             <!-- View 3: Vergleich -->
             <div class="view" id="view-compare">
                 <h2 class="view-title"><i class="bi bi-people-fill me-2"></i>Vergleiche Dich mit den Überreichen</h2>
-                <p class="text-muted mb-3">
-                    Wähle ein Vergleichsvermögen, das in Maiskörner umgerechnet wird.<sup><a href="#fn2">[2]</a></sup>
-                </p>
+                <p class="text-muted mb-3">Wähle ein Vergleichsvermögen, das in Maiskörner umgerechnet wird. <a href="#fn2" class="fn-ref badge rounded-pill text-bg-success">2</a></p>
                 <div class="compare-grid" id="compareGrid">
                     <!-- Compare cards rendered by JS -->
                     <div class="text-center text-muted py-4">
@@ -161,9 +113,7 @@
                         Wird geladen…
                     </div>
                 </div>
-                <button class="btn btn-outline-secondary" id="backToWealth">
-                    <i class="bi bi-arrow-left me-1"></i>Zurück
-                </button>
+                <button class="btn btn-outline-secondary" id="backToWealth"><i class="bi bi-arrow-left me-1"></i>Zurück</button>
             </div>
 
             <!-- View 4: Ergebnis -->
@@ -222,14 +172,7 @@
 
                 <!-- Rechenweg -->
                 <div class="text-center mb-4">
-                    <button
-                        class="btn btn-params btn-sm"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#paramsCollapse"
-                    >
-                        <i class="bi bi-calculator me-1"></i>Rechenweg anzeigen
-                    </button>
+                    <button class="btn btn-params btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#paramsCollapse"><i class="bi bi-calculator me-1"></i>Rechenweg anzeigen</button>
                     <div class="collapse mt-2" id="paramsCollapse">
                         <div class="card card-body small text-start" style="margin: 0 auto">
                             <div id="stepsContainer"></div>
@@ -237,75 +180,257 @@
                     </div>
                 </div>
 
+                <!-- CTA: Weiter informieren -->
+                <div class="info-cta mb-4">
+                    <div class="info-cta-grid">
+                        <button class="info-cta-card info-cta-card--danger" id="goToContext">
+                            <i class="bi bi-exclamation-triangle-fill info-cta-icon"></i>
+                            <span class="info-cta-title">Warum ist das ein Problem?</span>
+                            <span class="info-cta-sub">Fakten zu Ungleichheit &amp; Demokratiegefährdung</span>
+                        </button>
+                        <button class="info-cta-card info-cta-card--green" id="goToSolutions">
+                            <i class="bi bi-check-circle-fill info-cta-icon"></i>
+                            <span class="info-cta-title">Was können wir tun?</span>
+                            <span class="info-cta-sub">Konkrete politische Forderungen</span>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-outline-secondary" id="backToCompare">
-                        <i class="bi bi-arrow-left me-1"></i>Zurück
-                    </button>
-                    <button class="btn btn-outline-corn" id="restart">
-                        <i class="bi bi-arrow-counterclockwise me-1"></i>Neu starten
-                    </button>
+                    <button class="btn btn-outline-secondary" id="backToCompare"><i class="bi bi-arrow-left me-1"></i>Zurück</button>
+                    <button class="btn btn-outline-corn" id="restart"><i class="bi bi-arrow-counterclockwise me-1"></i>Neu starten</button>
+                </div>
+            </div>
+
+            <!-- View 5: Kontext — Warum Vermögensungleichheit gefährlich ist -->
+            <div class="view" id="view-context">
+                <h2 class="view-title"><i class="bi bi-exclamation-triangle me-2"></i>Warum ist das ein Problem?</h2>
+                <p class="text-muted mb-4">Deutschland gehört zu den Ländern mit der höchsten Vermögensungleichheit in Europa — und die Konzentration wächst weiter.</p>
+
+                <!-- Kennzahlen -->
+                <div class="stat-cards mb-4">
+                    <div class="stat-card stat-card--danger">
+                        <div class="stat-value">27–35 %</div>
+                        <div class="stat-label">des Gesamtvermögens gehört dem <b>reichsten 1 %</b> <a href="#fn3" class="fn-ref badge rounded-pill text-bg-success">3</a> <a href="#fn4" class="fn-ref badge rounded-pill text-bg-success">4</a></div>
+                    </div>
+                    <div class="stat-card stat-card--danger">
+                        <div class="stat-value">1,3–2,4 %</div>
+                        <div class="stat-label">besitzt die <b>untere Hälfte</b> der Bevölkerung <a href="#fn4" class="fn-ref badge rounded-pill text-bg-success">4</a> <a href="#fn5" class="fn-ref badge rounded-pill text-bg-success">5</a></div>
+                    </div>
+                    <div class="stat-card stat-card--danger">
+                        <div class="stat-value">172</div>
+                        <div class="stat-label">
+                            Milliardär*innen in Deutschland — <b>Platz 4</b> weltweit
+                            <a href="#fn6" class="fn-ref badge rounded-pill text-bg-success">6</a>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-card--success">
+                        <div class="stat-value">69 %</div>
+                        <div class="stat-label">
+                            der Deutschen <b>befürworten eine Vermögensteuer</b>
+                            <a href="#fn7" class="fn-ref badge rounded-pill text-bg-success">7</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: Mechanismen -->
+                <div class="accordion context-accordion mb-4" id="contextAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contextPolitik"><i class="bi bi-bank me-2"></i>Politische Einflussnahme</button>
+                        </h3>
+                        <div id="contextPolitik" class="accordion-collapse collapse" data-bs-parent="#contextAccordion">
+                            <div class="accordion-body">
+                                <p>In den USA sind Vermögen noch ungleicher verteilt und sie zeigen uns, wohin das alles führen kann. Die Politikwissenschaftler Gilens und Page analysierten 1.779 politische Entscheidungen über 20 Jahre und kamen zum Ergebnis:</p>
+                                <blockquote class="context-quote">
+                                    „Die Präferenzen der Durchschnittsbürger*innen haben einen verschwindend geringen, statistisch nicht signifikanten Einfluss auf politische Entscheidungen."
+                                    <cite>— Gilens &amp; Page (2014) <a href="#fn8" class="fn-ref badge rounded-pill text-bg-success">8</a></cite>
+                                </blockquote>
+                                <p>
+                                    Eine PNAS-Studie (2024) zeigt: Je ungleicher ein Land, desto höher das Risiko einer autoritären Regierung. Von ca. 4 % in den gleichsten bis zu über 30 % in den ungleichsten Demokratien - also ein etwa
+                                    <strong>7× höheres Risiko</strong> demokratischer Erosion.
+                                    <a href="#fn9" class="fn-ref badge rounded-pill text-bg-success">9</a>
+                                </p>
+                                <blockquote class="context-quote">
+                                    „Demokratie verdrängt Oligarchie nicht — sie verschmilzt mit ihr."
+                                    <cite>— Jeffrey Winters, „Oligarchy“ (2011) <a href="#fn10" class="fn-ref badge rounded-pill text-bg-success">10</a></cite>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contextMedien"><i class="bi bi-megaphone me-2"></i>Medienkonzentration</button>
+                        </h3>
+                        <div id="contextMedien" class="accordion-collapse collapse" data-bs-parent="#contextAccordion">
+                            <div class="accordion-body">
+                                <p>Milliardär*innen kontrollieren zunehmend die Infrastruktur öffentlicher Meinungsbildung: Musk (X), Bezos (Washington Post), Zuckerberg (Facebook + Instagram + WhatsApp), die Ellison-Familie (Paramount + CBS + TikTok USA).</p>
+                                <blockquote class="context-quote">
+                                    „Als Medienmagnat*in kann man sich effektiv gegen die Demokratie absichern, indem man Kritik an sich selbst und anderen Plutokraten unterdrückt und Versuche entmutigt, das eigene Vermögen über Steuern abzuschöpfen."
+                                    <cite>— Robert Reich <a href="#fn11" class="fn-ref badge rounded-pill text-bg-success">11</a></cite>
+                                </blockquote>
+                                <p>Elon Musk gab mindestens <strong>277 Mio. Dollar</strong> an Trump-unterstützende Super PACs — das entspricht den kombinierten Spenden von 3 Millionen Kleinspender*innen. <a href="#fn12" class="fn-ref badge rounded-pill text-bg-success">12</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contextDE"><i class="bi bi-geo-alt me-2"></i>Situation in Deutschland</button>
+                        </h3>
+                        <div id="contextDE" class="accordion-collapse collapse" data-bs-parent="#contextAccordion">
+                            <div class="accordion-body">
+                                <p>LobbyControl zeigt anhand des Lobbyregisters, wie sich <b>konzentriertes Vermögen in politischen Einfluss</b> verwandelt: Unter den 100 größten Lobbyakteuren finden sich nur drei NGOs — 81 sind Wirtschaftsakteure. Gesellschaftliche Anliegen ohne finanzstarke Lobby drohen dadurch „unter die Räder zu geraten". LobbyControl fordert deshalb einen Parteispendendeckel, der explizit den Einfluss von <b>finanzstarken Konzernen und Superreichen</b> abschwächt. <a href="#fn13" class="fn-ref badge rounded-pill text-bg-success">13</a></p>
+                                <blockquote class="context-quote">
+                                    „Zwar sind die Grundzüge der politischen Interessenvertretung bereits im Grundgesetz verankert, ein groteskes Ungleichgewicht der finanziellen Mittel der Interessengruppen und eine erschreckende Intransparenz sorgen jedoch dafür, dass finanzstarke Interessen sich in der politischen Welt ein ungleich besseres Gehör verschaffen können."
+                                    <cite>— Jens Berger, „Marktordnung für Lobbyisten" (2011) <a href="#fn14" class="fn-ref badge rounded-pill text-bg-success">14</a></cite>
+                                </blockquote>
+                                <p><strong>71 %</strong> der Milliardär*innenvermögen stammen aus Erbschaften — nicht aus eigener Leistung. <a href="#fn15" class="fn-ref badge rounded-pill text-bg-success">15</a> Gleichzeitig lebt ein Fünftel der Bevölkerung in Armut. <a href="#fn6" class="fn-ref badge rounded-pill text-bg-success">6</a></p>
+                                <blockquote class="context-quote">
+                                    „Die Eigentumskonzentration verleiht einer kleinen Gruppe weit mehr politischen Einfluss, als mit einem demokratischen Gemeinwesen vereinbar ist."
+                                    <cite>— Thomas Piketty, „Kapital und Ideologie" (2019) <a href="#fn16" class="fn-ref badge rounded-pill text-bg-success">16</a></cite>
+                                </blockquote>
+                                <p><strong>60 %</strong> der Bundesbürger*innen finden, dass es in Deutschland ungerecht zugeht — der höchste Wert seit 15 Jahren (ARD-DeutschlandTREND, Juli 2025). <a href="#fn17" class="fn-ref badge rounded-pill text-bg-success">17</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-outline-secondary" id="backToResult"><i class="bi bi-arrow-left me-1"></i>Zurück zum Ergebnis</button>
+                    <button class="btn btn-green-soft" id="goToSolutionsFromContext">Was können wir tun?<i class="bi bi-arrow-right ms-1"></i></button>
+                </div>
+            </div>
+
+            <!-- View 6: Grüne Forderungen -->
+            <div class="view" id="view-solutions">
+                <h2 class="view-title"><i class="bi bi-check-circle me-2"></i>Was fordern die Grünen?</h2>
+                <p class="text-muted mb-4">🌻 Konkrete Vorschläge für eine gerechtere Vermögensverteilung — unterstützt von einer breiten Mehrheit der Bevölkerung.</p>
+
+                <!-- Forderung 1: Erbschaftssteuer -->
+                <div class="solution-card mb-3">
+                    <div class="solution-card-header"><i class="bi bi-house-heart me-2"></i>Erbschaftssteuer-Reform</div>
+                    <div class="solution-card-body">
+                        <div class="solution-highlights">
+                            <div class="solution-highlight">
+                                <span class="solution-highlight-value">25 %</span>
+                                <span class="solution-highlight-label">einheitlicher Steuersatz <a href="#fn18" class="fn-ref badge rounded-pill text-bg-success">18</a></span>
+                            </div>
+                            <div class="solution-highlight">
+                                <span class="solution-highlight-value">Hoher Freibetrag</span>
+                                <span class="solution-highlight-label">pro Person (lebenslang) <a href="#fn18" class="fn-ref badge rounded-pill text-bg-success">18</a></span>
+                            </div>
+                        </div>
+                        <ul class="solution-list mt-3">
+                            <li><strong>Wer „Omas Häuschen" erbt</strong> und selbst darin wohnt, bleibt weiterhin geschützt. <a href="#fn18" class="fn-ref badge rounded-pill text-bg-success">18</a> <a href="#fn19" class="fn-ref badge rounded-pill text-bg-success">19</a></li>
+                            <li>
+                                Die meisten Menschen zahlen durch den hohen Freibetrag
+                                <strong>gar keine</strong> Erbschaftsteuer. <a href="#fn18" class="fn-ref badge rounded-pill text-bg-success">18</a>
+                            </li>
+                            <li>Privilegien für Konzern-Erb*innen über 26 Mio. € werden abgeschafft — mit Stundungsmodellen für Liquidität. <a href="#fn20" class="fn-ref badge rounded-pill text-bg-success">20</a> <a href="#fn18" class="fn-ref badge rounded-pill text-bg-success">18</a></li>
+                        </ul>
+                        <details class="solution-details">
+                            <summary>Mehr Details</summary>
+                            <p class="mt-2 mb-1">
+                                Formel:
+                                <code>Steuer = (Gesamterbe − Lebensfreibetrag) × 25 %</code> <a href="#fn18" class="fn-ref badge rounded-pill text-bg-success">18</a>
+                            </p>
+                            <p class="mb-1">Privilegien für große Immobilienbestände (über 300 Wohnungen) werden ebenfalls gestrichen. <a href="#fn20" class="fn-ref badge rounded-pill text-bg-success">20</a></p>
+                            <p class="mb-0">
+                                Allein die Abschaffung der Privilegien über 26 Mio. € hätte 2023 rund
+                                <strong>2 Mrd. € mehr</strong> eingebracht. <a href="#fn20" class="fn-ref badge rounded-pill text-bg-success">20</a>
+                            </p>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Forderung 2: Vermögensteuer -->
+                <div class="solution-card mb-3">
+                    <div class="solution-card-header"><i class="bi bi-piggy-bank me-2"></i>Vermögensteuer</div>
+                    <div class="solution-card-body">
+                        <div class="solution-highlights">
+                            <div class="solution-highlight">
+                                <span class="solution-highlight-value">2 % / Jahr</span>
+                                <span class="solution-highlight-label">Steuersatz <a href="#fn21" class="fn-ref badge rounded-pill text-bg-success">21</a> <a href="#fn24" class="fn-ref badge rounded-pill text-bg-success">24</a></span>
+                            </div>
+                            <div class="solution-highlight">
+                                <span class="solution-highlight-value">Ab 100 Mio. €</span>
+                                <span class="solution-highlight-label">Freibetrag pro Person <a href="#fn21" class="fn-ref badge rounded-pill text-bg-success">21</a> <a href="#fn24" class="fn-ref badge rounded-pill text-bg-success">24</a></span>
+                            </div>
+                        </div>
+                        <div class="solution-example mt-3">
+                            <div class="solution-example-title"><i class="bi bi-calculator me-1"></i>Rechenbeispiel</div>
+                            <p class="mb-1">Person mit 300 Mio. € Nettovermögen:</p>
+                            <p class="mb-0">
+                                <code>(300.000.000 € − 100.000.000 €) × 2 % = <strong>4 Mio. € / Jahr</strong></code>
+                            </p>
+                        </div>
+                        <ul class="solution-list mt-3">
+                            <li>Die Grünen unterstützen den <strong>G20-/Zucman-Vorschlag</strong> einer <strong>global koordinierten Mindeststeuer</strong> für Superreiche. <a href="#fn20" class="fn-ref badge rounded-pill text-bg-success">20</a></li>
+                            <li>Greift erst ab 100 Mio. € Vermögen — betrifft nur einige Tausend Höchstvermögende. <a href="#fn24" class="fn-ref badge rounded-pill text-bg-success">24</a> <a href="#fn25" class="fn-ref badge rounded-pill text-bg-success">25</a></li>
+                            <li>Als koordinierte Mindeststeuer angelegt, damit Ausweichen ins Ausland nicht lohnt. <a href="#fn21" class="fn-ref badge rounded-pill text-bg-success">21</a></li>
+                        </ul>
+                        <details class="solution-details">
+                            <summary>Wissenschaftlicher Kontext</summary>
+                            <p class="mt-2 mb-1"><strong>Gabriel Zucman</strong> (UC Berkeley) schlägt global 2 % auf Vermögen über einem Freibetrag von mindestens 100 Mio. bis 1 Mrd. USD vor — geschätztes Aufkommen: bis zu 200–250 Mrd. USD jährlich. <a href="#fn21" class="fn-ref badge rounded-pill text-bg-success">21</a></p>
+                            <p class="mb-0">„Kaum ein Land besteuert Arbeit so hoch und Vermögen so niedrig wie Deutschland." — Marcel Fratzscher, DIW-Präsident <a href="#fn22" class="fn-ref badge rounded-pill text-bg-success">22</a></p>
+                            <p class="mb-0">Zur besseren Darstellung wurde oben 100 Mio. € und 100 Mio. USD als Freibetrag gleichgesetzt. Ob der Freibetrag letztendlich auf 100 Mio. € festgesetzt wird oder auf den Betrag, welcher zur Einführung der Steuer 100 Mio. USD entspricht, bleibt Verhandlungssache.</p>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Einnahmen und Wirkung -->
+                <div class="solution-card solution-card--accent mb-4">
+                    <div class="solution-card-header"><i class="bi bi-graph-up-arrow me-2"></i>Erwartete Einnahmen</div>
+                    <div class="solution-card-body">
+                        <ul class="solution-list mb-0">
+                            <li>Mehreinnahmen in <strong>zweistelliger Milliardenhöhe</strong> durch Schließung von Steuerlücken <a href="#fn23" class="fn-ref badge rounded-pill text-bg-success">23</a></li>
+                            <li>
+                                Eine koordinierte Mindeststeuer (2 % ab 100 Mio. €) könnte für Deutschland ca.
+                                <strong>25 Mrd. € / Jahr</strong> einbringen <a href="#fn25" class="fn-ref badge rounded-pill text-bg-success">25</a>
+                            </li>
+                            <li>Stabile Zustimmung: <strong>69 %</strong> für Vermögensabgabe, selbst <strong>66 %</strong> der CDU/CSU-Anhänger*innen <a href="#fn7" class="fn-ref badge rounded-pill text-bg-success">7</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-outline-secondary" id="backToContext"><i class="bi bi-arrow-left me-1"></i>Zurück</button>
+                    <button class="btn btn-outline-corn" id="restartFromSolutions"><i class="bi bi-arrow-counterclockwise me-1"></i>Neu starten</button>
                 </div>
             </div>
         </main>
 
-        <div
-            class="modal fade"
-            id="splitWealthModal"
-            tabindex="-1"
-            aria-labelledby="splitWealthModalLabel"
-            aria-describedby="splitWealthModalDescription"
-            aria-hidden="true"
-        >
+        <div class="modal fade" id="splitWealthModal" tabindex="-1" aria-labelledby="splitWealthModalLabel" aria-describedby="splitWealthModalDescription" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="modal-title fs-5" id="splitWealthModalLabel">
-                            Haushaltswert auf Personen aufteilen
-                        </h2>
+                        <h2 class="modal-title fs-5" id="splitWealthModalLabel">Haushaltswert auf Personen aufteilen</h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
                     </div>
                     <div class="modal-body">
-                        <p class="text-muted mb-3" id="splitWealthModalDescription">
-                            Teile das Haushaltsnettovermögen durch die Anzahl der vermögenden Personen im Haushalt. Die
-                            meisten Haushalte haben mehr als eine Person, die zum Vermögen beiträgt. Wenn Du z. B. mit
-                            einem Partner zusammenlebst und beide ein ähnliches Vermögen haben, könntest Du durch 2
-                            teilen, um das Vermögen pro Person zu berechnen. So kannst Du Dich dem tatsächlichen Wert
-                            annähern.
-                        </p>
+                        <p class="text-muted mb-3" id="splitWealthModalDescription">Teile das Haushaltsnettovermögen durch die Anzahl der vermögenden Personen im Haushalt. Die meisten Haushalte haben mehr als eine Person, die zum Vermögen beiträgt. Wenn Du z. B. mit einem Partner*in zusammenlebst und beide ein ähnliches Vermögen haben, könntest Du durch 2 teilen, um das Vermögen pro Person zu berechnen. So kannst Du Dich dem tatsächlichen Wert annähern.</p>
                         <div class="split-wealth-grid" role="group" aria-label="Schnellwahl zum Teilen">
                             <button type="button" class="age-group-card split-wealth-btn" data-divisor="2">
-                                <div class="age-group-label">2 Personen</div>
+                                <div class="age-group-label">2 Personen*</div>
                                 <div class="age-group-median"><strong id="splitAmount2"></strong></div>
                             </button>
                             <button type="button" class="age-group-card split-wealth-btn" data-divisor="3">
-                                <div class="age-group-label">3 Personen</div>
+                                <div class="age-group-label">3 Personen*</div>
                                 <div class="age-group-median"><strong id="splitAmount3"></strong></div>
                             </button>
                             <button type="button" class="age-group-card split-wealth-btn" data-divisor="4">
-                                <div class="age-group-label">4 Personen</div>
+                                <div class="age-group-label">4 Personen*</div>
                                 <div class="age-group-median"><strong id="splitAmount4"></strong></div>
                             </button>
                             <div class="age-group-card split-wealth-custom">
                                 <div class="age-group-label">eigene Personenzahl</div>
                                 <div class="input-group input-group-sm mt-1">
-                                    <input
-                                        type="text"
-                                        class="form-control text-center"
-                                        id="splitWealthDivisor"
-                                        inputmode="numeric"
-                                        placeholder="z. B. 5"
-                                        aria-describedby="splitWealthError"
-                                    />
+                                    <input type="text" class="form-control text-center" id="splitWealthDivisor" inputmode="numeric" placeholder="z. B. 5" aria-describedby="splitWealthError" />
                                     <button type="button" class="btn btn-corn" id="applySplitWealth">
                                         <i class="bi bi-check-lg"></i>
                                     </button>
                                 </div>
-                                <p
-                                    class="text-danger small mt-1 mb-0 d-none"
-                                    id="splitWealthError"
-                                    role="status"
-                                    aria-live="polite"
-                                ></p>
+                                <p class="text-danger small mt-1 mb-0 d-none" id="splitWealthError" role="status" aria-live="polite"></p>
                             </div>
                         </div>
                     </div>
@@ -316,27 +441,117 @@
         <!-- Footer mit Fußnoten -->
         <footer class="py-4 px-3 mt-3">
             <div class="container" style="max-width: 720px">
-                <p class="mb-1" id="fn1">
-                    <strong>[1]</strong> Haushaltsnettovermögen in Deutschland — Vermögensperzentile nach Alter der
-                    ältesten Person im Haushalt im Jahr 2023 in Euro. Quelle:
-                    <a
-                        href="https://www.iwd.de/datei/haushaltsnettovermoegen-in-deutschland-658115/"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        Der Informationsdienst des Instituts der deutschen Wirtschaft</a
-                    >
-                </p>
-                <p class="mb-0" id="fn2">
-                    <strong>[2]</strong> Vermögenswerte der reichsten Deutschen. Quelle:
-                    <a
-                        href="https://de.wikipedia.org/wiki/Liste_der_reichsten_Deutschen_(Manager_Magazin)"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        Wikipedia — Liste der reichsten Deutschen (Manager Magazin)</a
-                    >
-                </p>
+                <button class="btn footer-sources-toggle w-100 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#footnotesCollapse" aria-expanded="false" aria-controls="footnotesCollapse"><i class="bi bi-journal-bookmark me-1"></i>Quellen anzeigen<i class="bi bi-chevron-down ms-1 footnote-chevron"></i></button>
+                <div class="collapse" id="footnotesCollapse">
+                    <p class="mb-1" id="fn1">
+                        <span class="fn-ref badge rounded-pill text-bg-success">1</span> Haushaltsnettovermögen in Deutschland — Vermögensperzentile nach Alter der ältesten Person im Haushalt im Jahr 2023 in Euro. Quelle:
+                        <a href="https://www.iwd.de/datei/haushaltsnettovermoegen-in-deutschland-658115/" target="_blank" rel="noopener"> Der Informationsdienst des Instituts der deutschen Wirtschaft</a>
+                    </p>
+                    <p class="mb-1" id="fn2">
+                        <span class="fn-ref badge rounded-pill text-bg-success">2</span> Vermögenswerte der reichsten Deutschen. Quelle:
+                        <a href="https://de.wikipedia.org/wiki/Liste_der_reichsten_Deutschen_(Manager_Magazin)" target="_blank" rel="noopener"> Wikipedia — Liste der reichsten Deutschen* (Manager Magazin)</a>
+                    </p>
+                    <p class="mb-1" id="fn3">
+                        <span class="fn-ref badge rounded-pill text-bg-success">3</span> World Inequality Database: „Wealth and its Distribution in Germany". Quelle:
+                        <a href="https://wid.world/news-article/wealth-and-its-distribution-in-germany/" target="_blank" rel="noopener">wid.world</a>
+                    </p>
+                    <p class="mb-1" id="fn4">
+                        <span class="fn-ref badge rounded-pill text-bg-success">4</span> DIW Berlin, SOEP-P: „Vermögenskonzentration in Deutschland höher als bisher bekannt". Quelle:
+                        <a href="https://www.diw.de/de/diw_01.c.793891.de/vermoegenskonzentration_in_deutschland_hoeher_als_bisher_bekannt.html" target="_blank" rel="noopener">diw.de</a>
+                    </p>
+                    <p class="mb-1" id="fn5">
+                        <span class="fn-ref badge rounded-pill text-bg-success">5</span> Deutsche Bundesbank, Panel on Household Finances (PHF), Bezugsjahr 2023. Quelle:
+                        <a href="https://publikationen.bundesbank.de/publikationen-de/berichte-studien/monatsberichte/monatsbericht-april-2025-954594?article=vermoegen-und-finanzen-privater-haushalte-in-deutschland-ergebnisse-der-vermoegensbefragung-2023--954598" target="_blank" rel="noopener">bundesbank.de</a>
+                    </p>
+                    <p class="mb-1" id="fn6">
+                        <span class="fn-ref badge rounded-pill text-bg-success">6</span> Oxfam-Ungleichheitsbericht 2026: „Resisting the Rule of the Rich". Quelle:
+                        <a href="https://www.oxfam.de/publikationen/bericht-soziale-ungleichheit-2026" target="_blank" rel="noopener">oxfam.de</a>
+                    </p>
+                    <p class="mb-1" id="fn7">
+                        <span class="fn-ref badge rounded-pill text-bg-success">7</span> Infratest dimap, ARD-DeutschlandTREND April 2025. Quellen:
+                        <a href="https://www.infratest-dimap.de/umfragen-analysen/bundesweit/ard-deutschlandtrend/2025/april/" target="_blank" rel="noopener">infratest-dimap.de</a>
+                        ·
+                        <a href="https://www.finanznachrichten.de/nachrichten-2025-04/65023189-umfrage-auch-unionsanhaenger-mehrheitlich-fuer-steuer-auf-hohe-vermoegen-016.htm" target="_blank" rel="noopener">finanznachrichten.de</a>
+                    </p>
+                    <p class="mb-1" id="fn8">
+                        <span class="fn-ref badge rounded-pill text-bg-success">8</span> Gilens, M. &amp; Page, B. (2014): „Testing Theories of American Politics", Perspectives on Politics. Quelle:
+                        <a href="https://www.cambridge.org/core/journals/perspectives-on-politics/article/abs/testing-theories-of-american-politics-elites-interest-groups-and-average-citizens/62327F513959D0A304D4893B382B992B" target="_blank" rel="noopener">cambridge.org</a>
+                    </p>
+                    <p class="mb-1" id="fn9">
+                        <span class="fn-ref badge rounded-pill text-bg-success">9</span> Rau, R. &amp; Stokes, L. (2024): „Economic inequality and the rise of authoritarian leaders", PNAS. Quelle:
+                        <a href="https://www.pnas.org/doi/10.1073/pnas.2422543121" target="_blank" rel="noopener">pnas.org</a>
+                    </p>
+                    <p class="mb-1" id="fn10">
+                        <span class="fn-ref badge rounded-pill text-bg-success">10</span> Winters, J. (2011): „Oligarchy", Cambridge University Press. Quelle:
+                        <a href="https://www.cambridge.org/core/books/oligarchy/5CC556B4483F7F3FDE1CADF928C04671" target="_blank" rel="noopener">cambridge.org</a>
+                    </p>
+                    <p class="mb-1" id="fn11">
+                        <span class="fn-ref badge rounded-pill text-bg-success">11</span> Reich, R.: The Billionaires Destroying Our Media System and What To Do About It". Quelle:
+                        <a href="https://www.commondreams.org/opinion/billionaire-ownership-media" target="_blank" rel="noopener">commondreams.org</a>
+                    </p>
+                    <p class="mb-1" id="fn12">
+                        <span class="fn-ref badge rounded-pill text-bg-success">12</span> Musk-Spenden an Super PACs (277 Mio. $). Quellen:
+                        <a href="https://www.washingtonpost.com/technology/2024/12/06/elon-musk-trump-campaign-spending-fec/" target="_blank" rel="noopener">washingtonpost.com</a>
+                        ·
+                        <a href="https://www.opensecrets.org/news/2025/03/elon-musk-tops-list-of-2024-political-donors-but-six-others-gave-more-than-100-million/" target="_blank" rel="noopener">opensecrets.org</a>
+                    </p>
+                    <p class="mb-1" id="fn13">
+                        <span class="fn-ref badge rounded-pill text-bg-success">13</span> LobbyControl, Lobbyregister-Auswertung März 2025. Quelle:
+                        <a href="https://www.lobbycontrol.de/pressemitteilung/auswertung-des-lobbyregisters-zeigt-uebermacht-der-wirtschaftslobby-120096/" target="_blank" rel="noopener">lobbycontrol.de</a>
+                    </p>
+                    <p class="mb-1" id="fn14">
+                        <span class="fn-ref badge rounded-pill text-bg-success">14</span> Jens Berger, „Marktordnung für Lobbyisten" (2011). Quelle:
+                        <a href="https://www.nachdenkseiten.de/?p=11544" target="_blank" rel="noopener">nachdenkseiten.de</a>
+                    </p>
+                    <p class="mb-1" id="fn15">
+                        <span class="fn-ref badge rounded-pill text-bg-success">15</span> Business Insider Deutschland (20. Jan. 2025): „Oxfam-Bericht: Vermögen der Milliardäre wächst immer schneller". Quelle:
+                        <a href="https://www.businessinsider.de/wirtschaft/oxfam-bericht-vermoegen-der-milliardaere-waechst-schneller/" target="_blank" rel="noopener">businessinsider.de</a>
+                    </p>
+                    <p class="mb-1" id="fn16">
+                        <span class="fn-ref badge rounded-pill text-bg-success">16</span> Piketty, T. (2019): „Kapital und Ideologie", C.H.Beck. Quelle:
+                        <a href="https://www.chbeck.de/piketty-kapital-ideologie/product/29712172" target="_blank" rel="noopener">chbeck.de</a>
+                    </p>
+                    <p class="mb-1" id="fn17">
+                        <span class="fn-ref badge rounded-pill text-bg-success">17</span> Infratest dimap, ARD-DeutschlandTREND Juli 2025. Quelle:
+                        <a href="https://www.infratest-dimap.de/umfragen-analysen/bundesweit/ard-deutschlandtrend/2025/juli/" target="_blank" rel="noopener">infratest-dimap.de</a>
+                    </p>
+                    <p class="mb-1" id="fn18">
+                        <span class="fn-ref badge rounded-pill text-bg-success">18</span> Bündnis 90/Die Grünen, BDK-Beschluss VR-09 (16.11.2024): „Für mehr Gerechtigkeit und Effizienz: Erbschaftsteuer reformieren" — u. a. 25 % linearer Steuersatz, einheitlicher Lebensfreibetrag, Stundungsmodelle. Quelle:
+                        <a href="https://cms.gruene.de/uploads/assets/Beschluss-vorl%C3%A4ufig-VR-09-F%C3%BCr_mehr_Gerechtigkeit_und_Effizienz_Erbschaftsteuer_reformieren.pdf" target="_blank" rel="noopener">gruene.de (PDF)</a>
+                    </p>
+                    <p class="mb-1" id="fn19">
+                        <span class="fn-ref badge rounded-pill text-bg-success">19</span> Grüne Bundestagsfraktion: „Grüne Bundestagfraktion verteidigt Erbschaftssteuer" (Fachtext). Quelle:
+                        <a href="https://www.gruene-bundestag.de/unsere-politik/fachtexte/gruene-bundestagfraktion-verteidigt-erbschaftssteuer/" target="_blank" rel="noopener">gruene-bundestag.de</a>
+                    </p>
+                    <p class="mb-1" id="fn20">
+                        <span class="fn-ref badge rounded-pill text-bg-success">20</span> Grüne Bundestagsfraktion: „Plan für mehr Steuergerechtigkeit". Quelle:
+                        <a href="https://www.gruene-bundestag.de/wir-im-bundestag/unsere-fraktion/unsere-zukunftsideen/plan-fuer-mehr-steuergerechtigkeit/" target="_blank" rel="noopener">gruene-bundestag.de</a>
+                    </p>
+                    <p class="mb-1" id="fn21">
+                        <span class="fn-ref badge rounded-pill text-bg-success">21</span> Zucman, G. (2024): G20-Blueprint für eine global koordinierte Mindeststeuer auf Höchstvermögen (Milliardär*innen mind. 2 %; operative Varianten ab 100 Mio.). Quellen:
+                        <a href="https://gabriel-zucman.eu/files/report-g20.pdf" target="_blank" rel="noopener">gabriel-zucman.eu (PDF)</a>
+                        ·
+                        <a href="https://www.icij.org/investigations/pandora-papers/top-economist-pitches-global-billionaire-tax-to-g20-finance-leaders/" target="_blank" rel="noopener">icij.org</a>
+                    </p>
+                    <p class="mb-1" id="fn22">
+                        <span class="fn-ref badge rounded-pill text-bg-success">22</span> Fratzscher, M. (DIW): „Kapital und Arbeit sollten gleich besteuert werden". Quellen:
+                        <a href="https://www.tagesspiegel.de/wirtschaft/kapital-und-arbeit-sollten-gleich-besteuert-werden-3712954.html" target="_blank" rel="noopener">tagesspiegel.de</a>
+                        ·
+                        <a href="https://www.diw.de/de/diw_01.c.991469.de/nachrichten/wir_muessen_superreiche_endlich_staerker_besteuern.html" target="_blank" rel="noopener">diw.de</a>
+                    </p>
+                    <p class="mb-1" id="fn23">
+                        <span class="fn-ref badge rounded-pill text-bg-success">23</span> Finanzwende: „Die zehn wichtigsten Steuerprivilegien und die 80 Milliarden Euro". Quelle:
+                        <a href="https://www.finanzwende.de/themen/steuergerechtigkeit/die-zehn-wichtigsten-steuerprivilegien-und-die-80-milliarden-euro/" target="_blank" rel="noopener">finanzwende.de</a>
+                    </p>
+                    <p class="mb-1" id="fn24">
+                        <span class="fn-ref badge rounded-pill text-bg-success">24</span> EU Tax Observatory (März 2025): „Resources for a Safe and Resilient Europe" — Minimum Taxation of Ultra-High-Net-Worth Individuals (2 % ab 100 Mio. €). Quelle:
+                        <a href="https://www.taxobservatory.eu/www-site/uploads/2025/03/Resources-for-a-Safe-and-Resilient-Europe_The-Case-for-Minimum-Taxation-of-Ultra-High-Net-Worth-Individuals-in-the-EU-1.pdf" target="_blank" rel="noopener">taxobservatory.eu (PDF)</a>
+                    </p>
+                    <p class="mb-0" id="fn25">
+                        <span class="fn-ref badge rounded-pill text-bg-success">25</span> Greenpeace: „Billions for Millions" — Steuerkonzept für Superreiche (2 % ab 100 Mio. € Vermögen, ca. 25 Mrd. €/Jahr für Deutschland, zusätzlich +0,5 % auf nicht-pariskonform investiertes Vermögen). Quelle:
+                        <a href="https://www.greenpeace.de/klimaschutz/finanzwende/billions-for-millions-greenpeace-steuerkonzept-fuer-superreiche" target="_blank" rel="noopener">greenpeace.de</a>
+                    </p>
+                </div>
             </div>
         </footer>
 

@@ -1,0 +1,82 @@
+[
+  {
+    "fingerprint": "6c62b02e4d06",
+    "fn": 8,
+    "type": "ZITAT",
+    "claim": "„Die Präferenzen der Durchschnittsbürger*innen haben einen verschwindend geringen, statistisch nicht signifikanten Einfluss auf politische Entscheidungen.\" — Gilens & Page (2014)",
+    "was_flagged": true,
+    "open_quotes": [
+      "Die Präferenzen der Durchschnittsbürger*innen haben einen verschwindend geringen, statistisch nicht signifikanten Einfluss auf politische Entscheidungen."
+    ],
+    "open_numbers": [],
+    "reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung.",
+    "accepted_by": "Robert",
+    "accepted_at": "2026-06-24"
+  },
+  {
+    "fingerprint": "0c2be98b324f",
+    "fn": 9,
+    "type": "ZAHL",
+    "claim": "Eine PNAS-Studie (2024) zeigt: Je ungleicher ein Land, desto höher das Risiko einer autoritären Regierung. Von ca. 4 % in den gleichsten bis zu über 30 % in den ungleichsten Demokratien - also ein etwa 7× höheres Risiko demokratischer Erosion.",
+    "was_flagged": false,
+    "open_quotes": [],
+    "open_numbers": [],
+    "reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung.",
+    "accepted_by": "Robert",
+    "accepted_at": "2026-06-24"
+  },
+  {
+    "fingerprint": "46fa65771e7b",
+    "fn": 10,
+    "type": "ZITAT",
+    "claim": "„Demokratie verdrängt Oligarchie nicht — sie verschmilzt mit ihr.\" — Jeffrey Winters, „Oligarchy“ (2011)",
+    "was_flagged": true,
+    "open_quotes": [
+      "Demokratie verdrängt Oligarchie nicht — sie verschmilzt mit ihr."
+    ],
+    "open_numbers": [],
+    "reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung.",
+    "accepted_by": "Robert",
+    "accepted_at": "2026-06-24"
+  },
+  {
+    "fingerprint": "55d7305047c8",
+    "fn": 11,
+    "type": "ZITAT",
+    "claim": "„Als Medienmagnat*in kann man sich effektiv gegen die Demokratie absichern, indem man Kritik an sich selbst und anderen Plutokraten unterdrückt und Versuche entmutigt, das eigene Vermögen über Steuern abzuschöpfen.\" — Robert Reich",
+    "was_flagged": true,
+    "open_quotes": [
+      "Als Medienmagnat*in kann man sich effektiv gegen die Demokratie absichern, indem man Kritik an sich selbst und anderen Plutokraten unterdrückt und Versuche entmutigt, das eigene Vermögen über Steuern abzuschöpfen."
+    ],
+    "open_numbers": [],
+    "reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung.",
+    "accepted_by": "Robert",
+    "accepted_at": "2026-06-24"
+  },
+  {
+    "fingerprint": "3e92a3880333",
+    "fn": 14,
+    "type": "ZITAT",
+    "claim": "„Zwar sind die Grundzüge der politischen Interessenvertretung bereits im Grundgesetz verankert, ein groteskes Ungleichgewicht der finanziellen Mittel der Interessengruppen und eine erschreckende Intransparenz sorgen jedoch dafür, dass finanzstarke Interessen sich in der politischen Welt ein ungleich besseres Gehör verschaffen können.\" — Jens Berger, „Marktordnung für Lobbyisten\" (2011)",
+    "was_flagged": false,
+    "open_quotes": [],
+    "open_numbers": [],
+    "reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung.",
+    "accepted_by": "Robert",
+    "accepted_at": "2026-06-24"
+  },
+  {
+    "fingerprint": "ed376cd0e6c4",
+    "fn": 16,
+    "type": "ZITAT",
+    "claim": "„Die Eigentumskonzentration verleiht einer kleinen Gruppe weit mehr politischen Einfluss, als mit einem demokratischen Gemeinwesen vereinbar ist.\" — Thomas Piketty, „Kapital und Ideologie\" (2019)",
+    "was_flagged": true,
+    "open_quotes": [
+      "Die Eigentumskonzentration verleiht einer kleinen Gruppe weit mehr politischen Einfluss, als mit einem demokratischen Gemeinwesen vereinbar ist."
+    ],
+    "open_numbers": [],
+    "reason": "Mensch-geprüft (24.06.2026): übersetzte Zitate sinngemäß ok, Buchzitate auf Katalogseite akzeptiert, Thema/Titel/Zuordnung in Ordnung.",
+    "accepted_by": "Robert",
+    "accepted_at": "2026-06-24"
+  }
+]
