@@ -1,5 +1,42 @@
 # Copilot instructions for this repository
 
+## RTK — Token-Optimized CLI
+
+Always prefix shell commands with `rtk` instead of running them directly:
+
+```bash
+# Instead of:           Use:
+ls -la src/             rtk ls src/
+cat file.py             rtk read file.py
+find . -name "*.py"     rtk find "*.py" .
+grep "pattern" src/     rtk grep "pattern" src/
+diff file1 file2        rtk diff file1 file2
+tree src/               rtk tree src/
+git status              rtk git status
+git log -10             rtk git log -10
+git diff                rtk git diff
+git add .               rtk git add .
+git commit -m "msg"     rtk git commit -m "msg"
+git push                rtk git push
+git pull                rtk git pull
+gh pr list              rtk gh pr list
+gh pr view 42           rtk gh pr view 42
+gh issue list           rtk gh issue list
+gh run list             rtk gh run list
+npm run lint            rtk npm run lint
+uv run ruff check .     rtk uv run ruff check .
+curl <url>              rtk curl <url>
+<any long command>      rtk summary <long command>
+```
+
+Meta commands (use directly):
+
+```bash
+rtk gain           # Token savings dashboard
+rtk gain --history # Per-command savings history
+rtk discover       # Find missed rtk opportunities
+```
+
 ## Build, test, and lint commands
 
 - Install dependencies with `npm install` and `uv sync`.

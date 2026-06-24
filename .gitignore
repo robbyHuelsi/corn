@@ -38,7 +38,15 @@ Temporary Items
 node_modules/
 
 ### Python ###
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
 .venv/
+
+### Agents ###
+.agents/skills/cave*
 
 ### VisualStudioCode ###
 .vscode/*
